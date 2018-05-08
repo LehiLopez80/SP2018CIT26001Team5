@@ -6,12 +6,15 @@
 package thecityofaaron;
 
 import byui.sp2018cit26001team5.theCityOfAaron.model.Author;
+import byui.sp2018cit26001team5.theCityOfAaron.model.Condition;
 import byui.sp2018cit26001team5.theCityOfAaron.model.Game;
+import byui.sp2018cit26001team5.theCityOfAaron.model.InventoryItem;
+import byui.sp2018cit26001team5.theCityOfAaron.model.ItemType;
 import byui.sp2018cit26001team5.theCityOfAaron.model.Location;
 import byui.sp2018cit26001team5.theCityOfAaron.model.Map;
 import byui.sp2018cit26001team5.theCityOfAaron.model.Player;
+import byui.sp2018cit26001team5.theCityOfAaron.model.Point;
 import byui.sp2018cit26001team5.theCityOfAaron.model.Storehouse;
-import java.util.ArrayList;
 
 /**
  *
@@ -83,6 +86,7 @@ public class TheCityOfAaron {
         Location[][] locationsOne = new Location[5][5];
                 
         //call setter functions
+        
         locationOne.setName("Temple");
         locationOne.setDescription("Place to whorship God");
         locationOne.setMapSymbol("T");
@@ -102,6 +106,30 @@ public class TheCityOfAaron {
         
         //End Lehi Lopez L4 Individual Assignment
         
+        //// ALonso Bernaldo - L4 Individual assignment tests
+        
+        //create objects
+        Point pointOne = new Point();
+        InventoryItem inventoryItemOne = new InventoryItem();
+        
+        ItemType itemTypeOne = null;
+        Condition conditionOne = null;
+        
+        //call setter functions
+        
+        pointOne.setRow(2);
+        pointOne.setColumn(3);
+        inventoryItemOne.setItemType(itemTypeOne);
+        inventoryItemOne.setQuantity(10);
+        inventoryItemOne.setCondition(conditionOne);
+        
+        //call getter functions and print to screen
+                      
+        System.out.println(pointOne.toString());
+        System.out.println(inventoryItemOne.toString());
+        
+        //End Alonso Bernaldo L4 Individual Assignment
+       
     }
     
 }

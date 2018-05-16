@@ -5,6 +5,7 @@
  */
 package thecityofaaron;
 
+import byui.sp2018cit26001team5.theCityOfAaron.model.Animal;
 import byui.sp2018cit26001team5.theCityOfAaron.model.Author;
 import byui.sp2018cit26001team5.theCityOfAaron.model.Condition;
 import byui.sp2018cit26001team5.theCityOfAaron.model.Game;
@@ -14,6 +15,7 @@ import byui.sp2018cit26001team5.theCityOfAaron.model.Location;
 import byui.sp2018cit26001team5.theCityOfAaron.model.Map;
 import byui.sp2018cit26001team5.theCityOfAaron.model.Player;
 import byui.sp2018cit26001team5.theCityOfAaron.model.Point;
+import byui.sp2018cit26001team5.theCityOfAaron.model.Provision;
 import byui.sp2018cit26001team5.theCityOfAaron.model.Storehouse;
 
 /**
@@ -129,6 +131,30 @@ public class TheCityOfAaron {
         System.out.println(inventoryItemOne.toString());
         
         //End Alonso Bernaldo L4 Individual Assignment
+        
+        
+         //// Salvador Rubio - L4 Individual assignment tests
+        
+        //create objects
+        Animal animalOne = new Animal();
+        Provision provisionOne = new Provision();
+        
+        
+        
+        //call setter functions
+        
+        animalOne.setName("Cow");
+        animalOne.setAge(13);
+        provisionOne.setName("wheat");
+        provisionOne.setPerishable(true);
+        
+        
+        //call getter functions and print to screen
+                      
+        System.out.println(animalOne.toString());
+        System.out.println(provisionOne.toString());
+        
+        //End Salvador Rubio L4 Individual Assignment
        
     }
     

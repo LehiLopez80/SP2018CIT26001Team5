@@ -6,6 +6,7 @@
 package byui.sp2018cit26001team5.theCityOfAaron.model;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 /**
  *
@@ -15,6 +16,8 @@ public class Map {
     
     //class instance variables
     private Location[][] locations;
+    private Point currentLocation;
+    
 
     public Map() {
     }
@@ -27,15 +30,24 @@ public class Map {
         this.locations = locations;
     }
 
+    public Point getCurrentLocation() {
+        return currentLocation;
+    }
+
+    public void setCurrentLocation(Point currentLocation) {
+        this.currentLocation = currentLocation;
+    }
+
     @Override
     public String toString() {
-        return "Map{" + "locations=" + locations + '}';
+        return "Map{" + "locations=" + locations + ", currentLocation=" + currentLocation + '}';
     }
 
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 79 * hash + Arrays.deepHashCode(this.locations);
+        hash = 67 * hash + Arrays.deepHashCode(this.locations);
+        hash = 67 * hash + Objects.hashCode(this.currentLocation);
         return hash;
     }
 
@@ -54,8 +66,13 @@ public class Map {
         if (!Arrays.deepEquals(this.locations, other.locations)) {
             return false;
         }
+        if (!Objects.equals(this.currentLocation, other.currentLocation)) {
+            return false;
+        }
         return true;
     }
+
+    
     
     
 }

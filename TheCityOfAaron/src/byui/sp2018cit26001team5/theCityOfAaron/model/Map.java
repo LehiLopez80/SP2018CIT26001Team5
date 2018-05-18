@@ -5,39 +5,37 @@
  */
 package byui.sp2018cit26001team5.theCityOfAaron.model;
 
-import java.io.Serializable;
 import java.util.Arrays;
-import java.util.Objects;
 
 /**
  *
  * @author Lehi Lopez
  */
-public class Storehouse implements Serializable{
+public class Map {
     
     //class instance variables
-    private Author[] authors;
+    private Location[][] locations;
 
-    public Storehouse() {
+    public Map() {
     }
 
-    public Author[] getAuthors() {
-        return authors;
+    public Location[][] getLocations() {
+        return locations;
     }
 
-    public void setAuthors(Author[] authors) {
-        this.authors = authors;
+    public void setLocations(Location[][] locations) {
+        this.locations = locations;
     }
 
     @Override
     public String toString() {
-        return "Storehouse{" + "authors=" + authors + '}';
+        return "Map{" + "locations=" + locations + '}';
     }
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 47 * hash + Arrays.deepHashCode(this.authors);
+        int hash = 7;
+        hash = 79 * hash + Arrays.deepHashCode(this.locations);
         return hash;
     }
 
@@ -52,11 +50,12 @@ public class Storehouse implements Serializable{
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Storehouse other = (Storehouse) obj;
-        if (!Arrays.deepEquals(this.authors, other.authors)) {
+        final Map other = (Map) obj;
+        if (!Arrays.deepEquals(this.locations, other.locations)) {
             return false;
         }
         return true;
-    }    
-
+    }
+    
+    
 }

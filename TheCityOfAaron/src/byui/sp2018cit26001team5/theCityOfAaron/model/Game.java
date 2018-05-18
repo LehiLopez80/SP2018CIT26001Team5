@@ -16,6 +16,7 @@ public class Game implements Serializable{
     
     //class instance variables
     private Player player;
+    private Map map;
     private Storehouse storehouse;
     private int currentPopulation;
     private int acresOwned;
@@ -31,6 +32,14 @@ public class Game implements Serializable{
 
     public void setPlayer(Player player) {
         this.player = player;
+    }
+
+    public Map getMap() {
+        return map;
+    }
+
+    public void setMap(Map map) {
+        this.map = map;
     }
 
     public Storehouse getStorehouse() {
@@ -75,18 +84,19 @@ public class Game implements Serializable{
 
     @Override
     public String toString() {
-        return "Game{" + "player=" + player + ", storehouse=" + storehouse + ", currentPopulation=" + currentPopulation + ", acresOwned=" + acresOwned + ", wheatInStorage=" + wheatInStorage + ", currentYear=" + currentYear + '}';
+        return "Game{" + "player=" + player + ", map=" + map + ", storehouse=" + storehouse + ", currentPopulation=" + currentPopulation + ", acresOwned=" + acresOwned + ", wheatInStorage=" + wheatInStorage + ", currentYear=" + currentYear + '}';
     }
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 97 * hash + Objects.hashCode(this.player);
-        hash = 97 * hash + Objects.hashCode(this.storehouse);
-        hash = 97 * hash + this.currentPopulation;
-        hash = 97 * hash + this.acresOwned;
-        hash = 97 * hash + this.wheatInStorage;
-        hash = 97 * hash + this.currentYear;
+        int hash = 5;
+        hash = 83 * hash + Objects.hashCode(this.player);
+        hash = 83 * hash + Objects.hashCode(this.map);
+        hash = 83 * hash + Objects.hashCode(this.storehouse);
+        hash = 83 * hash + this.currentPopulation;
+        hash = 83 * hash + this.acresOwned;
+        hash = 83 * hash + this.wheatInStorage;
+        hash = 83 * hash + this.currentYear;
         return hash;
     }
 
@@ -117,6 +127,9 @@ public class Game implements Serializable{
         if (!Objects.equals(this.player, other.player)) {
             return false;
         }
+        if (!Objects.equals(this.map, other.map)) {
+            return false;
+        }
         if (!Objects.equals(this.storehouse, other.storehouse)) {
             return false;
         }
@@ -124,6 +137,4 @@ public class Game implements Serializable{
     }
 
    
-    
-    
 }

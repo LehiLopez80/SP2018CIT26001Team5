@@ -7,6 +7,8 @@ package thecityofaaron;
 
 import byui.sp2018cit26001team5.theCityOfAaron.model.Author;
 import byui.sp2018cit26001team5.theCityOfAaron.model.Game;
+import byui.sp2018cit26001team5.theCityOfAaron.model.Location;
+import byui.sp2018cit26001team5.theCityOfAaron.model.Map;
 import byui.sp2018cit26001team5.theCityOfAaron.model.Player;
 import byui.sp2018cit26001team5.theCityOfAaron.model.Storehouse;
 import java.util.ArrayList;
@@ -25,14 +27,12 @@ public class TheCityOfAaron {
         //create objects
         Player playerOne = new Player();
         Game gameOne = new Game();
-        ArrayList<Game> games = new ArrayList<Game>();
         Storehouse storehouseOne = new Storehouse();
         
-        //call setter functions
+        //team assignmnt call setter functions
         
         playerOne.setName("Alonso");
-        playerOne.setGames(games);
-             
+                     
         gameOne.setCurrentPopulation(100);
         gameOne.setAcresOwned(1000);
         gameOne.setWheatInStorage(3000);
@@ -40,8 +40,8 @@ public class TheCityOfAaron {
         gameOne.setPlayer(playerOne);
         gameOne.setStorehouse(storehouseOne);
         
-        Game gameTwo = new Game();
-        storehouseOne.setGame(gameTwo);
+        Author[] authorsOne = new Author[3];
+        storehouseOne.setAuthors(authorsOne);
         
         //call getter functions and print to screen
         
@@ -71,6 +71,36 @@ public class TheCityOfAaron {
         String authorThreeTitle = Author.Salvador.getTitle();
         String authorThreeName = Author.Salvador.getName();
         System.out.println("Author Three = " + authorThreeTitle + " " + authorThreeName);
+        
+        
+        //// Lehi Lopez - L4 Individual assignment tests
+        
+        //create objects
+        Map mapOne = new Map();
+        Location locationOne = new Location();
+                
+        String[] gameTipsOne = new String[2];
+        Location[][] locationsOne = new Location[5][5];
+                
+        //call setter functions
+        locationOne.setName("Temple");
+        locationOne.setDescription("Place to whorship God");
+        locationOne.setMapSymbol("T");
+        locationOne.setGameTips(gameTipsOne);
+        mapOne.setLocations(locationsOne);
+        
+        //call getter functions and print to screen
+        String locationOneName = locationOne.getName();
+        System.out.println("Location One Name = " + locationOneName);
+        String locationOneDescription = locationOne.getDescription();
+        System.out.println("Location One Description = " + locationOneDescription);
+        String locationOneMapSymbol = locationOne.getMapSymbol();
+        System.out.println("Location One Map Symbol = " + locationOneMapSymbol);
+              
+        System.out.println(locationOne.toString());
+        System.out.println(mapOne.toString());
+        
+        //End Lehi Lopez L4 Individual Assignment
         
     }
     

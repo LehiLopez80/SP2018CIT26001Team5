@@ -5,6 +5,7 @@
  */
 package byui.sp2018cit26001team5.theCityOfAaron.model;
 
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Objects;
 
@@ -12,7 +13,7 @@ import java.util.Objects;
  *
  * @author Lehi Lopez
  */
-public class Map {
+public class Map implements Serializable{
     
     //class instance variables
     private Location[][] locations;

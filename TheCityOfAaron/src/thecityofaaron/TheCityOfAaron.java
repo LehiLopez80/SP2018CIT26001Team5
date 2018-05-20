@@ -85,7 +85,10 @@ public class TheCityOfAaron {
         Location locationOne = new Location();
                 
         String[] gameTipsOne = new String[2];
-        Location[][] locationsOne = new Location[5][5];
+        gameTipsOne[0] = "Tip 1";
+        gameTipsOne[1] = "Tip 2";
+        Location[][] locationsOne = new Location[1][1];
+        
                 
         //call setter functions
         
@@ -93,7 +96,13 @@ public class TheCityOfAaron {
         locationOne.setDescription("Place to whorship God");
         locationOne.setMapSymbol("T");
         locationOne.setGameTips(gameTipsOne);
+        
+        locationsOne[0][0] = new Location();
+        locationsOne[0][0] = locationOne;
+        Point currentLocationOne = new Point (3,5);
+        
         mapOne.setLocations(locationsOne);
+        mapOne.setCurrentLocation(currentLocationOne);
         
         //call getter functions and print to screen
         String locationOneName = locationOne.getName();

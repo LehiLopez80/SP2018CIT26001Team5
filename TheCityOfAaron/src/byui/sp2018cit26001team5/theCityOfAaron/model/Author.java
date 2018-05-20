@@ -4,12 +4,13 @@
  * and open the template in the editor.
  */
 package byui.sp2018cit26001team5.theCityOfAaron.model;
+import java.io.Serializable;
 
 /**
  *
  * @author Lehi Lopez
  */
-public enum Author {
+public enum Author implements Serializable{
     
     Alonso("Obispo", "Alonso Bernaldo"),
     Lehi("Ingeniero", "Lehi Lopez"),

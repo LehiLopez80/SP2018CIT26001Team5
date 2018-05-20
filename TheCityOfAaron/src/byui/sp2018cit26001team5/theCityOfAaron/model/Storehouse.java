@@ -7,7 +7,6 @@ package byui.sp2018cit26001team5.theCityOfAaron.model;
 
 import java.io.Serializable;
 import java.util.Arrays;
-import java.util.Objects;
 
 /**
  *
@@ -17,6 +16,9 @@ public class Storehouse implements Serializable{
     
     //class instance variables
     private Author[] authors;
+    private InventoryItem[] animals;
+    private InventoryItem[] tools;
+    private InventoryItem[] provisions;
 
     public Storehouse() {
     }
@@ -29,15 +31,42 @@ public class Storehouse implements Serializable{
         this.authors = authors;
     }
 
+    public InventoryItem[] getAnimals() {
+        return animals;
+    }
+
+    public void setAnimals(InventoryItem[] animals) {
+        this.animals = animals;
+    }
+
+    public InventoryItem[] getTools() {
+        return tools;
+    }
+
+    public void setTools(InventoryItem[] tools) {
+        this.tools = tools;
+    }
+
+    public InventoryItem[] getProvisions() {
+        return provisions;
+    }
+
+    public void setProvisions(InventoryItem[] provisions) {
+        this.provisions = provisions;
+    }
+
     @Override
     public String toString() {
-        return "Storehouse{" + "authors=" + authors + '}';
+        return "Storehouse{" + "authors=" + authors + ", animals=" + animals + ", tools=" + tools + ", provisions=" + provisions + '}';
     }
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 47 * hash + Arrays.deepHashCode(this.authors);
+        int hash = 7;
+        hash = 29 * hash + Arrays.deepHashCode(this.authors);
+        hash = 29 * hash + Arrays.deepHashCode(this.animals);
+        hash = 29 * hash + Arrays.deepHashCode(this.tools);
+        hash = 29 * hash + Arrays.deepHashCode(this.provisions);
         return hash;
     }
 
@@ -56,7 +85,17 @@ public class Storehouse implements Serializable{
         if (!Arrays.deepEquals(this.authors, other.authors)) {
             return false;
         }
+        if (!Arrays.deepEquals(this.animals, other.animals)) {
+            return false;
+        }
+        if (!Arrays.deepEquals(this.tools, other.tools)) {
+            return false;
+        }
+        if (!Arrays.deepEquals(this.provisions, other.provisions)) {
+            return false;
+        }
         return true;
-    }    
+    }
 
+    
 }

@@ -5,11 +5,13 @@
  */
 package byui.sp2018cit26001team5.theCityOfAaron.model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Alonso Bernaldo
  */
-public class Point {
+public class Point implements Serializable{
     //class instance variables
     private int row ;
     private int column;

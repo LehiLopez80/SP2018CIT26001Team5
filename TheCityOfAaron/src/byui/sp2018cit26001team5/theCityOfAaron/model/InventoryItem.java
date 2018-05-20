@@ -5,13 +5,14 @@
  */
 package byui.sp2018cit26001team5.theCityOfAaron.model;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
  *
  * @author Alonso Bernaldo
  */
-public class InventoryItem {
+public class InventoryItem implements Serializable{
     //class instance variables  
     private ItemType itemType;
     private int quantity;

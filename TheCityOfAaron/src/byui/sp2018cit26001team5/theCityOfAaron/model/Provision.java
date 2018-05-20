@@ -5,13 +5,14 @@
  */
 package byui.sp2018cit26001team5.theCityOfAaron.model;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
  *
  * @author Salvador Rubio
  */
-public class Provision {
+public class Provision implements Serializable{
     
      //class instance variables
     

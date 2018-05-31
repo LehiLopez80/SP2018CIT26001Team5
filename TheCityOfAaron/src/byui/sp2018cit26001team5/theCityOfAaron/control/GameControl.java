@@ -43,5 +43,17 @@ public class GameControl {
         }
                     
     }
-}
-    
+    public static int calculateBushelsToPlant(int acresToPlant){
+                
+        // Validate there is not negative input.
+        if (acresToPlant < 0 ) {
+            return -1; 
+        }
+        else {
+                int bushelsToPlant = (acresToPlant) /2; 
+                          
+                return bushelsToPlant;
+            }
+
+    }
+} 

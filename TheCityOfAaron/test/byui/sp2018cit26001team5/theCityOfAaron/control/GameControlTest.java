@@ -243,4 +243,57 @@ public class GameControlTest {
         assertEquals(expResult, result);
  
     }
+    
+    @Test
+    public void testCalculateBushelsToPlant() {
+        System.out.println("calculateBushelsToPlant"); 
+        
+        // --- Test case 1 ---
+        System.out.println("\tTest case 1");
+        
+        // define the input variables
+        int acresToPlant  = 20;
+                
+        int expResult = 10; // define the expected output variable
+        
+        // call the method
+        int result = GameControl.calculateBushelsToPlant(acresToPlant);
+        
+        // test to see if the result reurned equals the expected result        
+        assertEquals(expResult, result);
+        
+        // --- Test case 2 ---
+        System.out.println("\tTest case 2");
+        
+         // define the input variables
+        acresToPlant  = -20;
+                
+        expResult = -1; // define the expected output variable
+        
+        // call the method
+        result = GameControl.calculateBushelsToPlant(acresToPlant);
+        
+        // test to see if the result reurned equals the expected result        
+        assertEquals(expResult, result);
+        
+        // --- Test case 3 ---
+        System.out.println("\tTest case 3");
+        
+        // define the input variables
+        acresToPlant  = 0;
+                
+        expResult = 0; // define the expected output variable
+        
+        // call the method
+        result = GameControl.calculateBushelsToPlant(acresToPlant);        
+        
+        // test to see if the result reurned equals the expected result     
+        assertEquals(expResult, result);
+        
+        
+        
+        // TODO review the generated test code and remove the default call to fail.
+        // fail("The test case is a prototype."); 
+    }
+    
 }

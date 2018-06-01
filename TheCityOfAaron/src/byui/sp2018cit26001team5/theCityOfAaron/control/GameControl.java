@@ -29,6 +29,19 @@ public class GameControl {
             }
         
     }
+  
+    public static int calculateHarvest (int bushelsByAcre, int acresAvailable) {
     
+        // Validate there is not negative input.
+        if (bushelsByAcre < 0 || acresAvailable < 0) {
+            return -1; 
+        }
+        else {
+            
+            int finalHarvest = bushelsByAcre * acresAvailable;
+            return finalHarvest;
+        }
+                    
+    }
 }
     

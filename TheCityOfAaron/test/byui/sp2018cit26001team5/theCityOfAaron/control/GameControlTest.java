@@ -158,5 +158,89 @@ public class GameControlTest {
         // TODO review the generated test code and remove the default call to fail.
         // fail("The test case is a prototype."); 
     }
-    
+
+    @Test
+    public void testCalculateHarvest() {
+        System.out.println("calculateHarvest");
+        
+        // --- Test case 1 ---
+        System.out.println("\tTest case 1");
+        
+        // define the input variables
+        int bushelsByAcre = 50;
+        int acresAvailable = 10;
+        
+        int expResult = 500; // define the expected output variable
+        
+        // call the method
+        int result = GameControl.calculateHarvest(bushelsByAcre, acresAvailable);
+        
+        // test to see if the result reurned equals the expected result        
+        assertEquals(expResult, result);
+
+
+	// --- Test case 2 ---
+        System.out.println("\tTest case 2");
+        
+        // define the input variables
+        bushelsByAcre = -33;
+        acresAvailable = 12;
+        
+        expResult = -1; // define the expected output variable
+        
+        // call the method
+        result = GameControl.calculateHarvest(bushelsByAcre, acresAvailable);
+        
+        // test to see if the result reurned equals the expected result        
+        assertEquals(expResult, result);
+
+
+	// --- Test case 3 ---
+        System.out.println("\tTest case 3");
+        
+        // define the input variables
+        bushelsByAcre = 45;
+        acresAvailable = -15;
+        
+        expResult = -1; // define the expected output variable
+        
+        // call the method
+        result = GameControl.calculateHarvest(bushelsByAcre, acresAvailable);
+        
+        // test to see if the result reurned equals the expected result        
+        assertEquals(expResult, result);
+
+
+	// --- Test case 4 ---
+        System.out.println("\tTest case 4");
+        
+        // define the input variables
+        bushelsByAcre = 53;
+        acresAvailable = 0;
+        
+        expResult = 0; // define the expected output variable
+        
+        // call the method
+        result = GameControl.calculateHarvest(bushelsByAcre, acresAvailable);
+        
+        // test to see if the result reurned equals the expected result        
+        assertEquals(expResult, result);
+
+
+	// --- Test case 5 ---
+        System.out.println("\tTest case 5");
+        
+        // define the input variables
+        bushelsByAcre = 0;
+        acresAvailable = 20;
+        
+        expResult = 0; // define the expected output variable
+        
+        // call the method
+        result = GameControl.calculateHarvest(bushelsByAcre, acresAvailable);
+        
+        // test to see if the result reurned equals the expected result        
+        assertEquals(expResult, result);
+ 
+    }
 }

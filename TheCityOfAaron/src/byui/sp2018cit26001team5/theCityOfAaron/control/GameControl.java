@@ -11,6 +11,7 @@ package byui.sp2018cit26001team5.theCityOfAaron.control;
  */
 public class GameControl {
     
+    // Team Assingment
     public static int calculatePopulation(int initialPopulation, int peopleStarved, int peopleMovedToCity){
                 
         // Validate there is not negative input.
@@ -26,10 +27,10 @@ public class GameControl {
                 int population = initialPopulation - peopleStarved + peopleMovedToCity;
                 
                 return population;
-            }
-        
+            }        
     }
   
+    // Individual Assignment Salvador Rubio
     public static int calculateHarvest (int bushelsByAcre, int acresAvailable) {
     
         // Validate there is not negative input.
@@ -40,9 +41,10 @@ public class GameControl {
             
             int finalHarvest = bushelsByAcre * acresAvailable;
             return finalHarvest;
-        }
-                    
+        }                    
     }
+    
+    // Individual Assignment Alonso Bernaldo
     public static int calculateBushelsToPlant(int acresToPlant){
                 
         // Validate there is not negative input.
@@ -54,6 +56,23 @@ public class GameControl {
                           
                 return bushelsToPlant;
             }
-
+    }
+    
+    //Individual Assignment Lehi Lopez
+    public static int calculateOfferings(int bushelsHarvested, int offeringsPercentage) {
+        
+        // Validate there is not negative input.
+        if (bushelsHarvested < 0 || offeringsPercentage < 0) {
+            return -1;
+        }
+        else {
+            if (offeringsPercentage > 100) {
+                return -1;
+            }
+            else {
+                int tithesAndOfferings = bushelsHarvested * offeringsPercentage / 100;
+                return tithesAndOfferings;
+            }
+        }
     }
 } 

@@ -58,7 +58,20 @@ public class GameControl {
             }
     }
     
-    //Individual Assignment Lehi Lopez
+    /**
+     * Function Name: calculateOfferings
+     * Description: Function used to calculate the amount of bushels that will  
+     *              be paid in tithes and afferings.
+     * Inputs:
+     *   - int bushelsHarvested: The amount of bushels harvested for the year.
+     *   - int offeringsPercentage: The percentage to be paid in tithes and offerings.
+     * Conditions: 
+     *   - bushelsHarvested and offeringsPercentage must be greater or equal to zero.
+     *   - offeringsPercentage must be less or equal to 100.
+     * Output:
+     *   - int tithesAndOfferings: The amount of bushels to be paid in tithes and offerings.
+     * Author: Lehi Lopez
+     */
     public static int calculateOfferings(int bushelsHarvested, int offeringsPercentage) {
         
         // Validate there is not negative input.
@@ -66,13 +79,153 @@ public class GameControl {
             return -1;
         }
         else {
+            // Validate offeringsPercentage upper limit.
             if (offeringsPercentage > 100) {
                 return -1;
-            }
+            }            
+            // Calculate output.
             else {
                 int tithesAndOfferings = bushelsHarvested * offeringsPercentage / 100;
                 return tithesAndOfferings;
             }
         }
     }
+    
+    /**
+     * Function Name: calculatePeopleMovedToCity
+     * Description: Function used to calculate the number of people moved to the city.
+     * Inputs:
+     *   - int currentPopulation: The current population.
+     *   - int randomInt: A random number between 1% and 5%
+     * Conditions: 
+     *   - currentPopulation must be greater or equal to zero.
+     *   - randomInt must be an integer number between 0 and 5.
+     * Output:
+     *   - int growPopulation: The amount of people who moved to the city.
+     * Author: Lehi Lopez
+     */
+    
+    public static int calculatePeopleMovedToCity (int currentPopulation, int randomInt){
+        
+        // Validate there is not negative input.
+        if (currentPopulation < 0 || randomInt < 0) {
+            return -1;
+        }
+        else {
+            //Validate randomInt upper limit.
+            if (randomInt > 5) {
+                return -1;
+            }
+            // Calculate output.
+            else {
+                int growPercentage = randomInt + 1;
+                
+                if (growPercentage > 5) {
+                    growPercentage = 5;
+                }
+                
+                int growPopulation = currentPopulation * growPercentage / 100;
+                return growPopulation;
+            }
+        }
+    }
+    
+    /**
+     * Function Name: calculateCropYield
+     * Description: Function used to calculate the crop yield.
+     * Inputs:
+     *   - int offeringsPercentage: The percentage to be paid in tithes and offerings.
+     *   - int randomInt: A random number between 0 and 12.
+     * Conditions: 
+     *   - offeringsPercentage must be an integer number between 0 and 100.
+     *   - randomInt must be an integer number between 0 and 12.
+     * Output:
+     *   - int cropYield: The crop yield of the year.
+     * Author: Lehi Lopez
+     */
+    
+    public static int calculateCropYield (int offeringsPercentage, int randomInt) {
+        
+        // Validate there is not negative input.
+        if (offeringsPercentage < 0 || randomInt < 0) {
+            return -1;
+        }
+        else {
+            //Validate randomInt upper limit.
+            if (randomInt > 12) {
+                return -1;
+            }
+            // Calculate output.
+            else {
+                int cropYield;
+                
+                if (offeringsPercentage <= 12) {
+                    if (randomInt < 4) {
+                        cropYield = 1;
+                    }
+                    else {
+                        if (randomInt < 8) {
+                            cropYield = 2;
+                        }
+                        else {
+                            cropYield = 3;
+                        }
+                    }
+                    if (offeringsPercentage >=8) {
+                        cropYield++;
+                    }
+                }
+                else { //offeringPercentage > 12
+                    if (randomInt < 3) {
+                        cropYield = 2;
+                    }
+                    else {
+                        if (randomInt < 6) {
+                            cropYield = 3;
+                        }
+                        else {
+                            if (randomInt < 9) {
+                                cropYield = 4;
+                            }
+                            else {
+                                cropYield = 5;
+                            }
+                        }
+                    }
+                }                
+                                
+                return cropYield;
+            }
+        }        
+    }
+    
+    /**
+     * Function Name: calculateAcresPrice
+     * Description: Function used to calculate the price of an acre for the year.
+     * Inputs:
+     *   - int randomInt: A random number between 0 and 11.
+     * Conditions: 
+     *   - randomInt must be an integer number between 0 and 11.
+     * Output:
+     *   - int acresPrice: The price of an acre of price (between 17 and 27).
+     * Author: Lehi Lopez
+     */
+    
+    public static int calculateAcresPrice (int randomInt) {
+        
+        //validate input range
+        if (randomInt < 0 || randomInt > 11) {
+            return -1;
+        }
+        // Calculate output.
+        else {
+            int acresPrice = randomInt + 17;
+            
+            if (acresPrice > 27) {
+                acresPrice = 27;
+            }
+            
+            return acresPrice;
+        }
+    }    
 } 

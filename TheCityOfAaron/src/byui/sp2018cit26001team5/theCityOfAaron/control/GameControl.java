@@ -57,11 +57,12 @@ public class GameControl {
             return -1; 
         }
         else {
-            if (people < bushelsFeed) {
+            
+            if (people < (bushelsFeed/20)) {
                 return 0;
             }
             else {
-               int peopleStarved = people - bushelsFeed;
+               int peopleStarved = people - (bushelsFeed/20);
                        return peopleStarved;
             }
             

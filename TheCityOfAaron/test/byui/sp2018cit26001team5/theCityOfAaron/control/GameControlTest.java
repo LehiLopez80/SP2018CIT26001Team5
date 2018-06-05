@@ -259,7 +259,7 @@ public class GameControlTest {
         int people = 70;
         int bushelsFeed = 50;
         
-        int expResult = 20; // define the expected output variable
+        int expResult = 68; // define the expected output variable
         
         // call the method
         int result = GameControl.calculatePeopleStarved(people, bushelsFeed);
@@ -321,7 +321,7 @@ public class GameControlTest {
         
         // define the input variables
         people = 0;
-        bushelsFeed = 20;
+        bushelsFeed = 40;
         
         expResult = 0; // define the expected output variable
         

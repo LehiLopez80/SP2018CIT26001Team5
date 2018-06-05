@@ -29,6 +29,11 @@ public class GameControl {
                 return population;
             }        
     }
+    
+    /*********************************************************************
+     * Salvador Rubio individual Assignment                              *
+     * *******************************************************************
+     */
   
     // Individual Assignment Salvador Rubio
     public static int calculateHarvest (int bushelsByAcre, int acresAvailable) {
@@ -44,6 +49,30 @@ public class GameControl {
         }                    
     }
     
+    //Individual Assignment Salvador Rubio
+    public static int calculatePeopleStarved (int people, int bushelsFeed) {
+     
+        // Validate there is not negative input.
+        if (people < 0 || bushelsFeed < 0) {
+            return -1; 
+        }
+        else {
+            if (people < bushelsFeed) {
+                return 0;
+            }
+            else {
+               int peopleStarved = people - bushelsFeed;
+                       return peopleStarved;
+            }
+            
+        }                    
+    }
+    
+    /*********************************************************************
+     * Alonso Bernaldo individual Assignment                              *
+     * *******************************************************************
+     */
+    
     // Individual Assignment Alonso Bernaldo
     public static int calculateBushelsToPlant(int acresToPlant){
                 
@@ -57,6 +86,11 @@ public class GameControl {
                 return bushelsToPlant;
             }
     }
+    
+    /*********************************************************************
+     * Lehi Lopez individual Assignment                              *
+     * *******************************************************************
+     */
     
     /**
      * Function Name: calculateOfferings
@@ -86,6 +120,10 @@ public class GameControl {
             // Calculate output.
             else {
                 int tithesAndOfferings = bushelsHarvested * offeringsPercentage / 100;
+                // Ceil rounding if applicable, preferable for tithing and offerings
+                if (((bushelsHarvested * offeringsPercentage) % 100) > 0) {
+                    tithesAndOfferings++;
+                }
                 return tithesAndOfferings;
             }
         }
@@ -125,6 +163,9 @@ public class GameControl {
                 }
                 
                 int growPopulation = currentPopulation * growPercentage / 100;
+                if (((currentPopulation * growPercentage) % 100) >= 50) {
+                    growPopulation++;
+                }
                 return growPopulation;
             }
         }
@@ -151,8 +192,8 @@ public class GameControl {
             return -1;
         }
         else {
-            //Validate randomInt upper limit.
-            if (randomInt > 12) {
+            //Validate offeringsPercentage and randomInt upper limits.
+            if (offeringsPercentage > 100 || randomInt > 12) {
                 return -1;
             }
             // Calculate output.
@@ -227,24 +268,5 @@ public class GameControl {
             
             return acresPrice;
         }
-    }
-
-    //Individual Assignment Salvador Rubio
-    public static int calculatePeopleStarved (int people, int bushelsFeed) {
-     
-        // Validate there is not negative input.
-        if (people < 0 || bushelsFeed < 0) {
-            return -1; 
-        }
-        else {
-            if (people < bushelsFeed) {
-                return 0;
-            }
-            else {
-               int peopleStarved = people - bushelsFeed;
-                       return peopleStarved;
-            }
-            
-        }                    
-    }
+    }    
 } 

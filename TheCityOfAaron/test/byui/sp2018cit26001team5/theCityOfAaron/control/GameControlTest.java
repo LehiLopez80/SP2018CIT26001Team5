@@ -516,7 +516,7 @@ public class GameControlTest {
                 
         expResult = 101; // define the expected output variable
         
-        // call the method
+        // call the method 
         result = GameControl.calculateOfferings(bushelsHarvested, offeringsPercentage);
         
         // test to see if the result returned equals the expected result        

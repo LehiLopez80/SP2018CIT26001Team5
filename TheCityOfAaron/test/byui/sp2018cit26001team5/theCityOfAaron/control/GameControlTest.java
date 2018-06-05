@@ -403,5 +403,89 @@ public class GameControlTest {
         
         // test to see if the result reurned equals the expected result        
         assertEquals(expResult, result);        
-    }    
+    }  
+    
+    @Test
+    public void testCalculatePeopleStarved() {
+        System.out.println("calculatePeopleStarved");
+        
+        // --- Test case 1 ---
+        System.out.println("\tTest case 1");
+        
+        // define the input variables
+        int people = 70;
+        int bushelsFeed = 50;
+        
+        int expResult = 20; // define the expected output variable
+        
+        // call the method
+        int result = GameControl.calculatePeopleStarved(people, bushelsFeed);
+        
+        // test to see if the result reurned equals the expected result        
+        assertEquals(expResult, result);
+
+
+	// --- Test case 2 ---
+        System.out.println("\tTest case 2");
+        
+        // define the input variables
+        people = 80;
+        bushelsFeed = -22;
+        
+        expResult = -1; // define the expected output variable
+        
+        // call the method
+        result = GameControl.calculatePeopleStarved(people, bushelsFeed);
+        
+        // test to see if the result reurned equals the expected result        
+        assertEquals(expResult, result);
+
+
+	// --- Test case 3 ---
+        System.out.println("\tTest case 3");
+        
+        // define the input variables
+        people = -45;
+        bushelsFeed = 15;
+        
+        expResult = -1; // define the expected output variable
+        
+        // call the method
+        result = GameControl.calculatePeopleStarved(people, bushelsFeed);
+        
+        // test to see if the result reurned equals the expected result        
+        assertEquals(expResult, result);
+
+
+	// --- Test case 4 ---
+        System.out.println("\tTest case 4");
+        
+        // define the input variables
+        people = 53;
+        bushelsFeed = 0;
+        
+        expResult = 53; // define the expected output variable
+        
+        // call the method
+        result = GameControl.calculatePeopleStarved(people, bushelsFeed);
+        
+        // test to see if the result reurned equals the expected result        
+        assertEquals(expResult, result);
+
+
+	// --- Test case 5 ---
+        System.out.println("\tTest case 5");
+        
+        // define the input variables
+        people = 0;
+        bushelsFeed = 20;
+        
+        expResult = 0; // define the expected output variable
+        
+        // call the method
+        result = GameControl.calculatePeopleStarved(people, bushelsFeed);
+        
+        // test to see if the result reurned equals the expected result        
+        assertEquals(expResult, result);
+    }
 }

@@ -227,5 +227,24 @@ public class GameControl {
             
             return acresPrice;
         }
-    }    
+    }
+
+    //Individual Assignment Salvador Rubio
+    public static int calculatePeopleStarved (int people, int bushelsFeed) {
+     
+        // Validate there is not negative input.
+        if (people < 0 || bushelsFeed < 0) {
+            return -1; 
+        }
+        else {
+            if (people < bushelsFeed) {
+                return 0;
+            }
+            else {
+               int peopleStarved = people - bushelsFeed;
+                       return peopleStarved;
+            }
+            
+        }                    
+    }
 } 

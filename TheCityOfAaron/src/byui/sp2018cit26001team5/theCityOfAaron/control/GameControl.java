@@ -269,5 +269,92 @@ public class GameControl {
             
             return acresPrice;
         }
-    }    
-} 
+    }
+
+    //Individual Assignment Salvador Rubio
+    public static int calculateBushelsInStore (int currentBushels, int bushelsHarvested, int bushelsOffered, int bushelsEatenByRats, int bushelsFeedToPeople, int bushelsToBuy, int bushelsFromSell) {
+     
+        // Validate there is not negative input.
+        if (currentBushels < 0 || bushelsHarvested < 0 || bushelsOffered < 0 || bushelsEatenByRats < 0 || bushelsFeedToPeople < 0 || bushelsToBuy < 0 || bushelsFromSell < 0 ) {
+            return -1; 
+        }
+        else {
+                            
+            int bushelsInStore = (currentBushels + bushelsHarvested - bushelsOffered - bushelsEatenByRats - bushelsFeedToPeople + bushelsToBuy - bushelsFromSell);
+           
+            if (bushelsInStore < 0) {
+                return -1;
+            }
+            else {   
+                return bushelsInStore;
+            
+            }
+        }                    
+    }
+    
+    //Individual Assignment Salvador Rubio
+    public static int calculateBushelsEatenByRats (int bushelsInStore, int offeringsPercentage, int randomEat, int randomPercentage){
+        
+        // Validate there is not negative input.
+        if (bushelsInStore < 0 || offeringsPercentage <0 || randomEat <0 || randomPercentage < 0) {  
+            return -1;
+        }
+        else {
+            if (offeringsPercentage > 100 || randomEat > 100 || randomPercentage > 15) {
+                return -1;
+            }
+            else {                    
+                randomEat++;
+                if (randomEat >= 30) {
+                    return 0;
+                }
+                else {
+                    int bushelsPercentage;
+                    if (offeringsPercentage <= 12) {
+                        if (randomPercentage < 3) {
+                            bushelsPercentage = 3;
+                        }
+                        else {
+                            if (randomPercentage < 6){
+                                bushelsPercentage = 4;
+                            }
+                            else {
+                                if (randomPercentage < 9) {
+                                    bushelsPercentage = 5;
+                                }
+                                else {
+                                    if (randomPercentage < 12) {
+                                        bushelsPercentage = 6;
+                                    }
+                                    else {
+                                        bushelsPercentage = 7;
+                                    }
+                                }
+                            }
+                        }
+                        if (offeringsPercentage < 8) {
+                            bushelsPercentage += 3;
+                        }
+                    }
+                    else {
+                        if (randomPercentage < 5) {
+                            bushelsPercentage = 3;
+                        }
+                        else {
+                            if (randomPercentage < 10) {
+                                bushelsPercentage = 4;
+                            }
+                            else {
+                                bushelsPercentage = 5;
+                            }
+                        }
+                    }
+                    int bushelsEatenByRats = bushelsInStore * bushelsPercentage;
+                    return bushelsEatenByRats;
+                }
+            }
+        }
+    }
+}
+    
+

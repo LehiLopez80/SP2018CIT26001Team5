@@ -1057,4 +1057,324 @@ public class GameControlTest {
         // test to see if the result returned equals the expected result        
         assertEquals(expResult, result);
     }
+    
+     @Test
+    public void testCalculateBushelsInStore() {
+        System.out.println("calculateBushelsInStore");
+        
+        // --- Test case 1 ---
+        System.out.println("\tTest case 1");
+        
+        // define the input variables
+        int currentBushels = 350;
+        int bushelsHarvested = 500;
+	int bushelsOffered = 50;
+	int bushelsEatenByRats = 15;
+	int bushelsFeedToPeople = 420;
+	int bushelsToBuy = 100;
+	int bushelsFromSell = 20;
+        
+        int expResult = 445; // define the expected output variable
+        
+        // call the method
+        int result = GameControl.calculateBushelsInStore(currentBushels, bushelsHarvested, bushelsOffered, bushelsEatenByRats, bushelsFeedToPeople, bushelsToBuy, bushelsFromSell);
+        
+        // test to see if the result reurned equals the expected result        
+        assertEquals(expResult, result);
+
+
+	// --- Test case 2 ---
+        System.out.println("\tTest case 2");
+        
+        // define the input variables
+        currentBushels = -250;
+        bushelsHarvested = 400;
+	bushelsOffered = 40;
+	bushelsEatenByRats = 52;
+	bushelsFeedToPeople = 350;
+	bushelsToBuy = 200;
+	bushelsFromSell = 15;
+        
+        expResult = -1; // define the expected output variable
+        
+        // call the method
+        result = GameControl.calculateBushelsInStore(currentBushels, bushelsHarvested, bushelsOffered, bushelsEatenByRats, bushelsFeedToPeople, bushelsToBuy, bushelsFromSell);
+        
+        // test to see if the result reurned equals the expected result        
+        assertEquals(expResult, result);
+
+	
+	// --- Test case 3 ---
+        System.out.println("\tTest case 3");
+        
+        // define the input variables
+        currentBushels = 400;
+        bushelsHarvested = -230;
+	bushelsOffered = 25;
+	bushelsEatenByRats = 63;
+	bushelsFeedToPeople = 612;
+	bushelsToBuy = 350;
+	bushelsFromSell = 50;
+        
+        expResult = -1; // define the expected output variable
+        
+        // call the method
+        result = GameControl.calculateBushelsInStore(currentBushels, bushelsHarvested, bushelsOffered, bushelsEatenByRats, bushelsFeedToPeople, bushelsToBuy, bushelsFromSell);
+        
+        // test to see if the result reurned equals the expected result        
+        assertEquals(expResult, result);
+
+
+	// --- Test case 4 ---
+        System.out.println("\tTest case 4");
+        
+        // define the input variables
+        currentBushels = 380;
+        bushelsHarvested = 500;
+	bushelsOffered = -50;
+	bushelsEatenByRats = 38;
+	bushelsFeedToPeople = 590;
+	bushelsToBuy = 185;
+	bushelsFromSell = 30;
+        
+        expResult = -1; // define the expected output variable
+        
+        // call the method
+        result = GameControl.calculateBushelsInStore(currentBushels, bushelsHarvested, bushelsOffered, bushelsEatenByRats, bushelsFeedToPeople, bushelsToBuy, bushelsFromSell);
+        
+        // test to see if the result reurned equals the expected result        
+        assertEquals(expResult, result);
+
+
+	// --- Test case 5 ---
+        System.out.println("\tTest case 5");
+        
+        // define the input variables
+        currentBushels = 550;
+        bushelsHarvested = 640;
+	bushelsOffered = 64;
+	bushelsEatenByRats = -45;
+	bushelsFeedToPeople = 460;
+	bushelsToBuy = 258;
+	bushelsFromSell = 70;
+        
+        expResult = -1; // define the expected output variable
+        
+        // call the method
+        result = GameControl.calculateBushelsInStore(currentBushels, bushelsHarvested, bushelsOffered, bushelsEatenByRats, bushelsFeedToPeople, bushelsToBuy, bushelsFromSell);
+        
+        // test to see if the result reurned equals the expected result        
+        assertEquals(expResult, result);
+
+
+	// --- Test case 6 ---
+        System.out.println("\tTest case 6");
+        
+        // define the input variables
+        currentBushels = 620;
+        bushelsHarvested = 180;
+	bushelsOffered = 18;
+	bushelsEatenByRats = 23;
+	bushelsFeedToPeople = -470;
+	bushelsToBuy = 520;
+	bushelsFromSell = 30;
+        
+        expResult = -1; // define the expected output variable
+        
+        // call the method
+        result = GameControl.calculateBushelsInStore(currentBushels, bushelsHarvested, bushelsOffered, bushelsEatenByRats, bushelsFeedToPeople, bushelsToBuy, bushelsFromSell);
+        
+        // test to see if the result reurned equals the expected result        
+        assertEquals(expResult, result);
+
+
+	// --- Test case 7 ---
+        System.out.println("\tTest case 7");
+        
+        // define the input variables
+        currentBushels = 740;
+        bushelsHarvested = 540;
+	bushelsOffered = 54;
+	bushelsEatenByRats = 15;
+	bushelsFeedToPeople = 800;
+	bushelsToBuy = -320;
+	bushelsFromSell = 40;
+        
+        expResult = -1; // define the expected output variable
+        
+        // call the method
+        result = GameControl.calculateBushelsInStore(currentBushels, bushelsHarvested, bushelsOffered, bushelsEatenByRats, bushelsFeedToPeople, bushelsToBuy, bushelsFromSell);
+        
+        // test to see if the result reurned equals the expected result        
+        assertEquals(expResult, result);
+
+
+	// --- Test case 8 ---
+        System.out.println("\tTest case 8");
+        
+        // define the input variables
+        currentBushels = 680;
+        bushelsHarvested = 740;
+	bushelsOffered = 74;
+	bushelsEatenByRats = 67;
+	bushelsFeedToPeople = 650;
+	bushelsToBuy = 380;
+	bushelsFromSell = -62;
+        
+        expResult = -1; // define the expected output variable
+        
+        // call the method
+        result = GameControl.calculateBushelsInStore(currentBushels, bushelsHarvested, bushelsOffered, bushelsEatenByRats, bushelsFeedToPeople, bushelsToBuy, bushelsFromSell);
+        
+        // test to see if the result reurned equals the expected result        
+        assertEquals(expResult, result);
+
+
+	// --- Test case 9 ---
+        System.out.println("\tTest case 9");
+        
+        // define the input variables
+        currentBushels = 0;
+        bushelsHarvested = 480;
+	bushelsOffered = 48;
+	bushelsEatenByRats = 35;
+	bushelsFeedToPeople = 800;
+	bushelsToBuy = 1025;
+	bushelsFromSell = 50;
+        
+        expResult = 572; // define the expected output variable
+        
+        // call the method
+        result = GameControl.calculateBushelsInStore(currentBushels, bushelsHarvested, bushelsOffered, bushelsEatenByRats, bushelsFeedToPeople, bushelsToBuy, bushelsFromSell);
+        
+        // test to see if the result reurned equals the expected result        
+        assertEquals(expResult, result);
+
+
+	// --- Test case 10 ---
+        System.out.println("\tTest case 10");
+        
+        // define the input variables
+        currentBushels = 1500;
+        bushelsHarvested = 0;
+	bushelsOffered = 50;
+	bushelsEatenByRats = 79;
+	bushelsFeedToPeople = 960;
+	bushelsToBuy = 680;
+	bushelsFromSell = 62;
+        
+        expResult = 1029; // define the expected output variable
+        
+        // call the method
+        result = GameControl.calculateBushelsInStore(currentBushels, bushelsHarvested, bushelsOffered, bushelsEatenByRats, bushelsFeedToPeople, bushelsToBuy, bushelsFromSell);
+        
+        // test to see if the result reurned equals the expected result        
+        assertEquals(expResult, result);
+
+
+	// --- Test case 11 ---
+        System.out.println("\tTest case 11");
+        
+        // define the input variables
+        currentBushels = 1260;
+        bushelsHarvested = 850;
+	bushelsOffered = 0;
+	bushelsEatenByRats = 53;
+	bushelsFeedToPeople = 690;
+	bushelsToBuy = 760;
+	bushelsFromSell = 40;
+        
+        expResult = 2087; // define the expected output variable
+        
+        // call the method
+        result = GameControl.calculateBushelsInStore(currentBushels, bushelsHarvested, bushelsOffered, bushelsEatenByRats, bushelsFeedToPeople, bushelsToBuy, bushelsFromSell);
+        
+        // test to see if the result reurned equals the expected result        
+        assertEquals(expResult, result);
+
+
+	// --- Test case 12 ---
+        System.out.println("\tTest case 12");
+        
+        // define the input variables
+        currentBushels = 2500;
+        bushelsHarvested = 1120;
+	bushelsOffered = 112;
+	bushelsEatenByRats = 0;
+	bushelsFeedToPeople = 3000;
+	bushelsToBuy = 900;
+	bushelsFromSell = 10;
+        
+        expResult = 1398; // define the expected output variable
+        
+        // call the method
+        result = GameControl.calculateBushelsInStore(currentBushels, bushelsHarvested, bushelsOffered, bushelsEatenByRats, bushelsFeedToPeople, bushelsToBuy, bushelsFromSell);
+        
+        // test to see if the result reurned equals the expected result        
+        assertEquals(expResult, result);
+
+
+	// --- Test case 13 ---
+        System.out.println("\tTest case 13");
+        
+        // define the input variables
+        currentBushels = 1600;
+        bushelsHarvested = 960;
+	bushelsOffered = 96;
+	bushelsEatenByRats = 37;
+	bushelsFeedToPeople = 0;
+	bushelsToBuy = 780;
+	bushelsFromSell = 64;
+        
+        expResult = 3143; // define the expected output variable
+        
+        // call the method
+        result = GameControl.calculateBushelsInStore(currentBushels, bushelsHarvested, bushelsOffered, bushelsEatenByRats, bushelsFeedToPeople, bushelsToBuy, bushelsFromSell);
+        
+        // test to see if the result reurned equals the expected result        
+        assertEquals(expResult, result);
+
+
+	// --- Test case 14 ---
+        System.out.println("\tTest case 14");
+        
+        // define the input variables
+        currentBushels = 980;
+        bushelsHarvested = 1080;
+	bushelsOffered = 108;
+	bushelsEatenByRats = 67;
+	bushelsFeedToPeople = 1300;
+	bushelsToBuy = 0;
+	bushelsFromSell = 90;
+        
+        expResult = 495; // define the expected output variable
+        
+        // call the method
+        result = GameControl.calculateBushelsInStore(currentBushels, bushelsHarvested, bushelsOffered, bushelsEatenByRats, bushelsFeedToPeople, bushelsToBuy, bushelsFromSell);
+        
+        // test to see if the result reurned equals the expected result        
+        assertEquals(expResult, result);
+
+
+	// --- Test case 15 ---
+        System.out.println("\tTest case 15");
+        
+        // define the input variables
+        currentBushels = 2100;
+        bushelsHarvested = 2000;
+	bushelsOffered = 200;
+	bushelsEatenByRats = 150;
+	bushelsFeedToPeople = 3700;
+	bushelsToBuy = 1500;
+	bushelsFromSell = 0;
+        
+        expResult = 1550; // define the expected output variable
+        
+        // call the method
+        result = GameControl.calculateBushelsInStore(currentBushels, bushelsHarvested, bushelsOffered, bushelsEatenByRats, bushelsFeedToPeople, bushelsToBuy, bushelsFromSell);
+        
+        // test to see if the result reurned equals the expected result        
+        assertEquals(expResult, result);
+    
+}
 }

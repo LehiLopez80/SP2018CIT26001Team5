@@ -18,16 +18,24 @@ import byui.sp2018cit26001team5.theCityOfAaron.model.Point;
 import byui.sp2018cit26001team5.theCityOfAaron.model.Provision;
 import byui.sp2018cit26001team5.theCityOfAaron.model.Storehouse;
 
+import byui.sp2018cit26001team5.theCityOfAaron.view.StartProgramView;
+
 /**
  *
  * @author Lehi Lopez
  */
 public class TheCityOfAaron {
+    
+    private static Game currentGame = null;
+    private static Player player = null;
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        
+        StartProgramView startProgramView = new StartProgramView ();
+        startProgramView.displayStartProgramView();
         
         //create objects
         Player playerOne = new Player();
@@ -51,31 +59,31 @@ public class TheCityOfAaron {
         //call getter functions and print to screen
         
         String playerOneName = playerOne.getName();
-        System.out.println("Name = " + playerOneName);
-        System.out.println(playerOne.toString());
+     //   System.out.println("Name = " + playerOneName);
+     //   System.out.println(playerOne.toString());
         
         int gameOneCurrentPopulation = gameOne.getCurrentPopulation();
-        System.out.println("Current Population = " + gameOneCurrentPopulation);
+     //   System.out.println("Current Population = " + gameOneCurrentPopulation);
         int gameOneAcresOwned = gameOne.getAcresOwned();
-        System.out.println("Acres Owned = " + gameOneAcresOwned);
+     //   System.out.println("Acres Owned = " + gameOneAcresOwned);
         int gameOneWheatInStorage = gameOne.getWheatInStorage();
-        System.out.println("Wheat In Storage = " + gameOneWheatInStorage);
+     //   System.out.println("Wheat In Storage = " + gameOneWheatInStorage);
         int gameOneCurrentYear = gameOne.getCurrentYear();
-        System.out.println("Current Year = " + gameOneCurrentYear);
-        System.out.println(gameOne.toString());
+     //   System.out.println("Current Year = " + gameOneCurrentYear);
+     //   System.out.println(gameOne.toString());
         
-        System.out.println(storehouseOne.toString());
+     //   System.out.println(storehouseOne.toString());
         
         //test the enum
         String authorOneTitle = Author.Alonso.getTitle();
         String authorOneName = Author.Alonso.getName();
-        System.out.println("Author One = " + authorOneTitle + " " + authorOneName);
+     //   System.out.println("Author One = " + authorOneTitle + " " + authorOneName);
         String authorTwoTitle = Author.Lehi.getTitle();
         String authorTwoName = Author.Lehi.getName();
-        System.out.println("Author Two = " + authorTwoTitle + " " + authorTwoName);
+     //   System.out.println("Author Two = " + authorTwoTitle + " " + authorTwoName);
         String authorThreeTitle = Author.Salvador.getTitle();
         String authorThreeName = Author.Salvador.getName();
-        System.out.println("Author Three = " + authorThreeTitle + " " + authorThreeName);
+     //   System.out.println("Author Three = " + authorThreeTitle + " " + authorThreeName);
         
         
         //// Lehi Lopez - L4 Individual assignment tests
@@ -106,14 +114,14 @@ public class TheCityOfAaron {
         
         //call getter functions and print to screen
         String locationOneName = locationOne.getName();
-        System.out.println("Location One Name = " + locationOneName);
+      //  System.out.println("Location One Name = " + locationOneName);
         String locationOneDescription = locationOne.getDescription();
-        System.out.println("Location One Description = " + locationOneDescription);
+      //  System.out.println("Location One Description = " + locationOneDescription);
         String locationOneMapSymbol = locationOne.getMapSymbol();
-        System.out.println("Location One Map Symbol = " + locationOneMapSymbol);
+      //  System.out.println("Location One Map Symbol = " + locationOneMapSymbol);
               
-        System.out.println(locationOne.toString());
-        System.out.println(mapOne.toString());
+      //  System.out.println(locationOne.toString());
+      //  System.out.println(mapOne.toString());
         
         //End Lehi Lopez L4 Individual Assignment
         
@@ -136,8 +144,8 @@ public class TheCityOfAaron {
         
         //call getter functions and print to screen
                       
-        System.out.println(pointOne.toString());
-        System.out.println(inventoryItemOne.toString());
+      //  System.out.println(pointOne.toString());
+      //  System.out.println(inventoryItemOne.toString());
         
         //End Alonso Bernaldo L4 Individual Assignment
         
@@ -160,8 +168,8 @@ public class TheCityOfAaron {
         
         //call getter functions and print to screen
                       
-        System.out.println(animalOne.toString());
-        System.out.println(provisionOne.toString());
+     //   System.out.println(animalOne.toString());
+     //   System.out.println(provisionOne.toString());
         
         //End Salvador Rubio L4 Individual Assignment
         

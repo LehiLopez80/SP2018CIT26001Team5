@@ -17,15 +17,15 @@ public class MainMenuView {
     }
     
     public void displayMainMenuView() {
-        System.out.println ("MAIN MENU");
-        
+                
         boolean endView = false;
         
         do {
             String input = this.getInput();
-            if (input == "Q"){
-                return;
-            }
+            //System.out.println("In[ut ="+ input);
+            //if (input == "Q"){
+            //   break;
+            //}
             endView = this.doAction(input);
                   
         } while(endView != true);
@@ -36,7 +36,8 @@ public class MainMenuView {
         String input;
         input = "";
         
-        System.out.println("\n\nN - Start new game, "
+        System.out.println ("\n\nMAIN MENU");
+        System.out.println("\nN - Start new game, "
                 + "\nR - Restart existing game, "
                 + "\nH - Get help on how to play the game, "
                 + "\nE - Exit"
@@ -49,8 +50,9 @@ public class MainMenuView {
             inFile = new Scanner(System.in);
 
             input = inFile.nextLine();
-            input = input.trim(); //Pending to check trim.
-System.out.println(input);
+            //input = input.trim(); //Pending to check trim.
+            //System.out.println(input);
+            
             if(input.length() < 1){
                 System.out.println("You must enter a value");
                 continue;
@@ -63,21 +65,27 @@ System.out.println(input);
     
     public boolean doAction(String input){
         
+        StartNewGameView startNewGameView = new StartNewGameView ();        
+        RestartGameView restartGameView = new RestartGameView ();
+        HelpMenuView helpMenuView = new HelpMenuView();
+                
         input = input.toUpperCase();
         
         switch (input) {
             case "N": // this.startNewGame();
-                System.out.println("start new game");
-                return true;
+                startNewGameView.displayStartNewGameView();
+                break;
             case "R": // this.restartGame();
-                System.out.println("restart game");
-                return true;
+                restartGameView.displayRestartGameView();
+                break;
             case "H": // this.getHelp();
-                System.out.println("get help");
+                helpMenuView.displayHelpMenuView();
+                break;
+            case "E": System.out.println("You have exit the program.");
                 return true;
-            case "E": System.out.println("You have exit the programe");
-                return true;
-            default: System.out.println("invalid menu item");
+            default: System.out.println("invalid menu item. Please enter a "
+                    + "valid value");
+                break;
         }     
         
         return false;

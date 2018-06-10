@@ -16,7 +16,19 @@ public class StartProgramView {
     
     public void displayStartProgramView(){
         
-        System.out.println ("banner page");
+        System.out.println ("Hello, welcome to the city of Aaron.\n" +
+            "This time you are in charge to manage the entire city and care of the\n" +
+            "population. Part of your duties are as follow:\n" +
+            "Harvest the fields of wheat\n" +
+            "Buy and sell land acording your best criteria\n" +
+            "Feed people in the city with the wheat in store\n" +
+            "Fulfill with the offerings in an annual way\n" +
+            "Avoid that rats eat the wheat in store\n" +
+            "Beside all your responsabilities, you have some restrictions; if\n" +
+            "you do not have enough wheat to feed people,these will die and\n" +
+            "you will reduce your workforce; if you do not pay the tithes, the\n" +
+            "number of rats will increase.\n" +
+            "Please think smart to manage the city.");
         
         MainMenuView mainMenuView = new MainMenuView ();
         mainMenuView.displayMainMenuView();

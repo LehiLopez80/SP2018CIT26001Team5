@@ -37,10 +37,12 @@ public class TheCityOfAaron {
         StartProgramView startProgramView = new StartProgramView ();
         startProgramView.displayStartProgramView();
         
+        
+        /*
         //create objects
-        Player playerOne = new Player();
-        Game gameOne = new Game();
-        Storehouse storehouseOne = new Storehouse();
+        //Player playerOne = new Player();
+        //Game gameOne = new Game();
+        //Storehouse storehouseOne = new Storehouse();
         
         //team assignmnt call setter functions
         
@@ -172,6 +174,6 @@ public class TheCityOfAaron {
      //   System.out.println(provisionOne.toString());
         
         //End Salvador Rubio L4 Individual Assignment
-        
+        */
     }
 }

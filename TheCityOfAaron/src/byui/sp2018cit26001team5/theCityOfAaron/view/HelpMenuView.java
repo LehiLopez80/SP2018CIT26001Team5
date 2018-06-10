@@ -134,8 +134,8 @@ public class HelpMenuView {
     }
 
     private void displayLists() {
-        System.out.println("*** Displays lists function called."
-                + " To be defined in a future lesson"); 
+        System.out.println("Select the Reports Menu option from the "
+                + "Gam Menu to display the lists."); 
     }   
     
 }

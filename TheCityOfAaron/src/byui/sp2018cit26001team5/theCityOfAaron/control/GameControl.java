@@ -13,12 +13,13 @@ import byui.sp2018cit26001team5.theCityOfAaron.model.Player;
  */
 public class GameControl {
     
+    /*
     public static Player setPlayer(String name) {
         System.out.println("*** savePlayer called ***");
         Player player = new Player();
         player.setName(name);
         return player;
-    }
+    }*/
     
     // Team Assingment
     public static int calculatePopulation(int initialPopulation, int peopleStarved, int peopleMovedToCity){

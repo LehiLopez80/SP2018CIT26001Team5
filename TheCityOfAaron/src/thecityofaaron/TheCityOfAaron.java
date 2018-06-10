@@ -176,4 +176,20 @@ public class TheCityOfAaron {
         //End Salvador Rubio L4 Individual Assignment
         */
     }
+    
+    public static Game getCurrentGame() {
+        return currentGame;
+    }
+    
+    public static void setCurrentGame(Game currentGame) {
+        TheCityOfAaron.currentGame = currentGame;
+    }
+    
+    public static Player getPlayer() {
+        return player;
+    }
+
+    public static void setPlayer(Player player) {
+        TheCityOfAaron.player = player;
+    }
 }

@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author Salvador Rubio
+ * @author Alonso Bernaldo
  */
  
 public class ReportsMenuView {
@@ -23,8 +23,12 @@ public class ReportsMenuView {
                 + "\n2 - View the tools in the storehouse"
                 + "\n3 - View the provisions in the storehouse"
                 + "\n4 - View the authors of this game"
-                + "\n5 - Return to the main menu"
+                + "\n5 - Return to the game menu"
                 + "\n----------------------------------";
+
+    public ReportsMenuView() {
+    }
+     
      
      public void displayReportsMenuView() {
         
@@ -116,7 +120,7 @@ public class ReportsMenuView {
     }
         
     private void returnMainMenu() {
-        System.out.println("Return to the main menu."); 
+        System.out.println("Return to the game menu."); 
     }
      
     

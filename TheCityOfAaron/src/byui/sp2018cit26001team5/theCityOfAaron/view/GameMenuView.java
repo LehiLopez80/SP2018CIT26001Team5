@@ -95,7 +95,8 @@ public class GameMenuView {
                        
                
            case "5": //Reports menu
-               this.reports();
+               ReportsMenuView reportsMenuView = new ReportsMenuView();
+               reportsMenuView.displayReportsMenuView();
                break;
                
            case "6": //Save game

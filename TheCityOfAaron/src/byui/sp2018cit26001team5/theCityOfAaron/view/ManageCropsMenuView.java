@@ -42,7 +42,7 @@ public class ManageCropsMenuView {
                 + "\nF - Feed the People, "
                 + "\nP - Plant Crops, "
                 + "\nT - Pay Tithes and Offerings, "
-                + "\nR - Return to thr Game Menu"
+                + "\nR - Return to the Game Menu"
                 + "\n\nEnter an option: ");
         
         boolean valid = false;
@@ -78,7 +78,9 @@ public class ManageCropsMenuView {
                 SellLandView sellLandView = new SellLandView();
                 sellLandView.displaySellLandView();
                 break;
-            case "F": System.out.println("Future call to Feed the People view");
+            case "F": 
+                FeedPeopleView feedPeopleView = new FeedPeopleView();
+                feedPeopleView.displayFeedPeopleView();
                 break;
             case "P": System.out.println("Future call to Plant Crops view");
                 break;

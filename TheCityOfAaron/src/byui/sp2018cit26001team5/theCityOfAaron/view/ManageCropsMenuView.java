@@ -66,13 +66,13 @@ public class ManageCropsMenuView {
     }
     
     public boolean doAction(String input){
-        
-        BuyLandView buyLandView = new BuyLandView();
-        
+                        
         input = input.toUpperCase();
         
         switch (input) { 
-            case "B": System.out.println("Future call to Buy Land view");
+            case "B": 
+                BuyLandView buyLandView = new BuyLandView();
+                buyLandView.displayBuyLandView();
                 break;
             case "S": 
                 SellLandView sellLandView = new SellLandView();

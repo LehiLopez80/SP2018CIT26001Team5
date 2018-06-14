@@ -14,6 +14,7 @@ import java.util.Scanner;
  */
 public class BuyLandView {
 
+    int acresPrice;
     public BuyLandView() {
     }
     
@@ -24,7 +25,7 @@ public class BuyLandView {
         GameControl gameControl = new GameControl();
     
         int randomInt = (int) ((int)11*Math.random());
-        int acresPrice = GameControl.calculateAcresPrice (randomInt);
+        acresPrice = GameControl.calculateAcresPrice (randomInt);
         
         System.out.println("The price of the land is: " + acresPrice);
         System.out.println("\nHow many acres do you whish to buy?");
@@ -54,8 +55,8 @@ public class BuyLandView {
                 continue;
             }
             
-            if(input > 3000){
-                System.out.println("You don't own that many acres");
+            if(input > 2700/acresPrice){
+                System.out.println("You don't have enough bushels to buy");
                 continue;
             }
             

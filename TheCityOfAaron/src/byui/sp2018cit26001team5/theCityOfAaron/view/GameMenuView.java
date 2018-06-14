@@ -74,7 +74,7 @@ public class GameMenuView {
       private boolean doAction(String menuOption) {
        menuOption = menuOption.toUpperCase(); //converts to upper case
        
-             
+                   
        switch (menuOption){
            case "1": // view the map
                this.viewTheMap();
@@ -85,12 +85,14 @@ public class GameMenuView {
                break;
                
            case "3": // Manage the crops
-               this.manageTheCrops();
+               ManageCropsMenuView manageCropsMenuView = new ManageCropsMenuView();
+               manageCropsMenuView.displayManageCropsMenuView();
                break;
             
            case "4": //Live the year
                this.liveTheYear();
                break;
+                       
                
            case "5": //Reports menu
                this.reports();

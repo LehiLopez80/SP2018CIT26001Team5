@@ -5,7 +5,6 @@
  */
 package byui.sp2018cit26001team5.theCityOfAaron.view;
 
-import byui.sp2018cit26001team5.theCityOfAaron.control.GameControl;
 import byui.sp2018cit26001team5.theCityOfAaron.model.Player;
 import java.util.Scanner;
 import thecityofaaron.TheCityOfAaron;
@@ -24,6 +23,9 @@ public class StartNewGameView {
         this.requestPlayerName();
         // this.displayYearReport();
         // this.displayGameMenuView();
+        
+        AnnualReportView annualReportView = new AnnualReportView();
+        annualReportView.displayAnnualReportView();
         
         GameMenuView gameMenuView = new GameMenuView ();        
         gameMenuView.displayGameMenuView();

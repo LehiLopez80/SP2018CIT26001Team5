@@ -4,14 +4,19 @@
  * and open the template in the editor.
  */
 package byui.sp2018cit26001team5.theCityOfAaron.view;
+
 import java.util.Scanner;
+
 /**
  *
  * @author Salvador Rubio
  */
-public class GameMenu {
+public class GameMenuView {
+
+    public GameMenuView() {
+    }
     
-     private static final String MENU = "\n"
+    private static final String MENU = "\n"
              
              + "\n----------------------------------"
                 + "\n Game Menu                        "
@@ -25,7 +30,7 @@ public class GameMenu {
                 + "\n7 - Return to the main menu"
                 + "\n----------------------------------";
            
-    public void displayGameMenu() {
+    public void displayGameMenuView() {
         
         boolean done = false; //set flag to not done
         
@@ -69,6 +74,7 @@ public class GameMenu {
       private boolean doAction(String menuOption) {
        menuOption = menuOption.toUpperCase(); //converts to upper case
        
+             
        switch (menuOption){
            case "1": // view the map
                this.viewTheMap();
@@ -96,7 +102,7 @@ public class GameMenu {
                
             case "7": //Return to the main menu
                this.returnMainMenu();
-               break;   
+               return true;   
               
            default:
                System.out.println("\nInvalid selection *** Try again");
@@ -133,5 +139,6 @@ public class GameMenu {
     private void returnMainMenu() {
         System.out.println("Return to the main menu."); 
     }
+
     
 }

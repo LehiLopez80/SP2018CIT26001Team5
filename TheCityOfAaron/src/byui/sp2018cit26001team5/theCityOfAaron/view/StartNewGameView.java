@@ -22,8 +22,11 @@ public class StartNewGameView {
     public void displayStartNewGameView() {
         
         this.requestPlayerName();
-        this.displayYearReport();
-        this.displayGameMenuView();
+        // this.displayYearReport();
+        // this.displayGameMenuView();
+        
+        GameMenuView gameMenuView = new GameMenuView ();        
+        gameMenuView.displayGameMenuView();
     }
     
     public void requestPlayerName() {

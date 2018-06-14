@@ -54,7 +54,7 @@ public class SellLandView {
                 continue;
             }
             
-            if(input > 3000){
+            if(input > 100){
                 System.out.println("You don't own that many acres");
                 continue;
             }

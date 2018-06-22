@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author dnp
+ * @author Alonso Bernaldo
  */
 public class FeedPeopleView {
     

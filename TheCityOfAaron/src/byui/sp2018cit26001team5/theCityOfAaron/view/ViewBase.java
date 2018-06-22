@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author Vicky Lopez
+ * @author Lehi Lopez
  */
 public abstract class ViewBase implements View {
 

@@ -5,8 +5,9 @@
  */
 package byui.sp2018cit26001team5.theCityOfAaron.view;
 
+import byui.sp2018cit26001team5.theCityOfAaron.control.GameControl;
+import byui.sp2018cit26001team5.theCityOfAaron.model.Game;
 import byui.sp2018cit26001team5.theCityOfAaron.model.Player;
-import java.util.Scanner;
 import thecityofaaron.TheCityOfAaron;
 
 /**
@@ -26,22 +27,51 @@ public class StartNewGameView extends ViewBase {
     }
     
     @Override
-    public void displayView() {
+    public boolean doAction(String name) {
         
-        this.getInput();
-        // this.displayYearReport();
-        // this.displayGameMenuView();
+        Player player = new Player();
+        player.setName (name);
+        TheCityOfAaron.setPlayer(player);
+        
+        Game game = new Game();
+        GameControl gameControl = new GameControl();
+        gameControl.initializeGame(game);
+        TheCityOfAaron.setCurrentGame(game);
+        
+        //System.out.println("\nCurrPop " + game.getCurrentPopulation());
+
+        System.out.println("\nWelcome to the game "+ name 
+                + "\nWe hope you have a lot of fun");
         
         AnnualReportView annualReportView = new AnnualReportView();
-        annualReportView.displayAnnualReportView();
+        annualReportView.displayView();
         
         GameMenuView gameMenuView = new GameMenuView ();        
         gameMenuView.displayView();
+        
+        return true;
     }
+    
+    /*@Override
+    public void displayView() {
+        
+        String name = this.getInput();
+        // this.displayYearReport();
+        // this.displayGameMenuView();
+        
+        this.doAction(name);
+        
+        AnnualReportView annualReportView = new AnnualReportView();
+        annualReportView.displayView();
+        
+        GameMenuView gameMenuView = new GameMenuView ();        
+        gameMenuView.displayView();
+    }*/
     
     /*public void requestPlayerName() {
                  
-        String name = this.getPlayerName();
+        //String name = this.getPlayerName();
+        String name = this.getInput();
         
         Player player = new Player();
         player.setName (name);
@@ -50,9 +80,9 @@ public class StartNewGameView extends ViewBase {
         System.out.println("\nWelcome to the game "+ name 
                 + "\nWe hope you have a lot of fun");
               
-    }
+    }*/
     
-    public String getPlayerName(){
+    /*public String getPlayerName(){
         
         String name;
         name = "";
@@ -159,11 +189,5 @@ public class StartNewGameView extends ViewBase {
         }     
         
         return false;
-    }*/    
-
-    @Override
-    public boolean doAction(String input) {
-        return true;
-    }
-    
+    }*/        
 }

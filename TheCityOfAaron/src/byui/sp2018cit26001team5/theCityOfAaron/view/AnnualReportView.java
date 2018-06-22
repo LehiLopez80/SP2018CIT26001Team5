@@ -7,16 +7,16 @@ package byui.sp2018cit26001team5.theCityOfAaron.view;
 
 /**
  *
- * @author Vicky Lopez
+ * @author Lehi Lopez
  */
-public class AnnualReportView {
-
+public class AnnualReportView extends ViewBase{
+    
     public AnnualReportView() {
     }
-
-    void displayAnnualReportView() {
-        
-        System.out.println("\nThe year number (1)"
+    
+    @Override
+    protected String getMessage() {
+        String message = "\nThe year number (1)"
                 + "\nHow many people startved (0)"
                 + "\nHow many people came to the city (5)"
                 + "\nThe current population (100)"
@@ -24,7 +24,19 @@ public class AnnualReportView {
                 + "\nThe number of bushels per acre in this year harvest (3)"
                 + "\nThe total number of bushels of wheat harvested (3000)"
                 + "\nThe number of bushels of wheat eaten by rats (0)"
-                + "\nThe number of bushels of wheat in store (2700)");
+                + "\nThe number of bushels of wheat in store (2700)";
+        return message;
     }
-    
+
+    @Override
+    public void displayView() {
+        
+        String message = this.getMessage();
+        System.out.println(message);
+    }
+
+    @Override
+    public boolean doAction(String input) {
+        return true;
+    }    
 }

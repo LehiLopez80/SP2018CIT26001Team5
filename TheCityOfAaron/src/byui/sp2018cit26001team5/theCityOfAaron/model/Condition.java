@@ -9,7 +9,7 @@ import java.io.Serializable;
 
 /**
  *
- * @author ALonso Bernaldo
+ * @author Alonso Bernaldo
  */
 public enum Condition implements Serializable{
     Good, 

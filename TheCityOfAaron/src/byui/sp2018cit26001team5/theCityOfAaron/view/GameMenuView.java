@@ -63,7 +63,7 @@ public class GameMenuView extends ViewBase{
                
             case "3": // Manage the crops
                 ManageCropsMenuView manageCropsMenuView = new ManageCropsMenuView();
-                manageCropsMenuView.displayManageCropsMenuView();
+                manageCropsMenuView.displayView();
                 break;
             
             case "4": //Live the year

@@ -6,43 +6,73 @@
 package byui.sp2018cit26001team5.theCityOfAaron.view;
 
 import byui.sp2018cit26001team5.theCityOfAaron.control.GameControl;
+import byui.sp2018cit26001team5.theCityOfAaron.model.Game;
 import java.util.Scanner;
+import thecityofaaron.TheCityOfAaron;
 
 /**
  *
- * @author Vicky Lopez
+ * @author Lehi Lopez
  */
-public class SellLandView {
+public class SellLandView extends ViewBase{
 
     public SellLandView() {
     }
     
-    public void displaySellLandView() {
-        
-        System.out.println("Sell Land view");
+    @Override
+    protected String getMessage() {
         
         GameControl gameControl = new GameControl();
     
         int randomInt = (int) ((int)11*Math.random());
         int acresPrice = GameControl.calculateAcresPrice (randomInt);
         
-        System.out.println("The price of the land is: " + acresPrice);
-        System.out.println("\nHow many acres do you whish to sell?");
+        String message = "Sell Land view"
+                + "\n\nThe price of the land is: " + acresPrice
+                + "\nHow many acres do you whish to sell?";        
+        
+        return message;        
+    }
+
+    @Override
+    public boolean doAction(String input) {
+        return true;
+    }
+    
+    @Override
+    public void displayView() {
+        
+        //System.out.println("Sell Land view");
+        
+        //GameControl gameControl = new GameControl();
+    
+        //int randomInt = (int) ((int)11*Math.random());
+        //int acresPrice = GameControl.calculateAcresPrice (randomInt);
+        
+        //System.out.println("The price of the land is: " + acresPrice);
+        //System.out.println("\nHow many acres do you whish to sell?");
         
         boolean endView = false;
         do {
-            int input = this.getInput();
+            int input = this.getIntInput();
             endView = this.doAction(input);
                   
         } while(endView != true);        
     }
 
-    private int getInput() {
+    
+    public int getIntInput() {
         
         int input = 0;
-        
         boolean valid = false;
         
+        String menu = getMessage();
+        System.out.println(menu);
+        
+        Game game = new Game();
+        game = TheCityOfAaron.getCurrentGame();
+        //System.out.println("\nCurrPop " + game.getCurrentPopulation());
+                        
         while(valid == false){
             Scanner inFile;
             inFile = new Scanner(System.in);
@@ -54,7 +84,7 @@ public class SellLandView {
                 continue;
             }
             
-            if(input > 100){
+            if(input > game.getAcresOwned()){
                 System.out.println("You don't own that many acres");
                 continue;
             }
@@ -69,5 +99,4 @@ public class SellLandView {
         System.out.println("Update Acres owned and bushels in store");
         return true;
     }   
-            
 }

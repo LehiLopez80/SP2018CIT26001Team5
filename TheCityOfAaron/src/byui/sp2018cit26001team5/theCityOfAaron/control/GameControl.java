@@ -5,6 +5,7 @@
  */
 package byui.sp2018cit26001team5.theCityOfAaron.control;
 
+import byui.sp2018cit26001team5.theCityOfAaron.model.Game;
 import byui.sp2018cit26001team5.theCityOfAaron.model.Player;
 
 /**
@@ -20,6 +21,13 @@ public class GameControl {
         player.setName(name);
         return player;
     }*/
+    
+    public static void initializeGame(Game game) {
+        game.setCurrentPopulation(100);
+        game.setAcresOwned(1000);
+        game.setCurrentYear(1);
+        game.setWheatInStorage(2700);
+    }
     
     // Team Assingment
     public static int calculatePopulation(int initialPopulation, int peopleStarved, int peopleMovedToCity){

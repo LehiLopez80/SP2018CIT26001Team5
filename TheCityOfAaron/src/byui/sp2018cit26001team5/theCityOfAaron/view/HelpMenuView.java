@@ -7,7 +7,7 @@ package byui.sp2018cit26001team5.theCityOfAaron.view;
 import java.util.Scanner;
 /**
  *
- * @author Alonso
+ * @author Alonso Bernaldo
  */
 public class HelpMenuView {
      //private final String menu;

@@ -5,18 +5,32 @@
  */
 package byui.sp2018cit26001team5.theCityOfAaron.view;
 
-import java.util.Scanner;
-
 /**
  *
  * @author Salvador Rubio
  */
-public class GameMenuView {
+public class GameMenuView extends ViewBase{
 
     public GameMenuView() {
     }
     
-    private static final String MENU = "\n"
+    /*private static final String MENU = "\n"
+             
+             + "\n----------------------------------"
+                + "\n Game Menu                        "
+                + "\n ---------------------------------"
+                + "\n1 - View the map"
+                + "\n2 - Move to a new location"
+                + "\n3 - Manage the crops"
+                + "\n4 - Live the year"
+                + "\n5 - Reports menu"
+                + "\n6 - Save game"
+                + "\n7 - Return to the main menu"
+                + "\n----------------------------------";*/
+    
+    @Override
+    protected String getMessage() {
+        String menu = "\n"
              
              + "\n----------------------------------"
                 + "\n Game Menu                        "
@@ -29,8 +43,54 @@ public class GameMenuView {
                 + "\n6 - Save game"
                 + "\n7 - Return to the main menu"
                 + "\n----------------------------------";
+        
+        return menu;
+    }
+    
+    @Override
+    public boolean doAction(String menuOption) {
+       menuOption = menuOption.toUpperCase(); //converts to upper case
+       
+                   
+        switch (menuOption){
+            case "1": // view the map
+                this.viewTheMap();
+                break;
+               
+            case "2": //Move to a new location
+                this.moveNewLocation();
+                break;
+               
+            case "3": // Manage the crops
+                ManageCropsMenuView manageCropsMenuView = new ManageCropsMenuView();
+                manageCropsMenuView.displayManageCropsMenuView();
+                break;
+            
+            case "4": //Live the year
+                this.liveTheYear();
+                break;
+                       
+            case "5": //Reports menu
+                ReportsMenuView reportsMenuView = new ReportsMenuView();
+                reportsMenuView.displayReportsMenuView();
+                break;
+               
+            case "6": //Save game
+                this.saveGame();
+                break;
+               
+            case "7": //Return to the main menu
+                this.returnMainMenu();
+                return true;   
+              
+            default:
+                System.out.println("\nInvalid selection *** Try again");
+                break;     
+        }
+        return false;
+    }
            
-    public void displayGameMenuView() {
+    /*public void displayGameMenuView() {
         
         boolean done = false; //set flag to not done
         
@@ -41,9 +101,9 @@ public class GameMenuView {
             
             done = this.doAction(menuOption);
         } while (!done);
-    }
+    }*/
     
-     private String getMenuOption() {      
+    /*private String getMenuOption() {      
         
         String value = ""; //value to be returned
         boolean valid;  //initialize to not valid
@@ -69,50 +129,9 @@ public class GameMenuView {
             break;
         }
         return value; //returns the value 
-        }
+    }*/
      
-      private boolean doAction(String menuOption) {
-       menuOption = menuOption.toUpperCase(); //converts to upper case
-       
-                   
-       switch (menuOption){
-           case "1": // view the map
-               this.viewTheMap();
-               break;
-               
-           case "2": //Move to a new location
-               this.moveNewLocation();
-               break;
-               
-           case "3": // Manage the crops
-               ManageCropsMenuView manageCropsMenuView = new ManageCropsMenuView();
-               manageCropsMenuView.displayManageCropsMenuView();
-               break;
-            
-           case "4": //Live the year
-               this.liveTheYear();
-               break;
-                       
-               
-           case "5": //Reports menu
-               ReportsMenuView reportsMenuView = new ReportsMenuView();
-               reportsMenuView.displayReportsMenuView();
-               break;
-               
-           case "6": //Save game
-               this.saveGame();
-               break;
-               
-            case "7": //Return to the main menu
-               this.returnMainMenu();
-               return true;   
-              
-           default:
-               System.out.println("\nInvalid selection *** Try again");
-               break;     
-       }
-       return false;
-        }
+    
       
     private void viewTheMap() {
        

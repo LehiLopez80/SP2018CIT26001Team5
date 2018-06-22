@@ -40,7 +40,7 @@ public class HelpMenuView {
         } while (!done); 
     }
 
-   private String getMenuOption() {      
+    private String getMenuOption() {      
         
         String value = ""; //value to be returned
         boolean valid;  //initialize to not valid
@@ -66,7 +66,7 @@ public class HelpMenuView {
             break;
         }
         return value; //returns the value 
-        }
+    }
 
     private boolean doAction(String menuOption) {
        menuOption = menuOption.toUpperCase(); //converts to upper case

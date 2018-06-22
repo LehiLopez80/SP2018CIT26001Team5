@@ -11,11 +11,51 @@ import java.util.Scanner;
  *
  * @author Salvador Rubio
  */
-public class MainMenuView {
+public class MainMenuView extends ViewBase{
 
     public MainMenuView() {
     }
     
+    @Override
+    protected String getMessage() {
+        String menu = "\n\nMAIN MENU\nN - Start new game, "
+                + "\nR - Restart existing game, "
+                + "\nH - Get help on how to play the game, "
+                + "\nE - Exit"
+                + "\n\nEnter an option: ";
+        
+        return menu;
+    }
+    
+    @Override
+    public boolean doAction(String input){       
+                
+        input = input.toUpperCase();
+        
+        switch (input) {
+            case "N": // this.startNewGame();
+                StartNewGameView startNewGameView = new StartNewGameView (); 
+                startNewGameView.displayView();
+                break;
+            case "R": // this.restartGame();
+                RestartGameView restartGameView = new RestartGameView ();
+                restartGameView.displayRestartGameView();
+                break;
+            case "H": // this.getHelp();
+                HelpMenuView helpMenuView = new HelpMenuView();
+                helpMenuView.displayHelpMenuView();
+                break;
+            case "E": System.out.println("You have exit the program.");
+                return true;
+            default: System.out.println("invalid menu item. Please enter a "
+                    + "valid value");
+                break;
+        }     
+        
+        return false;
+    }
+    
+    /*
     public void displayMainMenuView() {
                 
         boolean endView = false;
@@ -29,9 +69,9 @@ public class MainMenuView {
             endView = this.doAction(input);
                   
         } while(endView != true);
-    }
+    }*/
     
-    public String getInput(){
+    /*public String getInput(){
         
         String input;
         input = "";
@@ -61,33 +101,6 @@ public class MainMenuView {
             valid = true;
         }
         return input;
-    }
+    }*/   
     
-    public boolean doAction(String input){
-        
-        StartNewGameView startNewGameView = new StartNewGameView ();        
-        RestartGameView restartGameView = new RestartGameView ();
-        HelpMenuView helpMenuView = new HelpMenuView();
-                
-        input = input.toUpperCase();
-        
-        switch (input) {
-            case "N": // this.startNewGame();
-                startNewGameView.displayStartNewGameView();
-                break;
-            case "R": // this.restartGame();
-                restartGameView.displayRestartGameView();
-                break;
-            case "H": // this.getHelp();
-                helpMenuView.displayHelpMenuView();
-                break;
-            case "E": System.out.println("You have exit the program.");
-                return true;
-            default: System.out.println("invalid menu item. Please enter a "
-                    + "valid value");
-                break;
-        }     
-        
-        return false;
-    }
 }

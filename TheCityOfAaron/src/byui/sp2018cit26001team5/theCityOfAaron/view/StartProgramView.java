@@ -9,14 +9,14 @@ package byui.sp2018cit26001team5.theCityOfAaron.view;
  *
  * @author Salvador Rubio
  */
-public class StartProgramView {
+public class StartProgramView extends ViewBase{
 
     public StartProgramView() {
     }
     
-    public void displayStartProgramView(){
-        
-        System.out.println ("Hello, welcome to the city of Aaron.\n" +
+    @Override
+    protected String getMessage() {
+        String message = "Hello, welcome to the city of Aaron.\n" +
             "This time you are in charge to manage the entire city and care of the\n" +
             "population. Part of your duties are as follow:\n" +
             "Harvest the fields of wheat\n" +
@@ -28,10 +28,24 @@ public class StartProgramView {
             "you do not have enough wheat to feed people,these will die and\n" +
             "you will reduce your workforce; if you do not pay the tithes, the\n" +
             "number of rats will increase.\n" +
-            "Please think smart to manage the city.");
+            "Please think smart to manage the city.";
+        
+        return message;
+    }
+    
+    @Override
+    public void displayView(){
+        
+        String message = this.getMessage();
+        System.out.println (message);
         
         MainMenuView mainMenuView = new MainMenuView ();
-        mainMenuView.displayMainMenuView();
+        mainMenuView.displayView();
         
+    }    
+
+    @Override
+    public boolean doAction(String input) {
+        return true;
     }
 }

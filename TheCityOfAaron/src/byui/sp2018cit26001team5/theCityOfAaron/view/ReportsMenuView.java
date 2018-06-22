@@ -30,7 +30,7 @@ public class ReportsMenuView {
     }
      
      
-     public void displayReportsMenuView() {
+    public void displayReportsMenuView() {
         
         boolean done = false; //set flag to not done
         
@@ -43,7 +43,7 @@ public class ReportsMenuView {
         } while (!done);
     }
      
-     private String getMenuOption() {      
+    private String getMenuOption() {      
         
         String value = ""; //value to be returned
         boolean valid;  //initialize to not valid
@@ -69,9 +69,9 @@ public class ReportsMenuView {
             break;
         }
         return value; //returns the value 
-        }
+    }
      
-     private boolean doAction(String menuOption) {
+    private boolean doAction(String menuOption) {
        menuOption = menuOption.toUpperCase(); //converts to upper case
        
        switch (menuOption){

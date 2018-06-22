@@ -13,14 +13,22 @@ import thecityofaaron.TheCityOfAaron;
  *
  * @author Lehi Lopez
  */
-public class StartNewGameView {
+public class StartNewGameView extends ViewBase {
 
     public StartNewGameView() {
     }
     
-    public void displayStartNewGameView() {
+    @Override
+    protected String getMessage() {
         
-        this.requestPlayerName();
+        String menu = "\n\nPlease enter your name: ";
+        return menu;
+    }
+    
+    @Override
+    public void displayView() {
+        
+        this.getInput();
         // this.displayYearReport();
         // this.displayGameMenuView();
         
@@ -28,10 +36,10 @@ public class StartNewGameView {
         annualReportView.displayAnnualReportView();
         
         GameMenuView gameMenuView = new GameMenuView ();        
-        gameMenuView.displayGameMenuView();
+        gameMenuView.displayView();
     }
     
-    public void requestPlayerName() {
+    /*public void requestPlayerName() {
                  
         String name = this.getPlayerName();
         
@@ -68,9 +76,9 @@ public class StartNewGameView {
         }        
         
         return name;
-    }
+    }*/
     
-    public void displayYearReport() {
+    /*public void displayYearReport() {
         
         System.out.println("\nThe year number (1)"
                 + "\nHow many people startved (0)"
@@ -81,9 +89,9 @@ public class StartNewGameView {
                 + "\nThe total number of bushels of wheat harvested (3000)"
                 + "\nThe number of bushels of wheat eaten by rats (0)"
                 + "\nThe number of bushels of wheat in store (2700)");
-    }
+    }*/
     
-    public void displayGameMenuView() {
+    /*public void displayGameMenuView() {
                     
         boolean endView = false;
                         
@@ -151,6 +159,11 @@ public class StartNewGameView {
         }     
         
         return false;
+    }*/    
+
+    @Override
+    public boolean doAction(String input) {
+        return true;
     }
     
 }

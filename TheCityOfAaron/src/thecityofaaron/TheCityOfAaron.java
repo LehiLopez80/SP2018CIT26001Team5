@@ -35,7 +35,7 @@ public class TheCityOfAaron {
     public static void main(String[] args) {
         
         StartProgramView startProgramView = new StartProgramView ();
-        startProgramView.displayStartProgramView();
+        startProgramView.displayView();
         
         
         /*

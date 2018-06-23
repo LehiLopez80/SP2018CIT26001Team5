@@ -57,7 +57,7 @@ public class GameMenuView extends ViewBase{
                        
             case "5": //Reports menu
                 ReportsMenuView reportsMenuView = new ReportsMenuView();
-                reportsMenuView.displayReportsMenuView();
+                reportsMenuView.displayView();
                 break;
                
             case "6": //Save game

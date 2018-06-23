@@ -12,10 +12,14 @@ import java.util.Scanner;
  * @author Alonso Bernaldo
  */
  
-public class ReportsMenuView {
+public class ReportsMenuView extends ViewBase{
     
-     private static final String MENU = "\n"
-             
+    public ReportsMenuView() {
+    }
+     
+    @Override
+    protected String getMessage() {
+        String menu = "\n"
                 + "\n----------------------------------"
                 + "\n Reports Menu                        "
                 + "\n ---------------------------------"
@@ -24,54 +28,14 @@ public class ReportsMenuView {
                 + "\n3 - View the provisions in the storehouse"
                 + "\n4 - View the authors of this game"
                 + "\n5 - Return to the game menu"
-                + "\n----------------------------------";
-
-    public ReportsMenuView() {
+                + "\n----------------------------------"
+                + "\n\nEnter an option: ";
+        
+        return menu;
     }
-     
-     
-    public void displayReportsMenuView() {
-        
-        boolean done = false; //set flag to not done
-        
-        do {
-            //promp for and gets players name
-            String menuOption = this.getMenuOption();
-            
-            
-            done = this.doAction(menuOption);
-        } while (!done);
-    }
-     
-    private String getMenuOption() {      
-        
-        String value = ""; //value to be returned
-        boolean valid;  //initialize to not valid
-        valid = false;
-         
-        System.out.println(MENU);
-        
-        while (!valid) { // loop while an invalid value is enter
-            //System.out.println("\n" + this.promptMessage);
-            
-            Scanner keyboard = new Scanner(System.in); //get infile for keyboard
-            
-            
-            value = keyboard.nextLine();//getnext line typed on keyboard
-            //value = value.trim(); //trim off leading and trailing blanks
-            //System.out.println("Trimmed: "+ value);
-                    
-            
-            if (value.length() < 1 ){ //if value is blank
-                System.out.println("\nInvalid value: value cannot be blank");
-                continue;
-                            }
-            break;
-        }
-        return value; //returns the value 
-    }
-     
-    private boolean doAction(String menuOption) {
+    
+    @Override
+    public boolean doAction(String menuOption) {
        menuOption = menuOption.toUpperCase(); //converts to upper case
        
        switch (menuOption){

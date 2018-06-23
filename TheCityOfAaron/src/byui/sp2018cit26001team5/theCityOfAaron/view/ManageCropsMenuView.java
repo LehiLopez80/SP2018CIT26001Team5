@@ -43,7 +43,7 @@ public class ManageCropsMenuView extends ViewBase {
                 break;
             case "F": 
                 FeedPeopleView feedPeopleView = new FeedPeopleView();
-                feedPeopleView.displayFeedPeopleView();
+                feedPeopleView.displayView();
                 break;
             case "P": System.out.println("Future call to Plant Crops view");
                 break;

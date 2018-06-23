@@ -5,8 +5,6 @@
  */
 package byui.sp2018cit26001team5.theCityOfAaron.view;
 
-import java.util.Scanner;
-
 /**
  *
  * @author Salvador Rubio
@@ -43,7 +41,7 @@ public class MainMenuView extends ViewBase{
                 break;
             case "H": 
                 HelpMenuView helpMenuView = new HelpMenuView();
-                helpMenuView.displayHelpMenuView(); //pending extend
+                helpMenuView.displayView(); //pending extend
                 break;
             case "E": System.out.println("You have exit the program.");
                 return true;

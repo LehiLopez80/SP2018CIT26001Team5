@@ -9,67 +9,33 @@ import java.util.Scanner;
  *
  * @author Alonso Bernaldo
  */
-public class HelpMenuView {
-     //private final String menu;
-     //private final String promptMessage;
-     private static final String MENU = "\n"
+public class HelpMenuView extends ViewBase{
+
+    public HelpMenuView() {
+    }
+    
+    @Override
+    protected String getMessage() {
+        String menu = "\n"
                 + "\n----------------------------------"
                 + "\n Help Menu                        "
                 + "\n ---------------------------------"
                 + "\nG - What are the goals of the game?"
-                + "\nC - Where is the City of Aaron"
-                + "\nM - How do I view the Map"
-                + "\nL - How do I move to another Location"
+                + "\nC - Where is the City of Aaron?"
+                + "\nM - How do I view the Map?"
+                + "\nL - How do I move to another Location?"
                 + "\nD - How do I display a list of animals, Provisions an tools in the City store house?"
                 + "\nB - Back to the Main Menu"
-                + "\n----------------------------------";
-           
-    public void displayHelpMenuView() {    
-              
-        boolean done = false; //set flag to not done
+                + "\n----------------------------------"
+                + "\n\nEnter an option: ";
         
-        do {
-            //promp for and gets players name
-            String menuOption = this.getMenuOption();
-            
-            //if (menuOption.toUpperCase().equals("Q")) //USER WANTS TO QUIT
-            //       return; //exit the game
-            
-            //do the requested action adnd display the next view
-            done = this.doAction(menuOption);
-        } while (!done); 
+        return menu;
     }
-
-    private String getMenuOption() {      
-        
-        String value = ""; //value to be returned
-        boolean valid;  //initialize to not valid
-        valid = false;
-         
-        System.out.println(MENU);
-        
-        while (!valid) { // loop while an invalid value is enter
-            //System.out.println("\n" + this.promptMessage);
-            
-            Scanner keyboard = new Scanner(System.in); //get infile for keyboard
-            
-            
-            value = keyboard.nextLine();//getnext line typed on keyboard
-            //value = value.trim(); //trim off leading and trailing blanks
-            //System.out.println("Trimmed: "+ value);
-                    
-            
-            if (value.length() < 1 ){ //if value is blank
-                System.out.println("\nInvalid value: value cannot be blank");
-                continue;
-                            }
-            break;
-        }
-        return value; //returns the value 
-    }
-
-    private boolean doAction(String menuOption) {
-       menuOption = menuOption.toUpperCase(); //converts to upper case
+    
+    @Override
+    public boolean doAction(String menuOption) {
+       
+        menuOption = menuOption.toUpperCase(); //converts to upper case
        
        switch (menuOption){
            case "G": // explains goal of game
@@ -135,7 +101,7 @@ public class HelpMenuView {
 
     private void displayLists() {
         System.out.println("Select the Reports Menu option from the "
-                + "Gam Menu to display the lists."); 
+                + "Game Menu to display the lists."); 
     }   
     
 }

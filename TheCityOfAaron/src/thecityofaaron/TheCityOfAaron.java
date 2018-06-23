@@ -27,7 +27,7 @@ import byui.sp2018cit26001team5.theCityOfAaron.view.StartProgramView;
 public class TheCityOfAaron {
     
     private static Game currentGame = null;
-    private static Player player = null;
+    //private static Player player = null;
 
     /**
      * @param args the command line arguments
@@ -158,8 +158,7 @@ public class TheCityOfAaron {
         Animal animalOne = new Animal();
         Provision provisionOne = new Provision();
         
-        
-        
+               
         //call setter functions
         
         animalOne.setName("Cow");
@@ -185,11 +184,11 @@ public class TheCityOfAaron {
         TheCityOfAaron.currentGame = currentGame;
     }
     
-    public static Player getPlayer() {
+    /*public static Player getPlayer() {
         return player;
     }
 
     public static void setPlayer(Player player) {
         TheCityOfAaron.player = player;
-    }
+    }*/
 }

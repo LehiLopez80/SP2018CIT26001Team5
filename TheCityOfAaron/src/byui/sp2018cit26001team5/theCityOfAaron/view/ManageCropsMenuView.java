@@ -5,8 +5,6 @@
  */
 package byui.sp2018cit26001team5.theCityOfAaron.view;
 
-import java.util.Scanner;
-
 /**
  *
  * @author Lehi Lopez
@@ -59,54 +57,5 @@ public class ManageCropsMenuView extends ViewBase {
         }       
         
         return false;
-    }
-    
-    /*public void displayManageCropsMenuView() {
-                
-        boolean endView = false;
-        
-        do {
-            String input = this.getInput();
-            //System.out.println("In[ut ="+ input);
-            //if (input == "Q"){
-            //   break;
-            //}
-            endView = this.doAction(input);
-                  
-        } while(endView != true);
-    }*/
-    
-    /*public String getInput(){
-        
-        String input;
-        input = "";
-        
-        System.out.println ("\n\nManage Crops Menu"
-                + "\nB - Buy Land, "
-                + "\nS - Sell Land, "
-                + "\nF - Feed the People, "
-                + "\nP - Plant Crops, "
-                + "\nT - Pay Tithes and Offerings, "
-                + "\nR - Return to the Game Menu"
-                + "\n\nEnter an option: ");
-        
-        boolean valid = false;
-        
-        while(valid == false){
-            Scanner inFile;
-            inFile = new Scanner(System.in);
-
-            input = inFile.nextLine();
-            //input = input.trim(); //Pending to check trim.
-            //System.out.println(input);
-            
-            if(input.length() < 1){
-                System.out.println("You must enter a value");
-                continue;
-            }
-            
-            valid = true;
-        }
-        return input;
-    }*/
+    }    
 }

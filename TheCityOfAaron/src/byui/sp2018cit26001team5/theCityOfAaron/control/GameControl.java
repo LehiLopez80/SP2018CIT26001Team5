@@ -27,6 +27,10 @@ public class GameControl {
         game.setAcresOwned(1000);
         game.setCurrentYear(1);
         game.setWheatInStorage(2700);
+                
+        int randomInt = (int) ((int)11*Math.random());
+        int acresPrice = calculateAcresPrice (randomInt);
+        game.setAcresPrice(acresPrice);
     }
     
     // Team Assingment

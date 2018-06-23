@@ -29,86 +29,17 @@ public class StartNewGameView extends ViewBase {
     @Override
     public boolean doAction(String name) {
         
-        Player player = new Player();
-        player.setName (name);
-        TheCityOfAaron.setPlayer(player);
-        
-        Game game = new Game();
         GameControl gameControl = new GameControl();
-        gameControl.initializeGame(game);
-        TheCityOfAaron.setCurrentGame(game);
-        
-        //System.out.println("\nCurrPop " + game.getCurrentPopulation());
-
-        System.out.println("\nWelcome to the game "+ name 
-                + "\nWe hope you have a lot of fun");
-        
-        AnnualReportView annualReportView = new AnnualReportView();
-        annualReportView.displayView();
-        
-        GameMenuView gameMenuView = new GameMenuView ();        
-        gameMenuView.displayView();
-        
-        return true;
-    }
-    
-    /*@Override
-    public void displayView() {
-        
-        String name = this.getInput();
-        // this.displayYearReport();
-        // this.displayGameMenuView();
-        
-        this.doAction(name);
-        
-        AnnualReportView annualReportView = new AnnualReportView();
-        annualReportView.displayView();
-        
-        GameMenuView gameMenuView = new GameMenuView ();        
-        gameMenuView.displayView();
-    }*/
-    
-    /*public void requestPlayerName() {
-                 
-        //String name = this.getPlayerName();
-        String name = this.getInput();
-        
+        Game game = new Game();
         Player player = new Player();
+        
         player.setName (name);
-        TheCityOfAaron.setPlayer(player);
+        game.setPlayer(player);
+        GameControl.initializeGame(game);
+        TheCityOfAaron.setCurrentGame(game); 
 
         System.out.println("\nWelcome to the game "+ name 
                 + "\nWe hope you have a lot of fun");
-              
-    }*/
-    
-    /*public String getPlayerName(){
-        
-        String name;
-        name = "";
-        
-        boolean valid = false;
-        
-        while(valid == false){
-        
-            System.out.println("\n\nPlease enter your name: ");
-                
-            Scanner inFile;
-            inFile = new Scanner(System.in);
-
-            name = inFile.nextLine();
-
-            if(name.length() < 1){
-                System.out.println("You must enter a value");
-                continue;
-            }    
-            valid = true;
-        }        
-        
-        return name;
-    }*/
-    
-    /*public void displayYearReport() {
         
         System.out.println("\nThe year number (1)"
                 + "\nHow many people startved (0)"
@@ -117,21 +48,17 @@ public class StartNewGameView extends ViewBase {
                 + "\nThe number of acres of crop land owned by the city (1000)"
                 + "\nThe number of bushels per acre in this year harvest (3)"
                 + "\nThe total number of bushels of wheat harvested (3000)"
+                + "\nThe number of bushels paid in tithes and offerings (300)"
                 + "\nThe number of bushels of wheat eaten by rats (0)"
                 + "\nThe number of bushels of wheat in store (2700)");
-    }*/
+ 
+        GameMenuView gameMenuView = new GameMenuView ();        
+        gameMenuView.displayView();
+        
+        return true;
+    }   
     
-    /*public void displayGameMenuView() {
-                    
-        boolean endView = false;
-                        
-        do {
-            String input = this.getInput();
-            endView = this.doAction(input);                  
-        } while(endView != true); 
-    }
-    
-    public String getInput(){
+    /*public String getInput(){
         
         String input;
         input = "";

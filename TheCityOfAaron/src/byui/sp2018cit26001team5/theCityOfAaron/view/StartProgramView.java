@@ -38,14 +38,16 @@ public class StartProgramView extends ViewBase{
         
         String message = this.getMessage();
         System.out.println (message);
-        
-        MainMenuView mainMenuView = new MainMenuView ();
-        mainMenuView.displayView();
-        
+
+        this.doAction("");
     }    
 
     @Override
     public boolean doAction(String input) {
+        
+        MainMenuView mainMenuView = new MainMenuView ();
+        mainMenuView.displayView();
+        
         return true;
     }
 }

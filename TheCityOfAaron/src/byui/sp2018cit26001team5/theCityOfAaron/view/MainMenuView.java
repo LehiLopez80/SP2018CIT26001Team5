@@ -33,17 +33,17 @@ public class MainMenuView extends ViewBase{
         input = input.toUpperCase();
         
         switch (input) {
-            case "N": // this.startNewGame();
+            case "N": 
                 StartNewGameView startNewGameView = new StartNewGameView (); 
                 startNewGameView.displayView();
                 break;
-            case "R": // this.restartGame();
+            case "R": 
                 RestartGameView restartGameView = new RestartGameView ();
-                restartGameView.displayRestartGameView();
+                restartGameView.displayRestartGameView(); //pending extend
                 break;
-            case "H": // this.getHelp();
+            case "H": 
                 HelpMenuView helpMenuView = new HelpMenuView();
-                helpMenuView.displayHelpMenuView();
+                helpMenuView.displayHelpMenuView(); //pending extend
                 break;
             case "E": System.out.println("You have exit the program.");
                 return true;
@@ -53,54 +53,5 @@ public class MainMenuView extends ViewBase{
         }     
         
         return false;
-    }
-    
-    /*
-    public void displayMainMenuView() {
-                
-        boolean endView = false;
-        
-        do {
-            String input = this.getInput();
-            //System.out.println("In[ut ="+ input);
-            //if (input == "Q"){
-            //   break;
-            //}
-            endView = this.doAction(input);
-                  
-        } while(endView != true);
-    }*/
-    
-    /*public String getInput(){
-        
-        String input;
-        input = "";
-        
-        System.out.println ("\n\nMAIN MENU");
-        System.out.println("\nN - Start new game, "
-                + "\nR - Restart existing game, "
-                + "\nH - Get help on how to play the game, "
-                + "\nE - Exit"
-                + "\n\nEnter an option: ");
-        
-        boolean valid = false;
-        
-        while(valid == false){
-            Scanner inFile;
-            inFile = new Scanner(System.in);
-
-            input = inFile.nextLine();
-            //input = input.trim(); //Pending to check trim.
-            //System.out.println(input);
-            
-            if(input.length() < 1){
-                System.out.println("You must enter a value");
-                continue;
-            }
-            
-            valid = true;
-        }
-        return input;
-    }*/   
-    
+    }        
 }

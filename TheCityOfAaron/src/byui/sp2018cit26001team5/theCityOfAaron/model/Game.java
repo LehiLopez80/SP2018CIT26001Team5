@@ -22,6 +22,7 @@ public class Game implements Serializable{
     private int acresOwned;
     private int wheatInStorage;
     private int currentYear;
+    private int acresPrice;
 
     public Game() {
     }
@@ -80,6 +81,14 @@ public class Game implements Serializable{
 
     public void setCurrentYear(int currentYear) {
         this.currentYear = currentYear;
+    }
+    
+    public int getAcresPrice() {
+        return acresPrice;
+    }
+
+    public void setAcresPrice(int acresPrice) {
+        this.acresPrice = acresPrice;
     }
 
     @Override

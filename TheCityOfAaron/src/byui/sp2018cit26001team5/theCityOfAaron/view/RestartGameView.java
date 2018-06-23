@@ -9,52 +9,23 @@ import java.util.Scanner;
 
 /**
  *
- * @author Vicky Lopez
+ * @author Lehi Lopez
  */
-public class RestartGameView {
+public class RestartGameView extends ViewBase {
 
     public RestartGameView() {
     }
     
-    public void displayRestartGameView() {
-                    
-        boolean endView = false;
-        
-        do {
-            String input = this.getInput();
-            endView = this.doAction(input);                  
-        } while(endView != true); 
-    }
-    
-    public String getInput(){
-        
-        String input;
-        input = "";
-        
-        System.out.println("\n\nLoad a Saved Game View"
+    @Override
+    protected String getMessage() {
+        String menu = "\n\nLoad a Saved Game View"
                 + "\n\nPage under construction"
-                + "\n\nEnter Q to quit the view: ");
+                + "\n\nEnter Q to quit the view: ";
         
-        boolean valid = false;
-        
-        while(valid == false){
-            Scanner inFile;
-            inFile = new Scanner(System.in);
-
-            input = inFile.nextLine();
-            //input = input.trim(); //Pending to check trim.
-            //System.out.println("Trimmed input: " +input);
-            
-            if(input.length() < 1){
-                System.out.println("You must enter a value");
-                continue;
-            }
-            
-            valid = true;
-        }
-        return input;
+        return menu;
     }
     
+    @Override
     public boolean doAction(String input){
         
         input = input.toUpperCase();

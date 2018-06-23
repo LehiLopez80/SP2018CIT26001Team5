@@ -37,7 +37,7 @@ public class MainMenuView extends ViewBase{
                 break;
             case "R": 
                 RestartGameView restartGameView = new RestartGameView ();
-                restartGameView.displayRestartGameView(); //pending extend
+                restartGameView.displayView(); //pending extend
                 break;
             case "H": 
                 HelpMenuView helpMenuView = new HelpMenuView();

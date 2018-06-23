@@ -5,71 +5,62 @@
  */
 package byui.sp2018cit26001team5.theCityOfAaron.view;
 
-import byui.sp2018cit26001team5.theCityOfAaron.control.GameControl;
-import java.util.Scanner;
+import byui.sp2018cit26001team5.theCityOfAaron.model.Game;
+import thecityofaaron.TheCityOfAaron;
 
 /**
  *
  * @author Salvador Rubio
  */
-public class BuyLandView {
+public class BuyLandView extends ViewBase {
 
-    int acresPrice;
     public BuyLandView() {
     }
     
-    public void displayBuyLandView() {
+    @Override
+    protected String getMessage() {
         
-        System.out.println("Buy Land view");
+        Game game = new Game();
+        game = TheCityOfAaron.getCurrentGame();
+                
+        String message = "\nBuy Land view"
+                + "\n\nThe price of the land is: " + game.getAcresPrice()
+                + "\nHow many acres do you whish to buy?";        
         
-        GameControl gameControl = new GameControl();
+        return message;        
+    }
     
-        int randomInt = (int) ((int)11*Math.random());
-        acresPrice = GameControl.calculateAcresPrice (randomInt);
+    @Override
+    public boolean doAction(String input) {
+    
+        Game game = new Game();
+        game = TheCityOfAaron.getCurrentGame();        
         
-        System.out.println("The price of the land is: " + acresPrice);
-        System.out.println("\nHow many acres do you whish to buy?");
+        char[] charInput = input.toCharArray();
         
-        boolean endView = false;
-        do {
-            int input = this.getInput();
-            endView = this.doAction(input);
-                  
-        } while(endView != true);        
-    }
-
-    private int getInput() {
-        
-        int input = 0;
-        
-        boolean valid = false;
-        
-        while(valid == false){
-            Scanner inFile;
-            inFile = new Scanner(System.in);
-
-            input = inFile.nextInt();
-                        
-            if(input < 0){
-                System.out.println("You must not enter a negative value");
-                continue;
-            }
+        for (int i = 0; i < input.length(); i++) {
             
-            if(input > 2700/acresPrice){
-                System.out.println("You don't have enough bushels to buy");
-                continue;
+            if (charInput[i] > '9' || charInput[i] < '0') {
+                if (charInput[i] != '-') {
+                    System.out.println("You must enter a numerical value");                
+                    return false;
+                }
             }
-            
-            valid = true;
         }
-        return input;        
-    }
-
-    private boolean doAction(int input) {
+        
+        int intInput = Integer.parseInt(input);
+                
+        if(intInput < 0){
+            System.out.println("You must not enter a negative value");
+            return false;
+        }
+            
+        if(intInput > game.getWheatInStorage()/game.getAcresPrice()){
+            System.out.println("You don't have enough bushels to buy");
+            return false;
+        }
         
         System.out.println("Update Acres owned and bushels in store");
         return true;
-    }
-  
-    
+    }       
 }

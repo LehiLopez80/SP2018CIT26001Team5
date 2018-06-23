@@ -35,7 +35,7 @@ public class ManageCropsMenuView extends ViewBase {
         switch (input) { 
             case "B": 
                 BuyLandView buyLandView = new BuyLandView();
-                buyLandView.displayBuyLandView();
+                buyLandView.displayView();
                 break;
             case "S": 
                 SellLandView sellLandView = new SellLandView();

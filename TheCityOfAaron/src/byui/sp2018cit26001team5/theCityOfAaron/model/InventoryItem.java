@@ -17,8 +17,25 @@ public class InventoryItem implements Serializable{
     private ItemType itemType;
     private int quantity;
     private Condition condition; 
+    
+    private String name;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public InventoryItem() {
+    }
+    
+    public InventoryItem(ItemType itemType, int quantity, Condition condition, String name) {
+        this.itemType = itemType;
+        this.quantity = quantity;
+        this.condition = condition;
+        this.name = name;
     }
 
     public ItemType getItemType() {

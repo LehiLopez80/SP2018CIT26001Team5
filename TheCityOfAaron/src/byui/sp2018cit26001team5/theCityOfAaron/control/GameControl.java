@@ -5,14 +5,50 @@
  */
 package byui.sp2018cit26001team5.theCityOfAaron.control;
 
+import static byui.sp2018cit26001team5.theCityOfAaron.control.MapControl.createMap;
+import static byui.sp2018cit26001team5.theCityOfAaron.control.StorehouseControl.createStorehouse;
 import byui.sp2018cit26001team5.theCityOfAaron.model.Game;
+import byui.sp2018cit26001team5.theCityOfAaron.model.Map;
 import byui.sp2018cit26001team5.theCityOfAaron.model.Player;
+import byui.sp2018cit26001team5.theCityOfAaron.model.Storehouse;
+import thecityofaaron.TheCityOfAaron;
 
 /**
  *
  * @author Salvador Rubio
  */
 public class GameControl {
+
+    public GameControl() {
+    }       
+    
+    public static int createNewGame(Player player) {
+        
+        if (player == null)
+            return -1;
+        
+        Game game = new Game();
+        game.setPlayer(player);
+                
+        game.setCurrentPopulation(100);
+        game.setAcresOwned(1000);
+        game.setCurrentYear(1);
+        game.setWheatInStorage(2700);
+                
+        int randomInt = (int) ((int)11*Math.random());
+        int acresPrice = calculateAcresPrice (randomInt);
+        game.setAcresPrice(acresPrice);
+        
+        Storehouse storehouse = createStorehouse();
+        game.setStorehouse(storehouse);
+        
+        Map map = createMap();
+        game.setMap(map);
+        
+        TheCityOfAaron.setCurrentGame(game);         
+        
+        return 1;
+    }
     
     /*
     public static Player setPlayer(String name) {
@@ -22,7 +58,7 @@ public class GameControl {
         return player;
     }*/
     
-    public static void initializeGame(Game game) {
+    /*public static void initializeGame(Game game) {
         game.setCurrentPopulation(100);
         game.setAcresOwned(1000);
         game.setCurrentYear(1);
@@ -31,7 +67,9 @@ public class GameControl {
         int randomInt = (int) ((int)11*Math.random());
         int acresPrice = calculateAcresPrice (randomInt);
         game.setAcresPrice(acresPrice);
-    }
+    }*/
+    
+    
     
     // Team Assingment
     public static int calculatePopulation(int initialPopulation, int peopleStarved, int peopleMovedToCity){

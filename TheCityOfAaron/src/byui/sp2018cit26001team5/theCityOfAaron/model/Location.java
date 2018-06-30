@@ -23,6 +23,13 @@ public class Location implements Serializable{
 
     public Location() {
     }
+    
+    public Location(String name, String description, String mapSymbol, String[] gameTips) {
+        this.setName(name);
+        this.setDescription(description);
+        this.setMapSymbol(mapSymbol);
+        this.setGameTips(gameTips);
+    }
 
     public String getName() {
         return name;

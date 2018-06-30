@@ -30,13 +30,19 @@ public class StartNewGameView extends ViewBase {
     public boolean doAction(String name) {
         
         GameControl gameControl = new GameControl();
-        Game game = new Game();
+        //Game game = new Game();
         Player player = new Player();
         
         player.setName (name);
-        game.setPlayer(player);
-        GameControl.initializeGame(game);
-        TheCityOfAaron.setCurrentGame(game); 
+        //game.setPlayer(player);
+        //GameControl.initializeGame(game);
+        int returnValue = GameControl.createNewGame(player);
+        
+        if (returnValue < 0) {
+            System.out.println("ERROR - Failed to create new game");
+        }
+        
+        //TheCityOfAaron.setCurrentGame(game); 
 
         System.out.println("\nWelcome to the game "+ name 
                 + "\nWe hope you have a lot of fun");

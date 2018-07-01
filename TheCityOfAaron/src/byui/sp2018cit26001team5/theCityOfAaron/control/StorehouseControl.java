@@ -83,4 +83,26 @@ public class StorehouseControl {
         
         return provitionItems;
     }   
+    
+    public static int minimumToolItems(InventoryItem[] toolItems) {  
+    
+        if (toolItems.length == 0)   
+            return -1;
+        
+        for (InventoryItem toolItem: toolItems) {
+            if (toolItem.getQuantity() < 0)
+                return -1;            
+        }
+        
+        int minValue = toolItems[0].getQuantity();
+        
+        for (InventoryItem toolItem: toolItems) {
+            
+            if (toolItem.getQuantity() < minValue) {
+                minValue = toolItem.getQuantity();
+            }
+        }
+        
+        return minValue;        
+    }   
 }

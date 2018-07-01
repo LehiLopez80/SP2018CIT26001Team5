@@ -5,7 +5,12 @@
  */
 package byui.sp2018cit26001team5.theCityOfAaron.view;
 
+import byui.sp2018cit26001team5.theCityOfAaron.control.StorehouseControl;
+import byui.sp2018cit26001team5.theCityOfAaron.model.Game;
+import byui.sp2018cit26001team5.theCityOfAaron.model.InventoryItem;
+import byui.sp2018cit26001team5.theCityOfAaron.model.Storehouse;
 import java.util.Scanner;
+import thecityofaaron.TheCityOfAaron;
 
 /**
  *
@@ -72,7 +77,22 @@ public class ReportsMenuView extends ViewBase{
     }
 
     private void viewToolsInStorehouse() {
-        System.out.println("*** Here you can check the tools"); 
+        System.out.println("\nTools Report View"
+                    + "\n\nQuantity   Tool"); 
+        
+        Game game = TheCityOfAaron.getCurrentGame();
+        Storehouse storehouse = game.getStorehouse();
+        InventoryItem[] toolItems = storehouse.getTools();
+        
+        for (InventoryItem toolItem: toolItems) {
+            System.out.println("   " + toolItem.getQuantity() + "       "
+                    + toolItem.getName());
+        }
+        
+        StorehouseControl storehouseControl = new StorehouseControl();
+        int minVal = storehouseControl.minimumToolItems(toolItems);
+        
+        System.out.println("\nTHe minimum quantity value of tolls is " + minVal);
     }
 
     private void viewProvisionsInStorehouse() {

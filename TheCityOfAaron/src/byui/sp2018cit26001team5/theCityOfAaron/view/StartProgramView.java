@@ -28,8 +28,8 @@ public class StartProgramView extends ViewBase{
             "you do not have enough wheat to feed people,these will die and\n" +
             "you will reduce your workforce; if you do not pay the tithes, the\n" +
             "number of rats will increase.\n" +
-            "Please think smart to manage the city.";
-        
+            "Please think smart to manage the city.";          
+               
         return message;
     }
     

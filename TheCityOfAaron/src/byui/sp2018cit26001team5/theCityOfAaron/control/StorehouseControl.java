@@ -104,5 +104,24 @@ public class StorehouseControl {
         }
         
         return minValue;        
+    }  
+    
+    public static int totalAnimalItems(InventoryItem[] animalItems) {  
+    
+        if (animalItems.length == 0)   
+            return -1;
+        
+        for (InventoryItem animalItem: animalItems) {
+            if (animalItem.getQuantity() < 0)
+                return -1;            
+        }
+        
+        int total = 0;
+        
+        for (InventoryItem animalItem: animalItems) {
+            total = total + animalItem.getQuantity();
+        }
+        
+        return total;        
     }   
 }

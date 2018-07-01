@@ -73,7 +73,22 @@ public class ReportsMenuView extends ViewBase{
      
      private void viewAnimalsInStorehouse() {
        
-       System.out.println("*** Here you can check the animals");
+        System.out.println("\nTools Report View"
+                    + "\n\nQuantity   Tool");
+       
+        Game game = TheCityOfAaron.getCurrentGame();
+        Storehouse storehouse = game.getStorehouse();
+        InventoryItem[] animalItems = storehouse.getAnimals();
+        
+        for (InventoryItem animalItem: animalItems) {
+            System.out.println("   " + animalItem.getQuantity() + "       "
+                    + animalItem.getName());
+        }
+        
+        StorehouseControl storehouseControl = new StorehouseControl();
+        int total = storehouseControl.totalAnimalItems(animalItems);
+        
+        System.out.println("\nThe total quantity of animals is " + total);
     }
 
     private void viewToolsInStorehouse() {
@@ -92,7 +107,7 @@ public class ReportsMenuView extends ViewBase{
         StorehouseControl storehouseControl = new StorehouseControl();
         int minVal = storehouseControl.minimumToolItems(toolItems);
         
-        System.out.println("\nTHe minimum quantity value of tolls is " + minVal);
+        System.out.println("\nThe minimum quantity value of tools is " + minVal);
     }
 
     private void viewProvisionsInStorehouse() {

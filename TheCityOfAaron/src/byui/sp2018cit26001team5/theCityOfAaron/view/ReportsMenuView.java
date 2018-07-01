@@ -110,8 +110,30 @@ public class ReportsMenuView extends ViewBase{
         System.out.println("\nThe minimum quantity value of tools is " + minVal);
     }
 
-    private void viewProvisionsInStorehouse() {
-        System.out.println("*** Here you can check the provisions"); 
+    private void viewProvisionsInStorehouse() { //sortProvitionItems
+        
+        System.out.println("\nProvision Report View"
+                    + "\n\nProvision Quantity");
+       
+        Game game = TheCityOfAaron.getCurrentGame();
+        Storehouse storehouse = game.getStorehouse();
+        InventoryItem[] provisionItems = storehouse.getProvisions();
+        
+        for (InventoryItem provisionItem: provisionItems) {
+            System.out.println(provisionItem.getName() + "      " 
+                    + provisionItem.getQuantity());
+        }
+        
+        StorehouseControl storehouseControl = new StorehouseControl();
+        InventoryItem[] orderedItems = storehouseControl.sortProvisionItems(provisionItems);
+        
+        System.out.println("\nProvision Report View ordered by quantity"
+                    + "\n\nProvision Quantity");
+        
+        for (InventoryItem orderedItem: orderedItems) {
+            System.out.println(orderedItem.getName() + "      " 
+                    + orderedItem.getQuantity());
+        }
     }
 
     private void viewAuthorsOfThisGame() {

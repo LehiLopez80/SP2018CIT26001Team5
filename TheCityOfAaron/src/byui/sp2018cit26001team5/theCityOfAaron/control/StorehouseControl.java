@@ -77,8 +77,8 @@ public class StorehouseControl {
         InventoryItem[] provitionItems = new InventoryItem[4];
         
         provitionItems[0] = new InventoryItem(ItemType.Provisions, 70, Condition.Good, "Potatoes");
-        provitionItems[1] = new InventoryItem(ItemType.Provisions, 100, Condition.Fair, "Breads");
-        provitionItems[2] = new InventoryItem(ItemType.Provisions, 80, Condition.Good, "Apples");
+        provitionItems[1] = new InventoryItem(ItemType.Provisions, 90, Condition.Fair, "Breads  ");
+        provitionItems[2] = new InventoryItem(ItemType.Provisions, 80, Condition.Good, "Apples  ");
         provitionItems[3] = new InventoryItem(ItemType.Provisions, 50, Condition.Fair, "Tomatoes");
         
         return provitionItems;
@@ -124,4 +124,31 @@ public class StorehouseControl {
         
         return total;        
     }   
+    
+    public static InventoryItem[] sortProvisionItems(InventoryItem[] provisionItems) {  
+    
+        if (provisionItems.length == 0)   
+            return null;
+                
+        for (InventoryItem provitionItem: provisionItems) {
+            if (provitionItem.getQuantity() < 0)
+                return null;            
+        }        
+        
+        if (provisionItems.length == 1)   
+            return provisionItems;        
+               
+        for (int m = provisionItems.length; m >= 0; m--) {                       
+            for (int i = 0; i < provisionItems.length - 1; i++) {
+                int aux = i + 1;
+                if (provisionItems[i].getQuantity() > provisionItems[aux].getQuantity()) {
+                    InventoryItem temp = provisionItems[i];
+                    provisionItems[i] = provisionItems[aux];
+                    provisionItems[aux] = temp;
+                }
+            }
+        }
+   
+        return provisionItems;        
+    }  
 }

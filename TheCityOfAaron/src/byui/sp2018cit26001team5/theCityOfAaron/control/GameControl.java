@@ -7,6 +7,7 @@ package byui.sp2018cit26001team5.theCityOfAaron.control;
 
 import static byui.sp2018cit26001team5.theCityOfAaron.control.MapControl.createMap;
 import static byui.sp2018cit26001team5.theCityOfAaron.control.StorehouseControl.createStorehouse;
+import byui.sp2018cit26001team5.theCityOfAaron.exceptions.GameControlException;
 import byui.sp2018cit26001team5.theCityOfAaron.model.Game;
 import byui.sp2018cit26001team5.theCityOfAaron.model.Map;
 import byui.sp2018cit26001team5.theCityOfAaron.model.Player;
@@ -24,8 +25,9 @@ public class GameControl {
     
     public static int createNewGame(Player player) {
         
-        if (player == null)
-            return -1;
+        if (player.getName() == null) {
+         return -1;
+        }
         
         Game game = new Game();
         game.setPlayer(player);
@@ -48,40 +50,34 @@ public class GameControl {
         TheCityOfAaron.setCurrentGame(game);         
         
         return 1;
-    }
-    
-    /*
-    public static Player setPlayer(String name) {
-        System.out.println("*** savePlayer called ***");
-        Player player = new Player();
-        player.setName(name);
-        return player;
-    }*/
-    
-    /*public static void initializeGame(Game game) {
-        game.setCurrentPopulation(100);
-        game.setAcresOwned(1000);
-        game.setCurrentYear(1);
-        game.setWheatInStorage(2700);
+    }    
                 
-        int randomInt = (int) ((int)11*Math.random());
-        int acresPrice = calculateAcresPrice (randomInt);
-        game.setAcresPrice(acresPrice);
-    }*/
+       
     
     
     
     // Team Assingment
-    public static int calculatePopulation(int initialPopulation, int peopleStarved, int peopleMovedToCity){
+    public static int calculatePopulation(int initialPopulation, int peopleStarved
+            , int peopleMovedToCity) throws GameControlException {
                 
         // Validate there is not negative input.
-        if (initialPopulation < 0 || peopleStarved < 0 || peopleMovedToCity < 0) {
-            return -1; 
+        if (initialPopulation < 0 ) {
+            throw new GameControlException ("Error: Initial population is less than zero");
+            // return -1; 
+        }
+        else if (peopleStarved < 0 ) {
+            throw new GameControlException ("Error: People starved is less than zero");
+            // return -2;
+        }
+        else if (peopleMovedToCity < 0) {
+            throw new GameControlException ("Error: People Moved To City is less than zero");
+            // return -3;
         }
         else 
             // Validate initial population is greater than people starved.
             if (peopleStarved > initialPopulation) {
-                return -1;
+                throw new GameControlException ("Error: People starved is greater than Initial population");
+                // return -4;
             }
             else {
                 int population = initialPopulation - peopleStarved + peopleMovedToCity;

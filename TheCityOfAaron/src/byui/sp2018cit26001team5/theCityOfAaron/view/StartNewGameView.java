@@ -33,7 +33,7 @@ public class StartNewGameView extends ViewBase {
         //Game game = new Game();
         Player player = new Player();
         
-        player.setName (name);
+       player.setName (name); 
         //game.setPlayer(player);
         //GameControl.initializeGame(game);
         int returnValue = GameControl.createNewGame(player);
@@ -44,7 +44,7 @@ public class StartNewGameView extends ViewBase {
         
         //TheCityOfAaron.setCurrentGame(game); 
 
-        System.out.println("\nWelcome to the game "+ name 
+        System.out.println("\nWelcome to the game "+ player.getName() 
                 + "\nWe hope you have a lot of fun");
         
         System.out.println("\nThe year number (1)"

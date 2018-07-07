@@ -35,7 +35,7 @@ public class InventoryItem implements Serializable{
         this.itemType = itemType;
         this.quantity = quantity;
         this.condition = condition;
-        this.name = name;
+        //this.name = name;
     }
 
     public ItemType getItemType() {

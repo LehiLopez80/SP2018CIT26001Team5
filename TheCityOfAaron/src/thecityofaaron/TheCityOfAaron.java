@@ -5,6 +5,8 @@
  */
 package thecityofaaron;
 
+import byui.sp2018cit26001team5.theCityOfAaron.control.GameControl;
+import byui.sp2018cit26001team5.theCityOfAaron.exceptions.GameControlException;
 import byui.sp2018cit26001team5.theCityOfAaron.model.Animal;
 import byui.sp2018cit26001team5.theCityOfAaron.model.Author;
 import byui.sp2018cit26001team5.theCityOfAaron.model.Condition;
@@ -32,11 +34,64 @@ public class TheCityOfAaron {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws GameControlException {
         
-        StartProgramView startProgramView = new StartProgramView ();
-        startProgramView.displayView();
+        //Catch all unexpcted errors
+        try {
+            StartProgramView startProgramView = new StartProgramView ();
+            startProgramView.displayView();
         
+        
+        /* Lesson 11 - Team Assignment
+        * Code added to prove the calls to control layer funtions that include 
+        * error handling which calls are not yet included in any view of the 
+        * game program.
+        */
+        
+        GameControl gameControl = new GameControl();
+        
+        try {
+            GameControl.calculatePopulation(-1,2,1);
+        } catch (GameControlException gce) {
+            //Logger.getLogger(StartNewGameView.class.getName()).log(Level.SEVERE, null, gce);
+            System.out.println(gce.getMessage());
+            //return false;
+        }
+        
+        try {
+            GameControl.calculatePopulation(1,-2,1);
+        } catch (GameControlException gce) {
+            //Logger.getLogger(StartNewGameView.class.getName()).log(Level.SEVERE, null, gce);
+            System.out.println(gce.getMessage());
+            //return false;
+        }
+        
+        try {
+            GameControl.calculatePopulation(3,2,-1);
+        } catch (GameControlException gce) {
+            //Logger.getLogger(StartNewGameView.class.getName()).log(Level.SEVERE, null, gce);
+            System.out.println(gce.getMessage());
+            //return false;
+        }
+        
+        try {
+            GameControl.calculatePopulation(1,2,1);
+        } catch (GameControlException gce) {
+            //Logger.getLogger(StartNewGameView.class.getName()).log(Level.SEVERE, null, gce);
+            System.out.println(gce.getMessage());
+            //return false;
+        }
+        
+        } catch (Throwable te) {
+            System.out.println("Error catched at main");
+            System.out.println(te.getMessage());
+            te.printStackTrace();            
+        } finally {
+             System.out.println("The program will be closed");
+             System.out.close();
+        }
+        
+      
         
         /*
         //create objects

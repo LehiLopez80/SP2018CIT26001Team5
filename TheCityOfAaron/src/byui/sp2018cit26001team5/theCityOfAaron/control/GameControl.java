@@ -23,10 +23,11 @@ public class GameControl {
     public GameControl() {
     }       
     
-    public static int createNewGame(Player player) {
+    public static void createNewGame(Player player) throws GameControlException {
         
         if (player.getName() == null) {
-         return -1;
+         //return -1;
+         throw new GameControlException("Error: Missing players' name");
         }
         
         Game game = new Game();
@@ -49,12 +50,8 @@ public class GameControl {
         
         TheCityOfAaron.setCurrentGame(game);         
         
-        return 1;
+        //return 1;
     }    
-                
-       
-    
-    
     
     // Team Assingment
     public static int calculatePopulation(int initialPopulation, int peopleStarved

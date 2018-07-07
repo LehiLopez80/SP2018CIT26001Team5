@@ -38,7 +38,7 @@ public class SellLandView extends ViewBase{
         Game game = new Game();
         game = TheCityOfAaron.getCurrentGame();        
         
-        char[] charInput = input.toCharArray();
+        /*char[] charInput = input.toCharArray();
         
         for (int i = 0; i < input.length(); i++) {
             
@@ -48,9 +48,14 @@ public class SellLandView extends ViewBase{
                     return false;
                 }
             }
+        }*/
+        int intInput = 0;
+        try {
+            intInput = Integer.parseInt(input);
+        } catch (NumberFormatException nf) {
+            System.out.println("\nYou must enter a valid number");
+            return false;
         }
-        
-        int intInput = Integer.parseInt(input);
                 
         if(intInput < 0){
             System.out.println("You must not enter a negative value");

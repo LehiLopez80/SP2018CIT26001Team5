@@ -6,8 +6,11 @@
 package byui.sp2018cit26001team5.theCityOfAaron.view;
 
 import byui.sp2018cit26001team5.theCityOfAaron.control.GameControl;
+import byui.sp2018cit26001team5.theCityOfAaron.exceptions.GameControlException;
 import byui.sp2018cit26001team5.theCityOfAaron.model.Game;
 import byui.sp2018cit26001team5.theCityOfAaron.model.Player;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import thecityofaaron.TheCityOfAaron;
 
 /**
@@ -30,20 +33,41 @@ public class StartNewGameView extends ViewBase {
     public boolean doAction(String name) {
         
         GameControl gameControl = new GameControl();
-        //Game game = new Game();
         Player player = new Player();
+        //player.setName (name); 
+               
+        /* Lesson 11 - Team Assignment
+        * Code added to show on screen the error message displayed when 
+        * the createNewGame function is called in erroneous scenario and
+        * displays a message using the error handling
+        */
         
-       player.setName (name); 
-        //game.setPlayer(player);
-        //GameControl.initializeGame(game);
-        int returnValue = GameControl.createNewGame(player);
-        
-        if (returnValue < 0) {
-            System.out.println("ERROR - Failed to create new game");
+        try {
+            //int returnValue =
+            GameControl.createNewGame(player);
+        } catch (GameControlException gce) {            
+            System.out.println(gce.getMessage()); 
+            //gce.printStackTrace();
+            //return true;
         }
         
-        //TheCityOfAaron.setCurrentGame(game); 
-
+        // End of extra code for L11 Team Assignment
+        
+        player.setName (name); 
+        
+        try {
+            //int returnValue =
+            GameControl.createNewGame(player);
+        } catch (GameControlException gce) {            
+            System.out.println(gce.getMessage()); 
+            //gce.printStackTrace();
+            return true;
+        }
+        
+        //if (returnValue < 0) {
+        //    System.out.println("ERROR - Failed to create new game");
+        //}        
+        
         System.out.println("\nWelcome to the game "+ player.getName() 
                 + "\nWe hope you have a lot of fun");
         

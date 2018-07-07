@@ -160,16 +160,19 @@ public class GameControl {
      *   - int tithesAndOfferings: The amount of bushels to be paid in tithes and offerings.
      * Author: Lehi Lopez
      */
-    public static int calculateOfferings(int bushelsHarvested, int offeringsPercentage) {
+    public static int calculateOfferings (int bushelsHarvested, int offeringsPercentage) 
+                throws GameControlException {
         
         // Validate there is not negative input.
-        if (bushelsHarvested < 0 || offeringsPercentage < 0) {
-            return -1;
-        }
+        if (bushelsHarvested < 0) {
+            throw new GameControlException ("Error: Bushels harvested is less than zero");
+        } else if (offeringsPercentage < 0) {
+            throw new GameControlException ("Error: Tithes and Offerings percentage is less than zero");
+        }       
         else {
             // Validate offeringsPercentage upper limit.
             if (offeringsPercentage > 100) {
-                return -1;
+                throw new GameControlException ("Error: Tithes and Offerings percentage is greater than 100");
             }            
             // Calculate output.
             else {
@@ -197,16 +200,19 @@ public class GameControl {
      * Author: Lehi Lopez
      */
     
-    public static int calculatePeopleMovedToCity (int currentPopulation, int randomInt){
+    public static int calculatePeopleMovedToCity (int currentPopulation, int randomInt)
+            throws GameControlException {
         
         // Validate there is not negative input.
-        if (currentPopulation < 0 || randomInt < 0) {
-            return -1;
+        if (currentPopulation < 0) {
+            throw new GameControlException ("Error: Current population is less than zero");
+        } else if (randomInt < 0) {
+            throw new GameControlException ("Error: Random Integer value is less than zero");
         }
         else {
             //Validate randomInt upper limit.
             if (randomInt > 5) {
-                return -1;
+                throw new GameControlException ("Error: Random Integer value is greater than five");
             }
             // Calculate output.
             else {
@@ -239,16 +245,21 @@ public class GameControl {
      * Author: Lehi Lopez
      */
     
-    public static int calculateCropYield (int offeringsPercentage, int randomInt) {
+    public static int calculateCropYield (int offeringsPercentage, int randomInt) 
+            throws GameControlException {
         
         // Validate there is not negative input.
-        if (offeringsPercentage < 0 || randomInt < 0) {
-            return -1;
+        if (offeringsPercentage < 0) {
+            throw new GameControlException ("Error: Tithes and Offerings percentage is less than zero");
+        } else if (randomInt < 0) {
+            throw new GameControlException ("Error: Random Integer value is less than zero");
         }
         else {
             //Validate offeringsPercentage and randomInt upper limits.
-            if (offeringsPercentage > 100 || randomInt > 12) {
-                return -1;
+            if (offeringsPercentage > 100) {
+                throw new GameControlException ("Error: Tithes and Offerings percentage is greater than 100");
+            } else if (randomInt > 12) {
+                throw new GameControlException ("Error: Random Integer value is greater than twelve");
             }
             // Calculate output.
             else {
@@ -306,11 +317,14 @@ public class GameControl {
      * Author: Lehi Lopez
      */
     
-    public static int calculateAcresPrice (int randomInt) {
+    public static int calculateAcresPrice (int randomInt) throws GameControlException {
         
         //validate input range
-        if (randomInt < 0 || randomInt > 11) {
-            return -1;
+        if (randomInt < 0) {
+            throw new GameControlException ("Error: Random Integer value is less than zero");
+        }
+        if (randomInt > 11) {
+            throw new GameControlException ("Error: Random Integer value is greater than eleven");
         }
         // Calculate output.
         else {

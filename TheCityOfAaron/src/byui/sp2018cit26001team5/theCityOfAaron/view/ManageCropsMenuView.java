@@ -47,7 +47,9 @@ public class ManageCropsMenuView extends ViewBase {
                 break;
             case "P": System.out.println("Future call to Plant Crops view");
                 break;
-            case "T": System.out.println("Future call to Pay Tithes and Offerings view");
+            case "T": 
+                PayOfferingsView payOfferingsView = new PayOfferingsView();
+                payOfferingsView.displayView();
                 break;
             case "R": System.out.println("Return to the Game Menu");
                 return true;

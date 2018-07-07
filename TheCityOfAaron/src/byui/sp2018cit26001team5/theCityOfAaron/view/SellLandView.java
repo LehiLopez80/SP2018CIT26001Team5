@@ -5,13 +5,10 @@
  */
 package byui.sp2018cit26001team5.theCityOfAaron.view;
 
-import byui.sp2018cit26001team5.theCityOfAaron.control.GameControl;
 import byui.sp2018cit26001team5.theCityOfAaron.model.Game;
-import java.util.Scanner;
 import thecityofaaron.TheCityOfAaron;
 
 /**
- *
  * @author Lehi Lopez
  */
 public class SellLandView extends ViewBase{
@@ -22,8 +19,7 @@ public class SellLandView extends ViewBase{
     @Override
     protected String getMessage() {
         
-        Game game = new Game();
-        game = TheCityOfAaron.getCurrentGame();
+        Game game = TheCityOfAaron.getCurrentGame();
                 
         String message = "\nSell Land view"
                 + "\n\nThe price of the land is: " + game.getAcresPrice()
@@ -35,21 +31,9 @@ public class SellLandView extends ViewBase{
     @Override
     public boolean doAction(String input) {
         
-        Game game = new Game();
-        game = TheCityOfAaron.getCurrentGame();        
-        
-        /*char[] charInput = input.toCharArray();
-        
-        for (int i = 0; i < input.length(); i++) {
-            
-            if (charInput[i] > '9' || charInput[i] < '0') {
-                if (charInput[i] != '-') {
-                    System.out.println("You must enter a numerical value");                
-                    return false;
-                }
-            }
-        }*/
-        int intInput = 0;
+        Game game = TheCityOfAaron.getCurrentGame();        
+                
+        int intInput;
         try {
             intInput = Integer.parseInt(input);
         } catch (NumberFormatException nf) {

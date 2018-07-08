@@ -89,11 +89,12 @@ public class GameControl {
      */
   
     // Individual Assignment Salvador Rubio
-    public static int calculateHarvest (int bushelsByAcre, int acresAvailable) {
+    public static int calculateHarvest (int bushelsByAcre, int acresAvailable) 
+            throws GameControlException {
     
         // Validate there is not negative input.
         if (bushelsByAcre < 0 || acresAvailable < 0) {
-            return -1; 
+            throw new GameControlException ("Error: Bushels or acres are less than zero"); 
         }
         else {
             
@@ -103,16 +104,17 @@ public class GameControl {
     }
     
     //Individual Assignment Salvador Rubio
-    public static int calculatePeopleStarved (int people, int bushelsFeed) {
+    public static int calculatePeopleStarved (int people, int bushelsFeed)
+            throws GameControlException {
      
         // Validate there is not negative input.
         if (people < 0 || bushelsFeed < 0) {
-            return -1; 
+            throw new GameControlException ("Error: People or Bushels are less than zero"); 
         }
         else {
             
             if (people < (bushelsFeed/20)) {
-                return 0;
+                throw new GameControlException ("Error: There is not enough bushels to feed people");
             }
             else {
                int peopleStarved = people - (bushelsFeed/20);

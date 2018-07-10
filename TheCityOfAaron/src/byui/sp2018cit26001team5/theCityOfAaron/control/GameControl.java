@@ -93,11 +93,12 @@ public class GameControl {
             throws GameControlException {
     
         // Validate there is not negative input.
-        if (bushelsByAcre < 0 || acresAvailable < 0) {
-            throw new GameControlException ("Error: Bushels or acres are less than zero"); 
-        }
-        else {
-            
+        if (bushelsByAcre < 0) {
+            throw new GameControlException ("Error: Bushels are less than zero"); 
+        } else if  (acresAvailable < 0) {
+            throw new GameControlException ("Error: Acres are less than zero"); 
+        } 
+        else {   
             int finalHarvest = bushelsByAcre * acresAvailable;
             return finalHarvest;
         }                    
@@ -108,13 +109,15 @@ public class GameControl {
             throws GameControlException {
      
         // Validate there is not negative input.
-        if (people < 0 || bushelsFeed < 0) {
-            throw new GameControlException ("Error: People or Bushels are less than zero"); 
+        if (people < 0 )  {
+            throw new GameControlException ("Error: People are less than zero"); 
+        } else if (bushelsFeed < 0) {
+            throw new GameControlException ("Error: Bushels are less than zero"); 
         }
         else {
             
             if (people < (bushelsFeed/20)) {
-                throw new GameControlException ("Error: There is not enough bushels to feed people");
+                return 0;
             }
             else {
                int peopleStarved = people - (bushelsFeed/20);
@@ -362,17 +365,28 @@ public class GameControl {
     }
     
     //Individual Assignment Salvador Rubio
-    public static int calculateBushelsEatenByRats (int bushelsInStore, int offeringsPercentage, int randomEat, int randomPercentage){
+    public static int calculateBushelsEatenByRats (int bushelsInStore, int offeringsPercentage, 
+            int randomEat, int randomPercentage)throws GameControlException {
         
         // Validate there is not negative input.
-        if (bushelsInStore < 0 || offeringsPercentage <0 || randomEat <0 || randomPercentage < 0) {  
-            return -1;
+        if (bushelsInStore < 0){  
+            throw new GameControlException ("Error: Bushels in store is less than zero");
+        } else if (offeringsPercentage < 0) {
+            throw new GameControlException ("Error: Offerings percentage is less than zero");
+        } else if (randomEat < 0) {
+            throw new GameControlException ("Error: Random eaten is less than 0");
+        } else if (randomPercentage < 0) {
+            throw new GameControlException ("Error: Random percentage is less than 0");
         }
         else {
-            if (offeringsPercentage > 100 || randomEat > 100 || randomPercentage > 15) {
-                return -1;
-            }
-            else {                    
+            if (offeringsPercentage > 100) {
+                throw new GameControlException ("Error: Bushels in store is greater than 100");
+            } else if (randomEat > 100) {
+                throw new GameControlException ("Error: Random eaten is greater than 100");
+            } else if (randomPercentage > 15) {
+                throw new GameControlException ("Error: Random percentage is greater than 15");
+            }           
+            else {          
                 randomEat++;
                 if (randomEat >= 30) {
                     return 0;

@@ -47,8 +47,8 @@ public class BuyLandView extends ViewBase {
             return false;
         }
             
-        if(intInput > game.getAcresOwned()){
-            System.out.println("You don't own that many acres");
+        if(intInput > game.getWheatInStorage()/game.getAcresPrice()){
+            System.out.println("You don't have enough bushels to buy");
             return false;
         }
         

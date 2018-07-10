@@ -149,6 +149,69 @@ public class TheCityOfAaron {
                 System.out.println(gce.getMessage());                
             }          
         
+            /* Lesson 11 - Salvador Rubio Individual Assignment
+            * Code added to prove the calls to control layer funtions that include 
+            * error handling which calls are not yet included in any view of the 
+            * game program.
+            */
+            
+            System.out.println("\nTests for the calculateHarvest function");
+            
+            try {
+                GameControl.calculateHarvest(-1, 20);
+            } catch (GameControlException gce) {                
+                System.out.println(gce.getMessage());                
+            }
+            
+            try {
+                GameControl.calculateHarvest(50, -1);
+            } catch (GameControlException gce) {                
+                System.out.println(gce.getMessage());                
+            }
+            
+            
+            System.out.println("\nTests for the calculatePeopleStarved function");
+            
+            try {
+                GameControl.calculatePeopleStarved(-1, 20);
+            } catch (GameControlException gce) {                
+                System.out.println(gce.getMessage());                
+            }
+            
+            try {
+                GameControl.calculatePeopleStarved(50, -1);
+            } catch (GameControlException gce) {                
+                System.out.println(gce.getMessage());                
+            }
+            
+            
+            System.out.println("\nTests for the calculateBushelsEatenByRats function");
+            
+            try {
+                GameControl.calculateBushelsEatenByRats(-1, 20, 35, 80);
+            } catch (GameControlException gce) {                
+                System.out.println(gce.getMessage());                
+            }
+            
+            try {
+                GameControl.calculateBushelsEatenByRats(50, -1, 89, 25);
+            } catch (GameControlException gce) {                
+                System.out.println(gce.getMessage());                
+            }
+            
+            try {
+                GameControl.calculateBushelsEatenByRats(75, 11, -1, 110);
+            } catch (GameControlException gce) {                
+                System.out.println(gce.getMessage());                
+            }
+            
+            try {
+                GameControl.calculateBushelsEatenByRats(63, 87, 62, -1);
+            } catch (GameControlException gce) {                
+                System.out.println(gce.getMessage());                
+            }
+            
+                   
         } catch (Throwable te) {
             System.out.println("Error catched at main");
             System.out.println(te.getMessage());

@@ -133,11 +133,12 @@ public class GameControl {
      */
     
     // Individual Assignment Alonso Bernaldo
-    public static int calculateBushelsToPlant(int acresToPlant){
+    public static int calculateBushelsToPlant(int acresToPlant)
+           throws GameControlException{
                 
         // Validate there is not negative input.
         if (acresToPlant < 0 ) {
-            return -1; 
+           throw new GameControlException ("Error: Acres are less than zero");
         }
         else {
                 int bushelsToPlant = (acresToPlant) /2; 
@@ -439,5 +440,4 @@ public class GameControl {
         }
     }
 }
-    
-
+   

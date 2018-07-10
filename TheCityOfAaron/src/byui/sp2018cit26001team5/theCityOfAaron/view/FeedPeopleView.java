@@ -29,22 +29,15 @@ public class FeedPeopleView extends ViewBase{
     @Override
     public boolean doAction(String input) {
     
-        Game game = new Game();
-        game = TheCityOfAaron.getCurrentGame();        
+        Game game = TheCityOfAaron.getCurrentGame();        
         
-        char[] charInput = input.toCharArray();
-        
-        for (int i = 0; i < input.length(); i++) {
-            
-            if (charInput[i] > '9' || charInput[i] < '0') {
-                if (charInput[i] != '-') {
-                    System.out.println("You must enter a numerical value");                
-                    return false;
-                }
-            }
+        int intInput;
+        try {       
+            intInput = Integer.parseInt(input);
+        } catch (NumberFormatException nf) {
+            System.out.println("\nYou must enter a valid number");
+            return false;
         }
-        
-        int intInput = Integer.parseInt(input);
                 
         if(intInput < 0){
             System.out.println("You must not enter a negative value");
@@ -58,7 +51,5 @@ public class FeedPeopleView extends ViewBase{
        
         System.out.println("Update bushels in store");
         return true;
-    }       
-    
-    
+    }         
 }

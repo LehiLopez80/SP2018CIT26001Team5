@@ -211,6 +211,21 @@ public class TheCityOfAaron {
                 System.out.println(gce.getMessage());                
             }
             
+            
+             /* Lesson 11 - Alonso Bernaldo Individual Assignment
+            * Code added to prove the calls to control layer funtions that include 
+            * error handling which calls are not yet included in any view of the 
+            * game program.
+            */
+            
+            System.out.println("\nTests for the calculateBushelsToPlant function");
+            
+            try {
+                GameControl.calculateBushelsToPlant(-1);
+            } catch (GameControlException gce) {                
+                System.out.println(gce.getMessage());                
+            }            
+                 
                    
         } catch (Throwable te) {
             System.out.println("Error catched at main");

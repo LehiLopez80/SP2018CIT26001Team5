@@ -37,21 +37,24 @@ public class SellLandView extends ViewBase{
         try {
             intInput = Integer.parseInt(input);
         } catch (NumberFormatException nf) {
-            System.out.println("\nYou must enter a valid number");
+            ErrorView.display(this.getClass().getName(),
+                    "\nYou must enter a valid number");
             return false;
         }
                 
         if(intInput < 0){
-            System.out.println("You must not enter a negative value");
+            ErrorView.display(this.getClass().getName(),
+                    "\nYou must not enter a negative value");
             return false;
         }
             
         if(intInput > game.getAcresOwned()){
-            System.out.println("You don't own that many acres");
+            ErrorView.display(this.getClass().getName(),
+                    "\nYou don't own that many acres");
             return false;
         }
         
-        System.out.println("Update Acres owned and bushels in store");
+        this.console.println("\nUpdate Acres owned and bushels in store");
         return true;
     }
     

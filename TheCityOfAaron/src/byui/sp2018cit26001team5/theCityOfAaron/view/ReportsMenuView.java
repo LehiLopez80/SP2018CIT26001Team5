@@ -9,11 +9,9 @@ import byui.sp2018cit26001team5.theCityOfAaron.control.StorehouseControl;
 import byui.sp2018cit26001team5.theCityOfAaron.model.Game;
 import byui.sp2018cit26001team5.theCityOfAaron.model.InventoryItem;
 import byui.sp2018cit26001team5.theCityOfAaron.model.Storehouse;
-import java.util.Scanner;
 import thecityofaaron.TheCityOfAaron;
 
 /**
- *
  * @author Alonso Bernaldo
  */
  
@@ -65,7 +63,8 @@ public class ReportsMenuView extends ViewBase{
                return true;   
               
            default:
-               System.out.println("\nInvalid selection *** Try again");
+               ErrorView.display(this.getClass().getName(),
+                       "\nInvalid selection *** Try again");
                break;     
        }
        return false;
@@ -73,7 +72,7 @@ public class ReportsMenuView extends ViewBase{
      
      private void viewAnimalsInStorehouse() {
        
-        System.out.println("\nTools Report View"
+        this.console.println("\nTools Report View"
                     + "\n\nQuantity   Tool");
        
         Game game = TheCityOfAaron.getCurrentGame();
@@ -81,18 +80,18 @@ public class ReportsMenuView extends ViewBase{
         InventoryItem[] animalItems = storehouse.getAnimals();
         
         for (InventoryItem animalItem: animalItems) {
-            System.out.println("   " + animalItem.getQuantity() + "       "
+            this.console.println("   " + animalItem.getQuantity() + "       "
                     + animalItem.getName());
         }
         
         StorehouseControl storehouseControl = new StorehouseControl();
         int total = storehouseControl.totalAnimalItems(animalItems);
         
-        System.out.println("\nThe total quantity of animals is " + total);
+        this.console.println("\nThe total quantity of animals is " + total);
     }
 
     private void viewToolsInStorehouse() {
-        System.out.println("\nTools Report View"
+        this.console.println("\nTools Report View"
                     + "\n\nQuantity   Tool"); 
         
         Game game = TheCityOfAaron.getCurrentGame();
@@ -100,19 +99,19 @@ public class ReportsMenuView extends ViewBase{
         InventoryItem[] toolItems = storehouse.getTools();
         
         for (InventoryItem toolItem: toolItems) {
-            System.out.println("   " + toolItem.getQuantity() + "       "
+            this.console.println("   " + toolItem.getQuantity() + "       "
                     + toolItem.getName());
         }
         
         StorehouseControl storehouseControl = new StorehouseControl();
         int minVal = storehouseControl.minimumToolItems(toolItems);
         
-        System.out.println("\nThe minimum quantity value of tools is " + minVal);
+        this.console.println("\nThe minimum quantity value of tools is " + minVal);
     }
 
     private void viewProvisionsInStorehouse() { //sortProvitionItems
         
-        System.out.println("\nProvision Report View"
+        this.console.println("\nProvision Report View"
                     + "\n\nProvision Quantity");
        
         Game game = TheCityOfAaron.getCurrentGame();
@@ -120,29 +119,27 @@ public class ReportsMenuView extends ViewBase{
         InventoryItem[] provisionItems = storehouse.getProvisions();
         
         for (InventoryItem provisionItem: provisionItems) {
-            System.out.println(provisionItem.getName() + "      " 
+            this.console.println(provisionItem.getName() + "      " 
                     + provisionItem.getQuantity());
         }
         
         StorehouseControl storehouseControl = new StorehouseControl();
         InventoryItem[] orderedItems = storehouseControl.sortProvisionItems(provisionItems);
         
-        System.out.println("\nProvision Report View ordered by quantity"
+        this.console.println("\nProvision Report View ordered by quantity"
                     + "\n\nProvision Quantity");
         
         for (InventoryItem orderedItem: orderedItems) {
-            System.out.println(orderedItem.getName() + "      " 
+            this.console.println(orderedItem.getName() + "      " 
                     + orderedItem.getQuantity());
         }
     }
 
     private void viewAuthorsOfThisGame() {
-        System.out.println("Here you can check the authors of the game"); 
+        this.console.println("Here you can check the authors of the game"); 
     }
         
     private void returnMainMenu() {
-        System.out.println("Return to the game menu."); 
-    }
-     
-    
+        this.console.println("Return to the game menu."); 
+    }   
 }

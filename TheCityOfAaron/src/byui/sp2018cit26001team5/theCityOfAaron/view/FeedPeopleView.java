@@ -5,11 +5,9 @@
  */
 package byui.sp2018cit26001team5.theCityOfAaron.view;
 import byui.sp2018cit26001team5.theCityOfAaron.model.Game;
-import java.util.Scanner;
 import thecityofaaron.TheCityOfAaron;
 
 /**
- *
  * @author Alonso Bernaldo
  */
 public class FeedPeopleView extends ViewBase{
@@ -35,21 +33,24 @@ public class FeedPeopleView extends ViewBase{
         try {       
             intInput = Integer.parseInt(input);
         } catch (NumberFormatException nf) {
-            System.out.println("\nYou must enter a valid number");
+            ErrorView.display(this.getClass().getName(), 
+                    "\nYou must enter a valid number");
             return false;
         }
                 
         if(intInput < 0){
-            System.out.println("You must not enter a negative value");
+            ErrorView.display(this.getClass().getName(), 
+                    "You must not enter a negative value");
             return false;
         }
         
         if(intInput > game.getWheatInStorage()){
-            System.out.println("You don't have that many bushels to feed people");
+            ErrorView.display(this.getClass().getName(),
+                    "You don't have that many bushels to feed people");
             return false;
         }    
        
-        System.out.println("Update bushels in store");
+        this.console.println("Update bushels in store");
         return true;
     }         
 }

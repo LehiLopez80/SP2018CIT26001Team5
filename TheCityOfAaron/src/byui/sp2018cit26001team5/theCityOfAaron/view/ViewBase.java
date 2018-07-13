@@ -5,14 +5,18 @@
  */
 package byui.sp2018cit26001team5.theCityOfAaron.view;
 
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.PrintWriter;
+import thecityofaaron.TheCityOfAaron;
 
 /**
- *
  * @author Lehi Lopez
  */
 public abstract class ViewBase implements View {
 
+    protected final BufferedReader keyboard = TheCityOfAaron.getInFile();
+    protected final PrintWriter console = TheCityOfAaron.getOutFile();
+    
     public ViewBase() {
     }
     
@@ -39,20 +43,22 @@ public abstract class ViewBase implements View {
         boolean valid = false;  //initialize to not valid
         
         String menu = this.getMessage();
-        System.out.println(menu);
+        this.console.println(menu);
         
-        while (valid == false) { // loop while an invalid value is enter
-                        
-            Scanner keyboard = new Scanner(System.in); //get infile for keyboard
-                        
-            input = keyboard.nextLine();//getnext line typed on keyboard
-            input = input.trim(); //trim off leading and trailing blanks
-                                    
-            if (input.length() < 1 ){ //if value is blank
-                System.out.println("\nInvalid value: value cannot be blank");
-                continue;
+        try {
+            while (valid == false) { // loop while an invalid value is enter
+
+                input = this.keyboard.readLine();//getnext line typed on keyboard
+                input = input.trim(); //trim off leading and trailing blanks
+
+                if (input.length() < 1 ){ //if value is blank
+                    ErrorView.display(this.getClass().getName(), "\nInvalid value: value cannot be blank");
+                    continue;
+                }
+                break;            
             }
-            break;            
+        } catch (Exception e) {
+            ErrorView.display(this.getClass().getName(), "Error reading input: " + e.getMessage());
         }
         return input; //returns the value 
     }    

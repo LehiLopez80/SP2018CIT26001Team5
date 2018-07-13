@@ -4,9 +4,8 @@
  * and open the template in the editor.
  */
 package byui.sp2018cit26001team5.theCityOfAaron.view;
-import java.util.Scanner;
+
 /**
- *
  * @author Alonso Bernaldo
  */
 public class HelpMenuView extends ViewBase{
@@ -59,11 +58,12 @@ public class HelpMenuView extends ViewBase{
                break;
                
            case "B": //back to the main menu
-               System.out.println("Back to main menu");
+               this.console.println("Back to main menu");
                return true;
               
            default:
-               System.out.println("\nInvalid selection *** Try again");
+               ErrorView.display(this.getClass().getName(),
+                       "\nInvalid selection *** Try again");
                break;     
        }
        return false;
@@ -72,7 +72,7 @@ public class HelpMenuView extends ViewBase{
     private void goalOfGame() {
        /*System.out.println(
        "\n\n****************************************************"
-       + "\n* Welcome to City of Aron, you woke up in this     *"
+       + "\n* Welcome to City of Aaron, you woke up in this    *"
        + "\n* City but you can't remember anything but your    *"
        + "\n* name, now you need to find a way to live.        *"
        + "\n*                                                  *"
@@ -81,27 +81,26 @@ public class HelpMenuView extends ViewBase{
        + "\n*                                                  *"
        + "\n****************************************************"
        );*/
-       System.out.println("*** The goal of the game is to grow the city "
+       this.console.println("*** The goal of the game is to grow the city "
                + "avoiding people to die.");
     }
 
     private void city() {
-        System.out.println("*** The city of Aaron is located somewhere "
+        this.console.println("*** The city of Aaron is located somewhere "
                 + "in the Americas"); 
     }
 
     private void viewMap() {
-        System.out.println("*** Select the View Map options in the Game Menu."); 
+        this.console.println("*** Select the View Map options in the Game Menu."); 
     }
 
     private void anotherLocation() {
-        System.out.println("Enter the coordinates of the desired location in the"
+        this.console.println("Enter the coordinates of the desired location in the"
                 + " View Map page."); 
     }
 
     private void displayLists() {
-        System.out.println("Select the Reports Menu option from the "
+        this.console.println("Select the Reports Menu option from the "
                 + "Game Menu to display the lists."); 
-    }   
-    
+    }      
 }

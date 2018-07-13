@@ -7,14 +7,9 @@ package byui.sp2018cit26001team5.theCityOfAaron.view;
 
 import byui.sp2018cit26001team5.theCityOfAaron.control.GameControl;
 import byui.sp2018cit26001team5.theCityOfAaron.exceptions.GameControlException;
-import byui.sp2018cit26001team5.theCityOfAaron.model.Game;
 import byui.sp2018cit26001team5.theCityOfAaron.model.Player;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import thecityofaaron.TheCityOfAaron;
 
 /**
- *
  * @author Lehi Lopez
  */
 public class StartNewGameView extends ViewBase {
@@ -46,7 +41,7 @@ public class StartNewGameView extends ViewBase {
             //int returnValue =
             GameControl.createNewGame(player);
         } catch (GameControlException gce) {            
-            System.out.println(gce.getMessage()); 
+            ErrorView.display(this.getClass().getName(),gce.getMessage()); 
             //gce.printStackTrace();
             //return true;
         }
@@ -59,7 +54,7 @@ public class StartNewGameView extends ViewBase {
             //int returnValue =
             GameControl.createNewGame(player);
         } catch (GameControlException gce) {            
-            System.out.println(gce.getMessage()); 
+            ErrorView.display(this.getClass().getName(),gce.getMessage()); 
             //gce.printStackTrace();
             return true;
         }
@@ -68,10 +63,10 @@ public class StartNewGameView extends ViewBase {
         //    System.out.println("ERROR - Failed to create new game");
         //}        
         
-        System.out.println("\nWelcome to the game "+ player.getName() 
+        this.console.println("\nWelcome to the game "+ player.getName() 
                 + "\nWe hope you have a lot of fun");
         
-        System.out.println("\nThe year number (1)"
+        this.console.println("\nThe year number (1)"
                 + "\nHow many people startved (0)"
                 + "\nHow many people came to the city (5)"
                 + "\nThe current population (100)"

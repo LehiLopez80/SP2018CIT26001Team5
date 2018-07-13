@@ -12,7 +12,15 @@ import byui.sp2018cit26001team5.theCityOfAaron.model.Game;
 import byui.sp2018cit26001team5.theCityOfAaron.model.Map;
 import byui.sp2018cit26001team5.theCityOfAaron.model.Player;
 import byui.sp2018cit26001team5.theCityOfAaron.model.Storehouse;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInput;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import thecityofaaron.TheCityOfAaron;
+import static thecityofaaron.TheCityOfAaron.setCurrentGame;
 
 /**
  *
@@ -51,7 +59,47 @@ public class GameControl {
         TheCityOfAaron.setCurrentGame(game);         
         
         //return 1;
-    }    
+    }  
+    
+    public static void saveGame (Game game, String filePath) 
+            throws GameControlException, FileNotFoundException, IOException {
+        
+        if (game == null)
+             throw new GameControlException ("Error: game object is null.");
+        else if (filePath == null)
+             throw new GameControlException ("Error: filePath object is null.");
+        else if (filePath.length() < 1)
+             throw new GameControlException ("Error: Empty filePath value");
+//        else if (filePath == null)
+//             throw new GameControlException ("Error: Invalid file path or name entered.");
+        
+        try (FileOutputStream fileOutput = new FileOutputStream(filePath);
+                ObjectOutputStream objectOutput = new ObjectOutputStream (fileOutput)) {
+            objectOutput.writeObject(game);
+        } catch (IOException ex) {
+            throw new IOException ("\nError saving game to file.");
+        }        
+    }
+    
+    public static Game getGame(String filePath) throws GameControlException, ClassNotFoundException, IOException {
+        
+        Game game = new Game();
+        
+        if (filePath == null)
+             throw new GameControlException ("\nError: filePath object is null.");
+        else if (filePath.length() < 1)
+             throw new GameControlException ("\nError: Empty filePath value");
+        
+        try (FileInputStream fileInput = new FileInputStream(filePath);
+                ObjectInputStream objectInput = new ObjectInputStream (fileInput)) {
+            game = (Game) objectInput.readObject();
+            setCurrentGame(game);
+        } catch (IOException ex) {
+            throw new IOException ("\nError loading the game. File not found.");
+        }
+        
+        return game;
+    }
     
     // Team Assingment
     public static int calculatePopulation(int initialPopulation, int peopleStarved
@@ -59,21 +107,21 @@ public class GameControl {
                 
         // Validate there is not negative input.
         if (initialPopulation < 0 ) {
-            throw new GameControlException ("Error: Initial population is less than zero");
+            throw new GameControlException ("\nError: Initial population is less than zero");
             // return -1; 
         }
         else if (peopleStarved < 0 ) {
-            throw new GameControlException ("Error: People starved is less than zero");
+            throw new GameControlException ("\nError: People starved is less than zero");
             // return -2;
         }
         else if (peopleMovedToCity < 0) {
-            throw new GameControlException ("Error: People Moved To City is less than zero");
+            throw new GameControlException ("\nError: People Moved To City is less than zero");
             // return -3;
         }
         else 
             // Validate initial population is greater than people starved.
             if (peopleStarved > initialPopulation) {
-                throw new GameControlException ("Error: People starved is greater than Initial population");
+                throw new GameControlException ("\nError: People starved is greater than Initial population");
                 // return -4;
             }
             else {

@@ -5,6 +5,9 @@
  */
 package byui.sp2018cit26001team5.theCityOfAaron.view;
 
+import byui.sp2018cit26001team5.theCityOfAaron.control.GameControl;
+import byui.sp2018cit26001team5.theCityOfAaron.exceptions.GameControlException;
+import java.io.IOException;
 import java.util.Scanner;
 
 /**
@@ -19,25 +22,38 @@ public class RestartGameView extends ViewBase {
     @Override
     protected String getMessage() {
         String menu = "\n\nLoad a Saved Game View"
-                + "\n\nPage under construction"
-                + "\n\nEnter Q to quit the view: ";
+                + "\n\nEnter the file path or file name to load the game: ";
         
         return menu;
     }
     
     @Override
-    public boolean doAction(String input){
+    public boolean doAction(String filePath){
         
-        input = input.toUpperCase();
+        try {
+            GameControl.getGame(filePath);
+        } catch (ClassNotFoundException ex) {
+            this.console.println(ex.getMessage());
+            ErrorView.display(this.getClass().getName(),
+                    "\nNot able to load the game. Class Exeption. Please try again.");
+            return false;
+        } catch (GameControlException gce) {
+            this.console.println(gce.getMessage());
+            ErrorView.display(this.getClass().getName(),
+                    "\nNot able to load the game. Game Exeption. Please try again.");
+            return false;
+        } catch (IOException ex) {
+            this.console.println(ex.getMessage());
+            ErrorView.display(this.getClass().getName(),
+                    "\nNot able to load the game. IO Exeption. Please try again.");
+            return false;
+        }
         
-        switch (input) {           
-            case "Q": System.out.println("Return to previous main menu");
-                return true;
-            default: System.out.println("invalid menu item. Please enter a "
-                    + "valid value");
-                break;
-        }     
+        this.console.println("Game loaded successfully.");
         
-        return false;
+        GameMenuView gameMenuView = new GameMenuView ();        
+        gameMenuView.displayView();
+        
+        return true;
     }
 }

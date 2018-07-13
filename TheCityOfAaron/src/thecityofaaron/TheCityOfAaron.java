@@ -5,10 +5,13 @@
  */
 package thecityofaaron;
 
-import byui.sp2018cit26001team5.theCityOfAaron.control.GameControl;
 import byui.sp2018cit26001team5.theCityOfAaron.exceptions.GameControlException;
 import byui.sp2018cit26001team5.theCityOfAaron.model.Game;
 import byui.sp2018cit26001team5.theCityOfAaron.view.StartProgramView;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
 
 /**
  *
@@ -17,223 +20,45 @@ import byui.sp2018cit26001team5.theCityOfAaron.view.StartProgramView;
 public class TheCityOfAaron {
     
     private static Game currentGame = null;
-    //private static Player player = null;
+    
+    private static PrintWriter outFile = null;
+    private static BufferedReader inFile = null;
+    private static PrintWriter logFile = null;
 
     /**
      * @param args the command line arguments
+     * @throws byui.sp2018cit26001team5.theCityOfAaron.exceptions.GameControlException
      */
     public static void main(String[] args) throws GameControlException {
         
-        //Catch all unexpcted errors
-        try {
+        //Catch all unexpected errors
+        try {            
+            //open character stream files for end user input and output
+            TheCityOfAaron.inFile = 
+                    new BufferedReader(new InputStreamReader(System.in));
+            TheCityOfAaron.outFile = new PrintWriter(System.out, true);
+            logFile = new PrintWriter("logFile.txt");
+            
             StartProgramView startProgramView = new StartProgramView ();
-            startProgramView.displayView();
-        
-        
-            /* Lesson 11 - Team Assignment
-            * Code added to prove the calls to control layer funtions that include 
-            * error handling which calls are not yet included in any view of the 
-            * game program.
-            */
-
-            GameControl gameControl = new GameControl();
-            System.out.println("\nTests for the calculatePopulation function");
-
-            try {
-                GameControl.calculatePopulation(-1,2,1);
-            } catch (GameControlException gce) {                
-                System.out.println(gce.getMessage());                
-            }
-
-            try {
-                GameControl.calculatePopulation(1,-2,1);
-            } catch (GameControlException gce) {                
-                System.out.println(gce.getMessage());                
-            }
-
-            try {
-                GameControl.calculatePopulation(3,2,-1);
-            } catch (GameControlException gce) {                
-                System.out.println(gce.getMessage());                
-            }
-
-            try {
-                GameControl.calculatePopulation(1,2,1);
-            } catch (GameControlException gce) {                
-                System.out.println(gce.getMessage());                
-            }
-            
-            /* Lesson 11 - Lehi Lopez Individual Assignment
-            * Code added to prove the calls to control layer funtions that include 
-            * error handling which calls are not yet included in any view of the 
-            * game program.
-            */
-            
-            System.out.println("\nTests for the calculateOfferings function");
-            
-            try {
-                GameControl.calculateOfferings(-1, 10);
-            } catch (GameControlException gce) {                
-                System.out.println(gce.getMessage());                
-            }
-            
-            try {
-                GameControl.calculateOfferings(300, -1);
-            } catch (GameControlException gce) {                
-                System.out.println(gce.getMessage());                
-            }
-            
-            try {
-                GameControl.calculateOfferings(300, 101);
-            } catch (GameControlException gce) {                
-                System.out.println(gce.getMessage());                
-            }
-            
-            System.out.println("\nTests for the calculatePeopleMovedToCity function");
-            
-            try {
-                GameControl.calculatePeopleMovedToCity(-1, 5);
-            } catch (GameControlException gce) {                
-                System.out.println(gce.getMessage());                
-            }
-            
-            try {
-                GameControl.calculatePeopleMovedToCity(100, -1);
-            } catch (GameControlException gce) {                
-                System.out.println(gce.getMessage());                
-            }
-            
-            try {
-                GameControl.calculatePeopleMovedToCity(100, 6);
-            } catch (GameControlException gce) {                
-                System.out.println(gce.getMessage());                
-            }
-            
-            System.out.println("\nTests for the calculateCropYield function");
-            
-            try {
-                GameControl.calculateCropYield(-1, 5);
-            } catch (GameControlException gce) {                
-                System.out.println(gce.getMessage());                
-            }
-            
-            try {
-                GameControl.calculateCropYield(10, -1);
-            } catch (GameControlException gce) {                
-                System.out.println(gce.getMessage());                
-            }
-            
-            try {
-                GameControl.calculateCropYield(101, 6);
-            } catch (GameControlException gce) {                
-                System.out.println(gce.getMessage());                
-            }
-            
-            try {
-                GameControl.calculateCropYield(10, 13);
-            } catch (GameControlException gce) {                
-                System.out.println(gce.getMessage());                
-            }
-            
-            System.out.println("\nTests for the calculateAcresPrice function");
-            
-            try {
-                GameControl.calculateAcresPrice(-1);
-            } catch (GameControlException gce) {                
-                System.out.println(gce.getMessage());                
-            }
-            
-            try {
-                GameControl.calculateAcresPrice(12);
-            } catch (GameControlException gce) {                
-                System.out.println(gce.getMessage());                
-            }          
-        
-            /* Lesson 11 - Salvador Rubio Individual Assignment
-            * Code added to prove the calls to control layer funtions that include 
-            * error handling which calls are not yet included in any view of the 
-            * game program.
-            */
-            
-            System.out.println("\nTests for the calculateHarvest function");
-            
-            try {
-                GameControl.calculateHarvest(-1, 20);
-            } catch (GameControlException gce) {                
-                System.out.println(gce.getMessage());                
-            }
-            
-            try {
-                GameControl.calculateHarvest(50, -1);
-            } catch (GameControlException gce) {                
-                System.out.println(gce.getMessage());                
-            }
-            
-            
-            System.out.println("\nTests for the calculatePeopleStarved function");
-            
-            try {
-                GameControl.calculatePeopleStarved(-1, 20);
-            } catch (GameControlException gce) {                
-                System.out.println(gce.getMessage());                
-            }
-            
-            try {
-                GameControl.calculatePeopleStarved(50, -1);
-            } catch (GameControlException gce) {                
-                System.out.println(gce.getMessage());                
-            }
-            
-            
-            System.out.println("\nTests for the calculateBushelsEatenByRats function");
-            
-            try {
-                GameControl.calculateBushelsEatenByRats(-1, 20, 35, 80);
-            } catch (GameControlException gce) {                
-                System.out.println(gce.getMessage());                
-            }
-            
-            try {
-                GameControl.calculateBushelsEatenByRats(50, -1, 89, 25);
-            } catch (GameControlException gce) {                
-                System.out.println(gce.getMessage());                
-            }
-            
-            try {
-                GameControl.calculateBushelsEatenByRats(75, 11, -1, 110);
-            } catch (GameControlException gce) {                
-                System.out.println(gce.getMessage());                
-            }
-            
-            try {
-                GameControl.calculateBushelsEatenByRats(63, 87, 62, -1);
-            } catch (GameControlException gce) {                
-                System.out.println(gce.getMessage());                
-            }
-            
-            
-             /* Lesson 11 - Alonso Bernaldo Individual Assignment
-            * Code added to prove the calls to control layer funtions that include 
-            * error handling which calls are not yet included in any view of the 
-            * game program.
-            */
-            
-            System.out.println("\nTests for the calculateBushelsToPlant function");
-            
-            try {
-                GameControl.calculateBushelsToPlant(-1);
-            } catch (GameControlException gce) {                
-                System.out.println(gce.getMessage());                
-            }            
-                 
+            startProgramView.displayView();                        
                    
         } catch (Throwable te) {
             System.out.println("Error catched at main");
             System.out.println(te.getMessage());
             te.printStackTrace();            
-        } finally {
-             System.out.println("\nThe program will be closed");
-             System.out.close();
+        } finally {                
+            try {    
+                if (TheCityOfAaron.inFile != null)
+                    TheCityOfAaron.inFile.close();
+                if (TheCityOfAaron.outFile != null)
+                    TheCityOfAaron.outFile.close();
+                if (logFile != null)
+                    logFile.close();
+            } catch (IOException ex) {
+                System.out.println("\nThe input or output file did not close successfully");
+            }
+            System.out.println("\nThe program will be closed");
+            System.out.close();
         }      
     }
     
@@ -244,4 +69,28 @@ public class TheCityOfAaron {
     public static void setCurrentGame(Game currentGame) {
         TheCityOfAaron.currentGame = currentGame;
     }
+
+    public static PrintWriter getOutFile() {
+        return outFile;
+    }
+
+    public static void setOutFile(PrintWriter outFile) {
+        TheCityOfAaron.outFile = outFile;
+    }
+
+    public static BufferedReader getInFile() {
+        return inFile;
+    }
+
+    public static void setInFile(BufferedReader inFile) {
+        TheCityOfAaron.inFile = inFile;
+    }
+
+    public static PrintWriter getLogFile() {
+        return logFile;
+    }
+
+    public static void setLogFile(PrintWriter logfile) {
+        TheCityOfAaron.logFile = logfile;
+    }   
 }

@@ -45,16 +45,16 @@ public class ManageCropsMenuView extends ViewBase {
                 FeedPeopleView feedPeopleView = new FeedPeopleView();
                 feedPeopleView.displayView();
                 break;
-            case "P": System.out.println("Future call to Plant Crops view");
+            case "P": this.console.println("Future call to Plant Crops view");
                 break;
             case "T": 
                 PayOfferingsView payOfferingsView = new PayOfferingsView();
                 payOfferingsView.displayView();
                 break;
-            case "R": System.out.println("Return to the Game Menu");
+            case "R": this.console.println("Return to the Game Menu");
                 return true;
-            default: System.out.println("invalid menu item. Please enter a "
-                    + "valid value");
+            default: ErrorView.display(this.getClass().getName(),
+                    "invalid menu item. Please enter a valid value");
                 break;
         }       
         

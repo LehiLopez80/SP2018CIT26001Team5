@@ -11,7 +11,6 @@ import byui.sp2018cit26001team5.theCityOfAaron.model.Map;
 import thecityofaaron.TheCityOfAaron;
 
 /**
- *
  * @author Salvador Rubio
  */
 public class GameMenuView extends ViewBase{
@@ -70,24 +69,25 @@ public class GameMenuView extends ViewBase{
                 break;
                
             case "7": //Return to the main menu
-                System.out.println("Return to the main menu."); 
+                this.console.println("Return to the main menu."); 
                 return true;   
               
             default:
-                System.out.println("\nInvalid selection *** Try again");
+                ErrorView.display(this.getClass().getName(),
+                        "\nInvalid selection *** Try again");
                 break;     
         }
         return false;
     }
       
     private void displayMap() {
-        System.out.println("\nThe City of Aaron Map");
+        this.console.println("\nThe City of Aaron Map");
         
         Game game = TheCityOfAaron.getCurrentGame();
         Map map = game.getMap();
         Location[][] locations = map.getLocations();
         
-        System.out.println("\n     0      1      2       3        4"
+        this.console.println("\n     0      1      2       3        4"
                 + "\n  ┌───┬───┬────┬────┬────┐"
                 + "\n  │     │     │      │       │      │"
                 + "\n 0│ "+locations[0][0].getMapSymbol()
@@ -134,19 +134,18 @@ public class GameMenuView extends ViewBase{
                 +"\n AR - A river"                
                 +"\n BL - The border of the Lamanites land"                
                 +"\n TT - The temple");
-
     }
 
     private void moveNewLocation() {
-        System.out.println("*** The new location is..."); 
+        this.console.println("*** The new location is..."); 
     }
 
     private void liveTheYear() {
-        System.out.println("Chose this option to live the year."); 
+        this.console.println("Chose this option to live the year."); 
     }
 
     private void saveGame() {
-        System.out.println("Here you can save the game."); 
-    }
-    
+        SaveGameView saveGameView = new SaveGameView();
+        saveGameView.displayView();
+    }    
 }

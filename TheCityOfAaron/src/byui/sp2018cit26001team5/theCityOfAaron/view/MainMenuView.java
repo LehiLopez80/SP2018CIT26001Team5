@@ -37,16 +37,16 @@ public class MainMenuView extends ViewBase{
                 break;
             case "R": 
                 RestartGameView restartGameView = new RestartGameView ();
-                restartGameView.displayView(); //pending extend
+                restartGameView.displayView();
                 break;
             case "H": 
                 HelpMenuView helpMenuView = new HelpMenuView();
-                helpMenuView.displayView(); //pending extend
+                helpMenuView.displayView(); 
                 break;
-            case "E": System.out.println("You have exit the program.");
+            case "E": this.console.println("You have exit the program.");
                 return true;
-            default: System.out.println("invalid menu item. Please enter a "
-                    + "valid value");
+            default: ErrorView.display(this.getClass().getName(),
+                    "invalid menu item. Please enter a valid value");
                 break;
         }     
         

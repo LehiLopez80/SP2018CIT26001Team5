@@ -5,12 +5,19 @@
  */
 package byui.sp2018cit26001team5.theCityOfAaron.view;
 
+import byui.sp2018cit26001team5.theCityOfAaron.control.GameControl;
 import byui.sp2018cit26001team5.theCityOfAaron.control.StorehouseControl;
+import byui.sp2018cit26001team5.theCityOfAaron.exceptions.GameControlException;
 import byui.sp2018cit26001team5.theCityOfAaron.model.Animal;
 import byui.sp2018cit26001team5.theCityOfAaron.model.Game;
 import byui.sp2018cit26001team5.theCityOfAaron.model.InventoryItem;
 import byui.sp2018cit26001team5.theCityOfAaron.model.Provision;
 import byui.sp2018cit26001team5.theCityOfAaron.model.Storehouse;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import thecityofaaron.TheCityOfAaron;
 
 /**
@@ -32,7 +39,10 @@ public class ReportsMenuView extends ViewBase{
                 + "\n2 - View the tools in the storehouse"
                 + "\n3 - View the provisions in the storehouse"
                 + "\n4 - View the authors of this game"
-                + "\n5 - Return to the game menu"
+                
+                
+                + "\n7 - Print the provisions report"
+                + "\n8 - Return to the game menu"
                 + "\n----------------------------------"
                 + "\n\nEnter an option: ";
         
@@ -41,38 +51,53 @@ public class ReportsMenuView extends ViewBase{
     
     @Override
     public boolean doAction(String menuOption) {
-       menuOption = menuOption.toUpperCase(); //converts to upper case
+        menuOption = menuOption.toUpperCase(); //converts to upper case
        
-       switch (menuOption){
-           case "1": // view the map
-               this.viewAnimalsInStorehouse();
-               break;
+        switch (menuOption){
+            case "1": 
+                this.viewAnimalsInStorehouse();
+                break;
                
-           case "2": //Move to a new location
-               this.viewToolsInStorehouse();
-               break;
+            case "2": 
+                this.viewToolsInStorehouse();
+                break;
                
-           case "3": // Manage the crops
-               this.viewProvisionsInStorehouse();
-               break;
+            case "3": 
+                this.viewProvisionsInStorehouse();
+                break;
             
-           case "4": //Live the year
-               this.viewAuthorsOfThisGame();
-               break;               
+            case "4": 
+                this.viewAuthorsOfThisGame();
+                break;               
                           
-            case "5": //Return to the main menu
+            
+            
+            
+            case "7": 
+        {
+            try {
+                this.printProvisionsReport();
+            } catch (FileNotFoundException ex) {
+                this.console.println("\nFileNotFoundException on Print Provision Report");
+                ErrorView.display(this.getClass().getName(),
+                    "\nFileNotFoundException on Print Provision Report");
+            }
+        }
+                break;
+            
+            case "8": //Return to the main menu
                this.returnMainMenu();
-               return true;   
-              
-           default:
-               ErrorView.display(this.getClass().getName(),
-                       "\nInvalid selection *** Try again");
-               break;     
-       }
-       return false;
+               return true;                 
+             
+            default:
+                ErrorView.display(this.getClass().getName(),
+                        "\nInvalid selection *** Try again");
+                break;     
+        }
+        return false;
         }
      
-     private void viewAnimalsInStorehouse() {
+    private void viewAnimalsInStorehouse() {
        
         this.console.println("\nTools Report View"
                     + "\n\nQuantity   Tool");
@@ -135,6 +160,65 @@ public class ReportsMenuView extends ViewBase{
             this.console.println(orderedProvision.getName() + "      " 
                     + orderedProvision.getQuantity());
         }
+    }
+    
+    private void printProvisionsReport() throws FileNotFoundException {
+        this.console.println("\n\nEnter the file path or name to print the report: ");
+        
+        String filePath = ""; //value to be returned
+        boolean valid = false;  //initialize to not valid
+               
+        try {
+            while (valid == false) { // loop while an invalid value is enter
+
+                filePath = this.keyboard.readLine();//getnext line typed on keyboard
+                filePath = filePath.trim(); //trim off leading and trailing blanks
+
+                if (filePath.length() < 1 ){ //if value is blank
+                    ErrorView.display(this.getClass().getName(), "\nInvalid value: value cannot be blank");
+                    continue;
+                }
+                break;            
+            }
+        } catch (IOException e) {
+            ErrorView.display(this.getClass().getName(), "Error reading input: " + e.getMessage());
+        }
+        
+        Game game = TheCityOfAaron.getCurrentGame();
+        Storehouse storehouse = game.getStorehouse();
+        Provision[] provisions = storehouse.getProvisions();
+        
+        try {
+            this.printProvisionsReportFile(provisions, filePath);
+        } catch (FileNotFoundException fex) {
+            this.console.println("\nFileNotFoundException on Print Provision Report");
+            ErrorView.display(this.getClass().getName(),
+                    "\nFileNotFoundException on Print Provision Report");
+        } 
+        
+        this.console.println("\nThe report was successfully printed on the following location: "
+                + filePath);               
+    }
+    
+    private void printProvisionsReportFile(Provision[] provisions, String filePath) 
+            throws FileNotFoundException {
+        
+        try (PrintWriter out = new PrintWriter(filePath)) {
+            
+            out.println("\n\n            Provision Report");
+            out.printf("%n%-10s%10s%10s", "Name", "Quantity", "Condition");
+            out.printf("%n%-10s%10s%10s", "----", "--------", "---------");
+            
+            for (Provision provision: provisions) {
+                out.printf("%n%-10s%7d%10s", provision.getName()
+                                           , provision.getQuantity()
+                                           , provision.getCondition());
+            }        
+        } catch (FileNotFoundException fex) {
+            this.console.println("\nFileNotFoundException on Print Provision Report");
+            ErrorView.display(this.getClass().getName(),
+                    "\nFileNotFoundException on Print Provision Report");
+        }       
     }
 
     private void viewAuthorsOfThisGame() {

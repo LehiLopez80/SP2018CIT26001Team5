@@ -7,7 +7,6 @@ package byui.sp2018cit26001team5.theCityOfAaron.model;
 import java.io.Serializable;
 
 /**
- *
  * @author Lehi Lopez
  */
 public enum Author implements Serializable{
@@ -35,7 +34,5 @@ public enum Author implements Serializable{
     @Override
     public String toString() {
         return "Author{" + "title=" + title + ", name=" + name + '}';
-    }
-   
-    
+    }   
 }

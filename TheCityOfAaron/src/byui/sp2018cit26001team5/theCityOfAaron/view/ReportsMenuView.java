@@ -70,29 +70,29 @@ public class ReportsMenuView extends ViewBase{
                 this.viewAuthorsOfThisGame();
                 break;               
                           
-                case "5": 
-        {
-            try {
-                this.printAnimalsReport();
-            } catch (FileNotFoundException ex) {
-                this.console.println("\nFileNotFoundException on Print Animal Report");
-                ErrorView.display(this.getClass().getName(),
-                    "\nFileNotFoundException on Print Animal Report");
-            }
-        }
-                break;
+ //               case "5": 
+ //       {
+  //          try {
+ //               this.printAnimalsReport();
+ //           } catch (FileNotFoundException ex) {
+//                this.console.println("\nFileNotFoundException on Print Animal Report");
+//                ErrorView.display(this.getClass().getName(),
+//                    "\nFileNotFoundException on Print Animal Report");
+//            }
+//        }
+ //               break;
             
             
             case "7": 
-        {
-            try {
-                this.printProvisionsReport();
-            } catch (FileNotFoundException ex) {
-                //this.console.println("\nFileNotFoundException on Print Provision Report");
-                ErrorView.display(this.getClass().getName(),
-                    "\nFileNotFoundException on Print Provision Report");
+            {
+                try {
+                    this.printProvisionsReport();
+                } catch (FileNotFoundException ex) {
+                    //this.console.println("\nFileNotFoundException on Print Provision Report");
+                    ErrorView.display(this.getClass().getName(),
+                        "\nFileNotFoundException on Print Provision Report");
+                }
             }
-        }
                 break;
             
             case "8": //Return to the main menu

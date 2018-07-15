@@ -29,7 +29,7 @@ public class StartNewGameView extends ViewBase {
         
         GameControl gameControl = new GameControl();
         Player player = new Player();
-        //player.setName (name); 
+        player.setName (name); 
                
         /* Lesson 11 - Team Assignment
         * Code added to show on screen the error message displayed when 

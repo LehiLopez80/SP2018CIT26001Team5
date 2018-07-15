@@ -1,6 +1,7 @@
 
 
-byui.sp2018cit26001team5.theCityOfAaron.view.StartNewGameView - Error: Missing players' name
-
 byui.sp2018cit26001team5.theCityOfAaron.view.ReportsMenuView - 
 Invalid value: value cannot be blank
+
+byui.sp2018cit26001team5.theCityOfAaron.view.ReportsMenuView - 
+Invalid file path or name provided. Please try again.

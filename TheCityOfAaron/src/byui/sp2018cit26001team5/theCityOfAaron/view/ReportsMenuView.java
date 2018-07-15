@@ -70,17 +70,16 @@ public class ReportsMenuView extends ViewBase{
                 this.viewAuthorsOfThisGame();
                 break;               
                           
- //               case "5": 
- //       {
-  //          try {
- //               this.printAnimalsReport();
- //           } catch (FileNotFoundException ex) {
-//                this.console.println("\nFileNotFoundException on Print Animal Report");
-//                ErrorView.display(this.getClass().getName(),
-//                    "\nFileNotFoundException on Print Animal Report");
-//            }
-//        }
- //               break;
+                case "5": 
+        {
+           try {
+                this.printAnimalsReport();
+            } catch (FileNotFoundException ex) {                
+                ErrorView.display(this.getClass().getName(),
+                    "\nFileNotFoundException on Print Animal Report");
+            }
+        }
+                break;
             
             
             case "7": 
@@ -228,6 +227,68 @@ public class ReportsMenuView extends ViewBase{
             }        
         } catch (FileNotFoundException fex) {
             //this.console.println("\nFileNotFoundException on Print Provision Report");
+            throw new FileNotFoundException("\nInvalid file path or name provided. Please try again.");
+            //ErrorView.display(this.getClass().getName(),
+            //        "\nInvalid file path or name provided. Please try again.");
+        }       
+    }
+    
+    private void printAnimalsReport() throws FileNotFoundException {
+        this.console.println("\n\nEnter the file path or name to print the report: ");
+        
+        String filePath = ""; //value to be returned
+        boolean valid = false;  //initialize to not valid
+        
+        Game game = TheCityOfAaron.getCurrentGame();
+        Storehouse storehouse = game.getStorehouse();
+        Animal[] animals = storehouse.getAnimals();        
+               
+        try {
+            while (valid == false) { // loop while an invalid value is enter
+
+                filePath = this.keyboard.readLine();//getnext line typed on keyboard
+                filePath = filePath.trim(); //trim off leading and trailing blanks
+
+                if (filePath.length() < 1 ){ //if value is blank
+                    ErrorView.display(this.getClass().getName(), "\nInvalid value: value cannot be blank");
+                    continue;
+                }
+                
+                try {
+                    this.printAnimalsReportFile(animals, filePath);
+                } catch (FileNotFoundException fex) {
+                    //this.console.println("\nFileNotFoundException on Print Animal Report");
+                    ErrorView.display(this.getClass().getName(), fex.getMessage());
+                            //"\nInvalid file path or name provided. Please try again");
+                    continue;
+                } 
+                
+                break;            
+            }
+        } catch (IOException e) {
+            ErrorView.display(this.getClass().getName(), "Error reading input: " + e.getMessage());
+        }       
+        
+        this.console.println("\nThe report was successfully printed on the following location: "
+                + filePath);               
+    }
+    
+    private void printAnimalsReportFile(Animal[] animals, String filePath) 
+            throws FileNotFoundException {
+        
+        try (PrintWriter out = new PrintWriter(filePath)) {
+            
+            out.println("\n\n            Animals Report");
+            out.printf("%n%-10s%10s%10s", "Name", "Quantity", "Condition");
+            out.printf("%n%-10s%10s%10s", "----", "--------", "---------");
+            
+            for (Animal animal: animals) {
+                out.printf("%n%-10s%7d%10s", animal.getName()
+                                           , animal.getQuantity()
+                                           , animal.getCondition());
+            }        
+        } catch (FileNotFoundException fex) {
+            //this.console.println("\nFileNotFoundException on Print Animal Report");
             throw new FileNotFoundException("\nInvalid file path or name provided. Please try again.");
             //ErrorView.display(this.getClass().getName(),
             //        "\nInvalid file path or name provided. Please try again.");

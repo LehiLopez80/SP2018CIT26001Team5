@@ -40,7 +40,7 @@ public class ReportsMenuView extends ViewBase{
                 + "\n3 - View the provisions in the storehouse"
                 + "\n4 - View the authors of this game"
                 + "\n5 - Print the animals report"
-                
+                + "\n6 - Print the Tools Report"
                 + "\n7 - Print the provisions report"
                 + "\n8 - Return to the game menu"
                 + "\n----------------------------------"
@@ -70,17 +70,27 @@ public class ReportsMenuView extends ViewBase{
                 this.viewAuthorsOfThisGame();
                 break;               
                           
-                case "5": 
-        {
-           try {
-                this.printAnimalsReport();
-            } catch (FileNotFoundException ex) {                
-                ErrorView.display(this.getClass().getName(),
-                    "\nFileNotFoundException on Print Animal Report");
+            case "5": 
+            {
+               try {
+                    this.printAnimalsReport();
+                } catch (FileNotFoundException ex) {                
+                    ErrorView.display(this.getClass().getName(),
+                        "\nFileNotFoundException on Print Animal Report");
+                }
             }
-        }
                 break;
             
+            case "6": 
+            {
+               try {
+                    this.printToolsReport();
+                } catch (FileNotFoundException ex) {                
+                    ErrorView.display(this.getClass().getName(),
+                        "\nFileNotFoundException on Print Tool Report");
+                }
+            }
+                break;    
             
             case "7": 
             {
@@ -295,6 +305,65 @@ public class ReportsMenuView extends ViewBase{
         }       
     }
 
+     private void printToolsReport() throws FileNotFoundException {
+        this.console.println("\n\nEnter the file path or name to print the report: ");
+        
+        String filePath = ""; //value to be returned
+        boolean valid = false;  //initialize to not valid
+        
+        Game game = TheCityOfAaron.getCurrentGame();
+        Storehouse storehouse = game.getStorehouse();
+        InventoryItem[] tools = storehouse.getTools();        
+               
+        try {
+            while (valid == false) { // loop while an invalid value is enter
+
+                filePath = this.keyboard.readLine();//getnext line typed on keyboard
+                filePath = filePath.trim(); //trim off leading and trailing blanks
+
+                if (filePath.length() < 1 ){ //if value is blank
+                    ErrorView.display(this.getClass().getName(), "\nInvalid value: value cannot be blank");
+                    continue;
+                }
+                
+                try {
+                    this.printToolsReportFile(tools, filePath);
+                } catch (FileNotFoundException fex) {
+                    //this.console.println("\nFileNotFoundException on Print Animal Report");
+                    ErrorView.display(this.getClass().getName(), fex.getMessage());
+                            //"\nInvalid file path or name provided. Please try again");
+                    continue;
+                } 
+                
+                break;            
+            }
+        } catch (IOException e) {
+            ErrorView.display(this.getClass().getName(), "Error reading input: " + e.getMessage());
+        }       
+        
+        this.console.println("\nThe report was successfully printed on the following location: "
+                + filePath);               
+    }
+    
+    private void printToolsReportFile(InventoryItem[] tools, String filePath) 
+            throws FileNotFoundException {
+        
+        try (PrintWriter out = new PrintWriter(filePath)) {
+            
+            out.println("\n\n            Tools Report");
+            out.printf("%n%-10s%10s%10s", "Name", "Quantity", "Condition");
+            out.printf("%n%-10s%10s%10s", "----", "--------", "---------");
+            
+            for (InventoryItem tool: tools) {
+                out.printf("%n%-10s%7d%10s", tool.getName()
+                                           , tool.getQuantity()
+                                           , tool.getCondition());
+            }        
+        } catch (FileNotFoundException fex) {
+            throw new FileNotFoundException("\nInvalid file path or name provided. Please try again.");
+        }       
+    }
+    
     private void viewAuthorsOfThisGame() {
         this.console.println("Here you can check the authors of the game"); 
     }

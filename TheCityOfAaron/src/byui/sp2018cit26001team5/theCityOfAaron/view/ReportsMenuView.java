@@ -39,7 +39,7 @@ public class ReportsMenuView extends ViewBase{
                 + "\n2 - View the tools in the storehouse"
                 + "\n3 - View the provisions in the storehouse"
                 + "\n4 - View the authors of this game"
-                
+                + "\n5 - Print the animals report"
                 
                 + "\n7 - Print the provisions report"
                 + "\n8 - Return to the game menu"
@@ -70,7 +70,17 @@ public class ReportsMenuView extends ViewBase{
                 this.viewAuthorsOfThisGame();
                 break;               
                           
-            
+                case "5": 
+        {
+            try {
+                this.printAnimalsReport();
+            } catch (FileNotFoundException ex) {
+                this.console.println("\nFileNotFoundException on Print Animal Report");
+                ErrorView.display(this.getClass().getName(),
+                    "\nFileNotFoundException on Print Animal Report");
+            }
+        }
+                break;
             
             
             case "7": 

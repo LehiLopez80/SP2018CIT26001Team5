@@ -78,7 +78,7 @@ public class ReportsMenuView extends ViewBase{
             try {
                 this.printProvisionsReport();
             } catch (FileNotFoundException ex) {
-                this.console.println("\nFileNotFoundException on Print Provision Report");
+                //this.console.println("\nFileNotFoundException on Print Provision Report");
                 ErrorView.display(this.getClass().getName(),
                     "\nFileNotFoundException on Print Provision Report");
             }
@@ -167,6 +167,10 @@ public class ReportsMenuView extends ViewBase{
         
         String filePath = ""; //value to be returned
         boolean valid = false;  //initialize to not valid
+        
+        Game game = TheCityOfAaron.getCurrentGame();
+        Storehouse storehouse = game.getStorehouse();
+        Provision[] provisions = storehouse.getProvisions();        
                
         try {
             while (valid == false) { // loop while an invalid value is enter
@@ -178,23 +182,21 @@ public class ReportsMenuView extends ViewBase{
                     ErrorView.display(this.getClass().getName(), "\nInvalid value: value cannot be blank");
                     continue;
                 }
+                
+                try {
+                    this.printProvisionsReportFile(provisions, filePath);
+                } catch (FileNotFoundException fex) {
+                    //this.console.println("\nFileNotFoundException on Print Provision Report");
+                    ErrorView.display(this.getClass().getName(), fex.getMessage());
+                            //"\nInvalid file path or name provided. Please try again");
+                    continue;
+                } 
+                
                 break;            
             }
         } catch (IOException e) {
             ErrorView.display(this.getClass().getName(), "Error reading input: " + e.getMessage());
-        }
-        
-        Game game = TheCityOfAaron.getCurrentGame();
-        Storehouse storehouse = game.getStorehouse();
-        Provision[] provisions = storehouse.getProvisions();
-        
-        try {
-            this.printProvisionsReportFile(provisions, filePath);
-        } catch (FileNotFoundException fex) {
-            this.console.println("\nFileNotFoundException on Print Provision Report");
-            ErrorView.display(this.getClass().getName(),
-                    "\nFileNotFoundException on Print Provision Report");
-        } 
+        }       
         
         this.console.println("\nThe report was successfully printed on the following location: "
                 + filePath);               
@@ -215,9 +217,10 @@ public class ReportsMenuView extends ViewBase{
                                            , provision.getCondition());
             }        
         } catch (FileNotFoundException fex) {
-            this.console.println("\nFileNotFoundException on Print Provision Report");
-            ErrorView.display(this.getClass().getName(),
-                    "\nFileNotFoundException on Print Provision Report");
+            //this.console.println("\nFileNotFoundException on Print Provision Report");
+            throw new FileNotFoundException("\nInvalid file path or name provided. Please try again.");
+            //ErrorView.display(this.getClass().getName(),
+            //        "\nInvalid file path or name provided. Please try again.");
         }       
     }
 

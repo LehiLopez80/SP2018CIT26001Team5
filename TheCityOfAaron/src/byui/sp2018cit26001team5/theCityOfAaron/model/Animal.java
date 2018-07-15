@@ -12,22 +12,19 @@ import java.util.Objects;
  *
  * @author Salvador Rubio
  */
-public class Animal implements Serializable{
+public class Animal extends InventoryItem implements Serializable {
     
-    //class instance variables
-    
-    private String name;
     private int age;
 
     public Animal() {
     }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
+    
+    public Animal (ItemType itemType, int quantity, Condition condition, String name, int age) {
+        this.itemType = itemType;
+        this.quantity = quantity;
+        this.condition = condition;
         this.name = name;
+        this.age = age;
     }
 
     public int getAge() {
@@ -40,14 +37,13 @@ public class Animal implements Serializable{
 
     @Override
     public String toString() {
-        return "Animal{" + "name=" + name + ", age=" + age + '}';
+        return "Animal{" + "age=" + age + '}';
     }
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 89 * hash + Objects.hashCode(this.name);
-        hash = 89 * hash + this.age;
+        int hash = 3;
+        hash = 41 * hash + this.age;
         return hash;
     }
 
@@ -66,12 +62,6 @@ public class Animal implements Serializable{
         if (this.age != other.age) {
             return false;
         }
-        if (!Objects.equals(this.name, other.name)) {
-            return false;
-        }
         return true;
-    }
-    
-    
-    
+    }      
 }

@@ -12,22 +12,19 @@ import java.util.Objects;
  *
  * @author Salvador Rubio
  */
-public class Provision implements Serializable{
-    
-     //class instance variables
-    
-    private String name;
+public class Provision extends InventoryItem implements Serializable{
+       
     private boolean perishable;
 
     public Provision() {
     }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
+    
+    public Provision (ItemType itemType, int quantity, Condition condition, String name, boolean perishable) {
+        this.itemType = itemType;
+        this.quantity = quantity;
+        this.condition = condition;
         this.name = name;
+        this.perishable = perishable;
     }
 
     public boolean isPerishable() {
@@ -40,14 +37,13 @@ public class Provision implements Serializable{
 
     @Override
     public String toString() {
-        return "Provision{" + "name=" + name + ", perishable=" + perishable + '}';
+        return "Provision{" + "perishable=" + perishable + '}';
     }
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 71 * hash + Objects.hashCode(this.name);
-        hash = 71 * hash + (this.perishable ? 1 : 0);
+        int hash = 3;
+        hash = 29 * hash + (this.perishable ? 1 : 0);
         return hash;
     }
 
@@ -66,11 +62,6 @@ public class Provision implements Serializable{
         if (this.perishable != other.perishable) {
             return false;
         }
-        if (!Objects.equals(this.name, other.name)) {
-            return false;
-        }
         return true;
-    }
-    
-    
+    }   
 }

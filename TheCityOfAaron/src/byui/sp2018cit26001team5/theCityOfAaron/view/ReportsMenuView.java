@@ -6,8 +6,10 @@
 package byui.sp2018cit26001team5.theCityOfAaron.view;
 
 import byui.sp2018cit26001team5.theCityOfAaron.control.StorehouseControl;
+import byui.sp2018cit26001team5.theCityOfAaron.model.Animal;
 import byui.sp2018cit26001team5.theCityOfAaron.model.Game;
 import byui.sp2018cit26001team5.theCityOfAaron.model.InventoryItem;
+import byui.sp2018cit26001team5.theCityOfAaron.model.Provision;
 import byui.sp2018cit26001team5.theCityOfAaron.model.Storehouse;
 import thecityofaaron.TheCityOfAaron;
 
@@ -77,15 +79,15 @@ public class ReportsMenuView extends ViewBase{
        
         Game game = TheCityOfAaron.getCurrentGame();
         Storehouse storehouse = game.getStorehouse();
-        InventoryItem[] animalItems = storehouse.getAnimals();
+        Animal[] animals = storehouse.getAnimals();
         
-        for (InventoryItem animalItem: animalItems) {
-            this.console.println("   " + animalItem.getQuantity() + "       "
-                    + animalItem.getName());
+        for (Animal animal: animals) {
+            this.console.println("   " + animal.getQuantity() + "       "
+                    + animal.getName());
         }
         
-        StorehouseControl storehouseControl = new StorehouseControl();
-        int total = storehouseControl.totalAnimalItems(animalItems);
+        //StorehouseControl storehouseControl = new StorehouseControl();
+        int total = StorehouseControl.totalAnimals(animals);
         
         this.console.println("\nThe total quantity of animals is " + total);
     }
@@ -103,8 +105,8 @@ public class ReportsMenuView extends ViewBase{
                     + toolItem.getName());
         }
         
-        StorehouseControl storehouseControl = new StorehouseControl();
-        int minVal = storehouseControl.minimumToolItems(toolItems);
+        //StorehouseControl storehouseControl = new StorehouseControl();
+        int minVal = StorehouseControl.minimumToolItems(toolItems);
         
         this.console.println("\nThe minimum quantity value of tools is " + minVal);
     }
@@ -116,22 +118,22 @@ public class ReportsMenuView extends ViewBase{
        
         Game game = TheCityOfAaron.getCurrentGame();
         Storehouse storehouse = game.getStorehouse();
-        InventoryItem[] provisionItems = storehouse.getProvisions();
+        Provision[] provisions = storehouse.getProvisions();
         
-        for (InventoryItem provisionItem: provisionItems) {
-            this.console.println(provisionItem.getName() + "      " 
-                    + provisionItem.getQuantity());
+        for (Provision provision: provisions) {
+            this.console.println(provision.getName() + "      " 
+                    + provision.getQuantity());
         }
         
-        StorehouseControl storehouseControl = new StorehouseControl();
-        InventoryItem[] orderedItems = storehouseControl.sortProvisionItems(provisionItems);
+        //StorehouseControl storehouseControl = new StorehouseControl();
+        Provision[] orderedProvisions = StorehouseControl.sortProvisions(provisions);
         
         this.console.println("\nProvision Report View ordered by quantity"
                     + "\n\nProvision Quantity");
         
-        for (InventoryItem orderedItem: orderedItems) {
-            this.console.println(orderedItem.getName() + "      " 
-                    + orderedItem.getQuantity());
+        for (Provision orderedProvision: orderedProvisions) {
+            this.console.println(orderedProvision.getName() + "      " 
+                    + orderedProvision.getQuantity());
         }
     }
 

@@ -5,10 +5,12 @@
  */
 package byui.sp2018cit26001team5.theCityOfAaron.control;
 
+import byui.sp2018cit26001team5.theCityOfAaron.model.Animal;
 import byui.sp2018cit26001team5.theCityOfAaron.model.Author;
 import byui.sp2018cit26001team5.theCityOfAaron.model.Condition;
 import byui.sp2018cit26001team5.theCityOfAaron.model.InventoryItem;
 import byui.sp2018cit26001team5.theCityOfAaron.model.ItemType;
+import byui.sp2018cit26001team5.theCityOfAaron.model.Provision;
 import byui.sp2018cit26001team5.theCityOfAaron.model.Storehouse;
 
 /**
@@ -25,10 +27,9 @@ public class StorehouseControl {
         Storehouse storehouse = new Storehouse();
         
         Author[] authors = createAuthors();
-        
-        InventoryItem[] animalItems = createAnimalItems();
+        Animal[] animalItems = createAnimals();
         InventoryItem[] toolItems = createToolItems();
-        InventoryItem[] provitionItems = createProvisionItems();
+        Provision[] provitionItems = createProvisions();
         
         storehouse.setAnimals(animalItems);
         storehouse.setTools(toolItems);
@@ -48,16 +49,16 @@ public class StorehouseControl {
         return authors;
     }
     
-    public static InventoryItem[] createAnimalItems() {
+    public static Animal[] createAnimals() {
         
-        InventoryItem[] animalItems = new InventoryItem[4];
+        Animal[] animals = new Animal[4];
         
-        animalItems[0] = new InventoryItem(ItemType.Animal, 15, Condition.Good, "Cow");
-        animalItems[1] = new InventoryItem(ItemType.Animal, 20, Condition.Good, "Pig");
-        animalItems[2] = new InventoryItem(ItemType.Animal, 25, Condition.Good, "Chicken");
-        animalItems[3] = new InventoryItem(ItemType.Animal, 10, Condition.Good, "Horse");
+        animals[0] = new Animal(ItemType.Animal, 15, Condition.Good, "Cow", 7);
+        animals[1] = new Animal(ItemType.Animal, 20, Condition.Good, "Pig", 5);
+        animals[2] = new Animal(ItemType.Animal, 25, Condition.Good, "Chicken", 2);
+        animals[3] = new Animal(ItemType.Animal, 10, Condition.Good, "Horse", 9);
         
-        return animalItems;
+        return animals;
     }
     
     public static InventoryItem[] createToolItems() {
@@ -72,16 +73,16 @@ public class StorehouseControl {
         return toolItems;
     }    
     
-    public static InventoryItem[] createProvisionItems() {
+    public static Provision[] createProvisions() {
         
-        InventoryItem[] provitionItems = new InventoryItem[4];
+        Provision[] provisions = new Provision[4];
         
-        provitionItems[0] = new InventoryItem(ItemType.Provisions, 70, Condition.Good, "Potatoes");
-        provitionItems[1] = new InventoryItem(ItemType.Provisions, 90, Condition.Fair, "Breads  ");
-        provitionItems[2] = new InventoryItem(ItemType.Provisions, 80, Condition.Good, "Apples  ");
-        provitionItems[3] = new InventoryItem(ItemType.Provisions, 50, Condition.Fair, "Tomatoes");
+        provisions[0] = new Provision(ItemType.Provisions, 70, Condition.Good, "Potatoes", true);
+        provisions[1] = new Provision(ItemType.Provisions, 90, Condition.Fair, "Breads  ", true);
+        provisions[2] = new Provision(ItemType.Provisions, 80, Condition.Good, "Apples  ", true);
+        provisions[3] = new Provision(ItemType.Provisions, 50, Condition.Fair, "Tomatoes", true);
         
-        return provitionItems;
+        return provisions;
     }   
     
     public static int minimumToolItems(InventoryItem[] toolItems) {  
@@ -106,49 +107,49 @@ public class StorehouseControl {
         return minValue;        
     }  
     
-    public static int totalAnimalItems(InventoryItem[] animalItems) {  
+    public static int totalAnimals(Animal[] animals) {  
     
-        if (animalItems.length == 0)   
+        if (animals.length == 0)   
             return -1;
         
-        for (InventoryItem animalItem: animalItems) {
-            if (animalItem.getQuantity() < 0)
+        for (Animal animal: animals) {
+            if (animal.getQuantity() < 0)
                 return -1;            
         }
         
         int total = 0;
         
-        for (InventoryItem animalItem: animalItems) {
-            total = total + animalItem.getQuantity();
+        for (Animal animal: animals) {
+            total = total + animal.getQuantity();
         }
         
         return total;        
     }   
     
-    public static InventoryItem[] sortProvisionItems(InventoryItem[] provisionItems) {  
+    public static Provision[] sortProvisions(Provision[] provisions) {  
     
-        if (provisionItems.length == 0)   
+        if (provisions.length == 0)   
             return null;
                 
-        for (InventoryItem provitionItem: provisionItems) {
-            if (provitionItem.getQuantity() < 0)
+        for (Provision provision: provisions) {
+            if (provision.getQuantity() < 0)
                 return null;            
         }        
         
-        if (provisionItems.length == 1)   
-            return provisionItems;        
+        if (provisions.length == 1)   
+            return provisions;        
                
-        for (int m = provisionItems.length; m >= 0; m--) {                       
-            for (int i = 0; i < provisionItems.length - 1; i++) {
+        for (int m = provisions.length; m >= 0; m--) {                       
+            for (int i = 0; i < provisions.length - 1; i++) {
                 int aux = i + 1;
-                if (provisionItems[i].getQuantity() > provisionItems[aux].getQuantity()) {
-                    InventoryItem temp = provisionItems[i];
-                    provisionItems[i] = provisionItems[aux];
-                    provisionItems[aux] = temp;
+                if (provisions[i].getQuantity() > provisions[aux].getQuantity()) {
+                    Provision temp = provisions[i];
+                    provisions[i] = provisions[aux];
+                    provisions[aux] = temp;
                 }
             }
         }
    
-        return provisionItems;        
+        return provisions;        
     }  
 }

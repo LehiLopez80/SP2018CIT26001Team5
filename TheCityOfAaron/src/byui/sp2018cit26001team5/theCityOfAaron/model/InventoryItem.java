@@ -14,19 +14,10 @@ import java.util.Objects;
  */
 public class InventoryItem implements Serializable{
     //class instance variables  
-    private ItemType itemType;
-    private int quantity;
-    private Condition condition; 
-    
-    private String name;
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
+    protected ItemType itemType;
+    protected int quantity;
+    protected Condition condition; 
+    protected String name;
 
     public InventoryItem() {
     }
@@ -35,7 +26,7 @@ public class InventoryItem implements Serializable{
         this.itemType = itemType;
         this.quantity = quantity;
         this.condition = condition;
-        //this.name = name;
+        this.name = name;
     }
 
     public ItemType getItemType() {
@@ -60,19 +51,28 @@ public class InventoryItem implements Serializable{
 
     public void setCondition(Condition condition) {
         this.condition = condition;
+    }    
+    
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Override
     public String toString() {
-        return "InventoryItem{" + "itemType=" + itemType + ", quantity=" + quantity + ", condition=" + condition + '}';
+        return "InventoryItem{" + "itemType=" + itemType + ", quantity=" + quantity + ", condition=" + condition + ", name=" + name + '}';
     }
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 97 * hash + Objects.hashCode(this.itemType);
-        hash = 97 * hash + this.quantity;
-        hash = 97 * hash + Objects.hashCode(this.condition);
+        int hash = 3;
+        hash = 79 * hash + Objects.hashCode(this.itemType);
+        hash = 79 * hash + this.quantity;
+        hash = 79 * hash + Objects.hashCode(this.condition);
+        hash = 79 * hash + Objects.hashCode(this.name);
         return hash;
     }
 
@@ -91,6 +91,9 @@ public class InventoryItem implements Serializable{
         if (this.quantity != other.quantity) {
             return false;
         }
+        if (!Objects.equals(this.name, other.name)) {
+            return false;
+        }
         if (this.itemType != other.itemType) {
             return false;
         }
@@ -98,6 +101,5 @@ public class InventoryItem implements Serializable{
             return false;
         }
         return true;
-    }
-    
+    }    
 }

@@ -16,9 +16,9 @@ public class Storehouse implements Serializable{
     
     //class instance variables
     private Author[] authors;
-    private InventoryItem[] animals;
+    private Animal[] animals;
     private InventoryItem[] tools;
-    private InventoryItem[] provisions;
+    private Provision[] provisions;
 
     public Storehouse() {
     }
@@ -31,11 +31,11 @@ public class Storehouse implements Serializable{
         this.authors = authors;
     }
 
-    public InventoryItem[] getAnimals() {
+    public Animal[] getAnimals() {
         return animals;
     }
 
-    public void setAnimals(InventoryItem[] animals) {
+    public void setAnimals(Animal[] animals) {
         this.animals = animals;
     }
 
@@ -47,11 +47,11 @@ public class Storehouse implements Serializable{
         this.tools = tools;
     }
 
-    public InventoryItem[] getProvisions() {
+    public Provision[] getProvisions() {
         return provisions;
     }
 
-    public void setProvisions(InventoryItem[] provisions) {
+    public void setProvisions(Provision[] provisions) {
         this.provisions = provisions;
     }
 
@@ -62,11 +62,11 @@ public class Storehouse implements Serializable{
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 29 * hash + Arrays.deepHashCode(this.authors);
-        hash = 29 * hash + Arrays.deepHashCode(this.animals);
-        hash = 29 * hash + Arrays.deepHashCode(this.tools);
-        hash = 29 * hash + Arrays.deepHashCode(this.provisions);
+        int hash = 3;
+        hash = 17 * hash + Arrays.deepHashCode(this.authors);
+        hash = 17 * hash + Arrays.deepHashCode(this.animals);
+        hash = 17 * hash + Arrays.deepHashCode(this.tools);
+        hash = 17 * hash + Arrays.deepHashCode(this.provisions);
         return hash;
     }
 
@@ -95,7 +95,5 @@ public class Storehouse implements Serializable{
             return false;
         }
         return true;
-    }
-
-    
+    }    
 }

@@ -1,6 +1,3 @@
 
 
 byui.sp2018cit26001team5.theCityOfAaron.view.StartNewGameView - Error: Missing players' name
-
-byui.sp2018cit26001team5.theCityOfAaron.view.RestartGameView - 
-Not able to load the game. IO Exeption. Please try again.

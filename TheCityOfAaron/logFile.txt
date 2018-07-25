@@ -1,0 +1,7 @@
+
+
+byui.sp2018cit26001team5.theCityOfAaron.view.PlantCropsView - 
+You don't have that many acres to plant
+
+byui.sp2018cit26001team5.theCityOfAaron.view.PlantCropsView - 
+You don't have enough bushels to plant that many acres

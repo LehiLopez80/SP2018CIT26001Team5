@@ -202,6 +202,14 @@ public class GameMenuView extends ViewBase{
         people = GameControl.calculatePopulation(people, peopleStarved, peopleMoved);
         game.setCurrentPopulation(people);
         
+        //Reset variables for next year
+        randomInt = (int) ((int)11*Math.random());
+        int acresPrice = GameControl.calculateAcresPrice (randomInt);
+        Game.setAcresPrice(acresPrice);
+        Game.setBushelsFeedPeople(0);
+        Game.setCropsPlanted(0);
+        Game.setOfferingsPercentage(0);
+        
         //display the current annual report
         this.console.println("\nCurrent Annual Report\n"
                 + "\nThe year number (" + game.getCurrentYear() + ")"

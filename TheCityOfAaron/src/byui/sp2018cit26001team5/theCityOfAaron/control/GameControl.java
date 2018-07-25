@@ -478,7 +478,7 @@ public class GameControl {
                             }
                         }
                     }
-                    int bushelsEatenByRats = bushelsInStore * bushelsPercentage;
+                    int bushelsEatenByRats = bushelsInStore * bushelsPercentage / 100;
                     return bushelsEatenByRats;
                 }
             }

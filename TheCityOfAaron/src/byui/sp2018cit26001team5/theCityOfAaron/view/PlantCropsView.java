@@ -45,13 +45,13 @@ public class PlantCropsView extends ViewBase {
             return false;
         }
             
-        if(intInput > game.getAcresOwned()){
+        if(intInput > (game.getAcresOwned()- Game.getCropsPlanted())){
             ErrorView.display(this.getClass().getName(),
                     "\nYou don't have that many acres to plant");
             return false;
         }
         
-        if(intInput > game.getWheatInStorage()/2) {
+        if(intInput > game.getWheatInStorage()*2) {
             ErrorView.display(this.getClass().getName(),
                     "\nYou don't have enough bushels to plant that many acres");
             return false;

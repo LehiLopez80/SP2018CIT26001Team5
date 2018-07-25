@@ -181,6 +181,8 @@ public class ReportsMenuView extends ViewBase{
         }
     }
     
+    //Lehi Lopez
+    
     private void printProvisionsReport() throws FileNotFoundException {
         this.console.println("\n\nEnter the file path or name to print the report: ");
         
@@ -220,6 +222,8 @@ public class ReportsMenuView extends ViewBase{
         this.console.println("\nThe report was successfully printed on the following location: "
                 + filePath);               
     }
+    
+    //Lehi Lopez
     
     private void printProvisionsReportFile(Provision[] provisions, String filePath) 
             throws FileNotFoundException {

@@ -16,7 +16,7 @@ import byui.sp2018cit26001team5.theCityOfAaron.model.Storehouse;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.logging.Level;
+import java.util.ArrayList;
 import java.util.logging.Logger;
 import thecityofaaron.TheCityOfAaron;
 
@@ -36,6 +36,7 @@ public class ReportsMenuView extends ViewBase{
                 + "\n Reports Menu                        "
                 + "\n ---------------------------------"
                 + "\n1 - View the animals in the storehouse"
+                + "\nA - View the animals array list in the storehouse"
                 + "\n2 - View the tools in the storehouse"
                 + "\n3 - View the provisions in the storehouse"
                 + "\n4 - View the authors of this game"
@@ -56,6 +57,10 @@ public class ReportsMenuView extends ViewBase{
         switch (menuOption){
             case "1": 
                 this.viewAnimalsInStorehouse();
+                break;
+                
+                case "A": 
+                this.viewAnimalsArrayListInStorehouse();
                 break;
                
             case "2": 
@@ -117,8 +122,8 @@ public class ReportsMenuView extends ViewBase{
      
     private void viewAnimalsInStorehouse() {
        
-        this.console.println("\nTools Report View"
-                    + "\n\nQuantity   Tool");
+        this.console.println("\nAnimals Report View"
+                    + "\n\nQuantity   Animal");
        
         Game game = TheCityOfAaron.getCurrentGame();
         Storehouse storehouse = game.getStorehouse();
@@ -131,6 +136,26 @@ public class ReportsMenuView extends ViewBase{
         
         //StorehouseControl storehouseControl = new StorehouseControl();
         int total = StorehouseControl.totalAnimals(animals);
+        
+        this.console.println("\nThe total quantity of animals is " + total);
+    }
+    
+    private void viewAnimalsArrayListInStorehouse() {
+       
+        this.console.println("\nAnimals Array List Report View"
+                    + "\n\nQuantity   Animal");
+       
+        Game game = TheCityOfAaron.getCurrentGame();
+        Storehouse storehouse = game.getStorehouse();
+        ArrayList <Animal> animalsArrayList = storehouse.getAnimalArrayList();
+        
+        for (Animal animal: animalsArrayList) {
+            this.console.println("   " + animal.getQuantity() + "       "
+                    + animal.getName());
+        }
+        
+        //StorehouseControl storehouseControl = new StorehouseControl();
+        int total = StorehouseControl.totalAnimalsArrayList(animalsArrayList);
         
         this.console.println("\nThe total quantity of animals is " + total);
     }
@@ -180,8 +205,7 @@ public class ReportsMenuView extends ViewBase{
         }
     }
     
-    //Lehi Lopez
-    
+    //Lehi Lopez Assignment    
     private void printProvisionsReport() throws FileNotFoundException {
         this.console.println("\n\nEnter the file path or name to print the report: ");
         
@@ -205,10 +229,8 @@ public class ReportsMenuView extends ViewBase{
                 
                 try {
                     this.printProvisionsReportFile(provisions, filePath);
-                } catch (FileNotFoundException fex) {
-                    //this.console.println("\nFileNotFoundException on Print Provision Report");
-                    ErrorView.display(this.getClass().getName(), fex.getMessage());
-                            //"\nInvalid file path or name provided. Please try again");
+                } catch (FileNotFoundException fex) {                    
+                    ErrorView.display(this.getClass().getName(), fex.getMessage());                            
                     continue;
                 } 
                 
@@ -222,8 +244,7 @@ public class ReportsMenuView extends ViewBase{
                 + filePath);               
     }
     
-    //Lehi Lopez
-    
+    //Lehi Lopez Assignment 
     private void printProvisionsReportFile(Provision[] provisions, String filePath) 
             throws FileNotFoundException {
         
@@ -239,9 +260,7 @@ public class ReportsMenuView extends ViewBase{
                                            , provision.getCondition());
             }        
         } catch (FileNotFoundException fex) {
-            throw new FileNotFoundException("Invalid file path or name provided. Please try again.");
-            //ErrorView.display(this.getClass().getName(),
-            //        "\nInvalid file path or name provided. Please try again.");
+            throw new FileNotFoundException("Invalid file path or name provided. Please try again.");            
         }       
     }
     

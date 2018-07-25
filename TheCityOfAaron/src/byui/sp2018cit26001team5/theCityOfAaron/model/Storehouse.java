@@ -6,6 +6,7 @@
 package byui.sp2018cit26001team5.theCityOfAaron.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
@@ -18,6 +19,15 @@ public class Storehouse implements Serializable{
     private Animal[] animals;
     private InventoryItem[] tools;
     private Provision[] provisions;
+    private ArrayList <Animal> animalArrayList;
+
+    public ArrayList<Animal> getAnimalArrayList() {
+        return animalArrayList;
+    }
+
+    public void setAnimalArrayList(ArrayList<Animal> animalArrayList) {
+        this.animalArrayList = animalArrayList;
+    }
 
     public Storehouse() {
     }

@@ -223,6 +223,8 @@ public class GameMenuView extends ViewBase{
                 + "\nThe number of bushels of wheat eaten by rats (" + eatenByRats + ")"
                 + "\nThe number of bushels of wheat in store (" + currentBushels + ")");
         
+        TheCityOfAaron.setCurrentGame(game);
+        
         //validate if too many people have starved to end the game
         if (endGame) {
             this.console.println("\nThe game is over. Many people starved.");

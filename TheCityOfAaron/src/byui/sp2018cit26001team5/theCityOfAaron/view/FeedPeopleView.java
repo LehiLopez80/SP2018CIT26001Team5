@@ -48,9 +48,20 @@ public class FeedPeopleView extends ViewBase{
             ErrorView.display(this.getClass().getName(),
                     "You don't have that many bushels to feed people");
             return false;
-        }    
-       
-        this.console.println("Update bushels in store");
+        }
+        
+        int bushels = game.getWheatInStorage();
+        int bushelsFeedPeople = Game.getBushelsFeedPeople();
+                
+        bushels = bushels - intInput;
+        game.setWheatInStorage(bushels);
+        
+        bushelsFeedPeople = bushelsFeedPeople + intInput;
+        Game.setBushelsFeedPeople(bushelsFeedPeople);
+        
+        TheCityOfAaron.setCurrentGame(game);
+        
+        this.console.println("Bushels in store updated");        
         return true;
     }         
 }

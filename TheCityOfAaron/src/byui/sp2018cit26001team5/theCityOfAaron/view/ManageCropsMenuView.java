@@ -6,7 +6,6 @@
 package byui.sp2018cit26001team5.theCityOfAaron.view;
 
 /**
- *
  * @author Lehi Lopez
  */
 public class ManageCropsMenuView extends ViewBase {
@@ -45,7 +44,9 @@ public class ManageCropsMenuView extends ViewBase {
                 FeedPeopleView feedPeopleView = new FeedPeopleView();
                 feedPeopleView.displayView();
                 break;
-            case "P": this.console.println("Future call to Plant Crops view");
+            case "P": 
+                PlantCropsView plantCropsView = new PlantCropsView();
+                plantCropsView.displayView();
                 break;
             case "T": 
                 PayOfferingsView payOfferingsView = new PayOfferingsView();

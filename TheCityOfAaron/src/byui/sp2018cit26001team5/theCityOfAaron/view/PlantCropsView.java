@@ -5,24 +5,22 @@
  */
 package byui.sp2018cit26001team5.theCityOfAaron.view;
 
-import byui.sp2018cit26001team5.theCityOfAaron.control.GameControl;
 import byui.sp2018cit26001team5.theCityOfAaron.model.Game;
 import thecityofaaron.TheCityOfAaron;
 
 /**
  * @author Lehi Lopez
  */
-public class SellLandView extends ViewBase{
+public class PlantCropsView extends ViewBase {
 
-    public SellLandView() {
-    }
-    
+    public PlantCropsView() {
+    }      
+
     @Override
     protected String getMessage() {        
-                
-        String message = "\nSell Land view"
-                + "\n\nThe price of the land is: " + Game.getAcresPrice()
-                + "\nHow many acres do you whish to sell?";        
+                      
+        String message = "\nPlant Crops View"
+                + "\n\nHow many acres of crops do you whish to plant?";        
         
         return message;        
     }
@@ -49,23 +47,28 @@ public class SellLandView extends ViewBase{
             
         if(intInput > game.getAcresOwned()){
             ErrorView.display(this.getClass().getName(),
-                    "\nYou don't own that many acres to sell");
+                    "\nYou don't have that many acres to plant");
             return false;
         }
         
-        int acres = game.getAcresOwned();
+        if(intInput > game.getWheatInStorage()/2) {
+            ErrorView.display(this.getClass().getName(),
+                    "\nYou don't have enough bushels to plant that many acres");
+            return false;
+        }
+        
         int bushels = game.getWheatInStorage();
-        
-        acres = acres - intInput;
-        game.setAcresOwned(acres);
-        
-        bushels = bushels + intInput * Game.getAcresPrice();
+        int cropsPlanted = Game.getCropsPlanted();
+                
+        bushels = bushels - intInput/2;
         game.setWheatInStorage(bushels);
+        
+        cropsPlanted = cropsPlanted + intInput;
+        Game.setCropsPlanted(cropsPlanted);
         
         TheCityOfAaron.setCurrentGame(game);
         
-        this.console.println("Acres owned and bushels in store updated");
-        
-        return true;
-    }
+        this.console.println("Bushels in store updated");        
+        return true;       
+    }    
 }

@@ -9,7 +9,6 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /**
- *
  * @author Lehi Lopez
  */
 public class Game implements Serializable{
@@ -22,8 +21,22 @@ public class Game implements Serializable{
     private int acresOwned;
     private int wheatInStorage;
     private int currentYear;
-    private int acresPrice;
+    
+    //class static variables
+    private static int acresPrice;
+    private static int bushelsFeedPeople;
+    private static int cropsPlanted;
+    private static int offeringsPercentage;
 
+    public static int getBushelsFeedPeople() {
+        return bushelsFeedPeople;
+    }
+
+    public static void setBushelsFeedPeople(int bushelsFeedPeople) {
+        Game.bushelsFeedPeople = bushelsFeedPeople;
+    }
+    
+    
     public Game() {
     }
 
@@ -82,15 +95,31 @@ public class Game implements Serializable{
     public void setCurrentYear(int currentYear) {
         this.currentYear = currentYear;
     }
-    
-    public int getAcresPrice() {
+
+    public static int getAcresPrice() {
         return acresPrice;
     }
 
-    public void setAcresPrice(int acresPrice) {
-        this.acresPrice = acresPrice;
+    public static void setAcresPrice(int acresPrice) {
+        Game.acresPrice = acresPrice;
     }
 
+    public static int getCropsPlanted() {
+        return cropsPlanted;
+    }
+
+    public static void setCropsPlanted(int cropsPlanted) {
+        Game.cropsPlanted = cropsPlanted;
+    }
+
+    public static int getOfferingsPercentage() {
+        return offeringsPercentage;
+    }
+
+    public static void setOfferingsPercentage(int offeringsPercentage) {
+        Game.offeringsPercentage = offeringsPercentage;
+    }      
+      
     @Override
     public String toString() {
         return "Game{" + "player=" + player + ", map=" + map + ", storehouse=" + storehouse + ", currentPopulation=" + currentPopulation + ", acresOwned=" + acresOwned + ", wheatInStorage=" + wheatInStorage + ", currentYear=" + currentYear + '}';
@@ -143,7 +172,5 @@ public class Game implements Serializable{
             return false;
         }
         return true;
-    }
-
-   
+    }   
 }

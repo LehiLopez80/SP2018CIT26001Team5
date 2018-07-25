@@ -22,14 +22,13 @@ import thecityofaaron.TheCityOfAaron;
 import static thecityofaaron.TheCityOfAaron.setCurrentGame;
 
 /**
- *
  * @author Salvador Rubio
  */
-public class GameControl {
-
+public class GameControl {    
+   
     public GameControl() {
-    }       
-    
+    } 
+   
     public static void createNewGame(Player player) throws GameControlException {
         
         if (player.getName() == null) {
@@ -38,8 +37,8 @@ public class GameControl {
         }
         
         Game game = new Game();
-        game.setPlayer(player);
-                
+        
+        game.setPlayer(player);              
         game.setCurrentPopulation(100);
         game.setAcresOwned(1000);
         game.setCurrentYear(1);
@@ -47,17 +46,18 @@ public class GameControl {
                 
         int randomInt = (int) ((int)11*Math.random());
         int acresPrice = calculateAcresPrice (randomInt);
-        game.setAcresPrice(acresPrice);
-        
+        Game.setAcresPrice(acresPrice);
+        Game.setBushelsFeedPeople(0);
+        Game.setCropsPlanted(0);
+        Game.setOfferingsPercentage(0);
+                
         Storehouse storehouse = createStorehouse();
         game.setStorehouse(storehouse);
         
         Map map = createMap();
         game.setMap(map);
         
-        TheCityOfAaron.setCurrentGame(game);         
-        
-        //return 1;
+        TheCityOfAaron.setCurrentGame(game);  
     }  
     
     public static void saveGame (Game game, String filePath) 
@@ -136,17 +136,17 @@ public class GameControl {
      */
   
     // Individual Assignment Salvador Rubio
-    public static int calculateHarvest (int bushelsByAcre, int acresAvailable) 
+    public static int calculateHarvest (int bushelsByAcre, int acresPlanted) 
             throws GameControlException {
     
         // Validate there is not negative input.
         if (bushelsByAcre < 0) {
             throw new GameControlException ("Error: Bushels are less than zero"); 
-        } else if  (acresAvailable < 0) {
+        } else if  (acresPlanted < 0) {
             throw new GameControlException ("Error: Acres are less than zero"); 
         } 
         else {   
-            int finalHarvest = bushelsByAcre * acresAvailable;
+            int finalHarvest = bushelsByAcre * acresPlanted;
             return finalHarvest;
         }                    
     }
@@ -169,8 +169,7 @@ public class GameControl {
             else {
                int peopleStarved = people - (bushelsFeed/20);
                        return peopleStarved;
-            }
-            
+            }            
         }                    
     }
     
@@ -392,22 +391,21 @@ public class GameControl {
     }
 
     //Individual Assignment Salvador Rubio
-    public static int calculateBushelsInStore (int currentBushels, int bushelsHarvested, int bushelsOffered, int bushelsEatenByRats, int bushelsFeedToPeople, int bushelsToBuy, int bushelsFromSell) {
+    public static int calculateBushelsInStore (int currentBushels, int bushelsHarvested
+            , int bushelsOffered, int bushelsEatenByRats) {
      
         // Validate there is not negative input.
-        if (currentBushels < 0 || bushelsHarvested < 0 || bushelsOffered < 0 || bushelsEatenByRats < 0 || bushelsFeedToPeople < 0 || bushelsToBuy < 0 || bushelsFromSell < 0 ) {
+        if (currentBushels < 0 || bushelsHarvested < 0 || bushelsOffered < 0 || bushelsEatenByRats < 0) {
             return -1; 
         }
-        else {
-                            
-            int bushelsInStore = (currentBushels + bushelsHarvested - bushelsOffered - bushelsEatenByRats - bushelsFeedToPeople + bushelsToBuy - bushelsFromSell);
+        else {                            
+            int bushelsInStore = currentBushels + bushelsHarvested - bushelsOffered - bushelsEatenByRats;
            
             if (bushelsInStore < 0) {
                 return -1;
             }
             else {   
-                return bushelsInStore;
-            
+                return bushelsInStore;            
             }
         }                    
     }
@@ -428,7 +426,7 @@ public class GameControl {
         }
         else {
             if (offeringsPercentage > 100) {
-                throw new GameControlException ("Error: Bushels in store is greater than 100");
+                throw new GameControlException ("Error: Offerings Percentage is greater than 100");
             } else if (randomEat > 100) {
                 throw new GameControlException ("Error: Random eaten is greater than 100");
             } else if (randomPercentage > 15) {

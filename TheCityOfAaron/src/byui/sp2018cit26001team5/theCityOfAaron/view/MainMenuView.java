@@ -6,7 +6,6 @@
 package byui.sp2018cit26001team5.theCityOfAaron.view;
 
 /**
- *
  * @author Salvador Rubio
  */
 public class MainMenuView extends ViewBase{

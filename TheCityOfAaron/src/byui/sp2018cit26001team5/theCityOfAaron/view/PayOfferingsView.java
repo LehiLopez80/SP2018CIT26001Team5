@@ -50,7 +50,8 @@ public class PayOfferingsView extends ViewBase {
             return false;
         }
         
-        this.console.println("Update bushels in store");        
+        Game.setOfferingsPercentage(intInput);        
+              
         return true;
     }   
 }

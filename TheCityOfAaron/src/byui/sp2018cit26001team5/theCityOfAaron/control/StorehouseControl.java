@@ -43,8 +43,8 @@ public class StorehouseControl {
         Author[] authors = new Author[3];
         
         authors[0] = Author.Alonso;
-        authors[0] = Author.Lehi;
-        authors[0] = Author.Salvador;
+        authors[1] = Author.Lehi;
+        authors[2] = Author.Salvador;   
         
         return authors;
     }

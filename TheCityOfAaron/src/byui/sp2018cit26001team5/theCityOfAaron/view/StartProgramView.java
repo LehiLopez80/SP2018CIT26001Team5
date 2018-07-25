@@ -37,8 +37,8 @@ public class StartProgramView extends ViewBase{
     public void displayView(){
         
         String message = this.getMessage();
+        
         this.console.println (message);
-
         this.doAction("");
     }    
 

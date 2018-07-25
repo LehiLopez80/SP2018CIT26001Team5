@@ -5,9 +5,13 @@
  */
 package byui.sp2018cit26001team5.theCityOfAaron.view;
 
+import byui.sp2018cit26001team5.theCityOfAaron.control.GameControl;
+import byui.sp2018cit26001team5.theCityOfAaron.exceptions.GameControlException;
 import byui.sp2018cit26001team5.theCityOfAaron.model.Game;
 import byui.sp2018cit26001team5.theCityOfAaron.model.Location;
 import byui.sp2018cit26001team5.theCityOfAaron.model.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import thecityofaaron.TheCityOfAaron;
 
 /**
@@ -24,14 +28,15 @@ public class GameMenuView extends ViewBase{
                 + "\n----------------------------------"
                 + "\n Game Menu                        "
                 + "\n ---------------------------------"
-                + "\n1 - View the map"
-                + "\n2 - Move to a new location"
-                + "\n3 - Manage the crops"
-                + "\n4 - Live the year"
-                + "\n5 - Reports menu"
-                + "\n6 - Save game"
-                + "\n7 - Return to the main menu"
-                + "\n----------------------------------";
+                + "\nM - View the map"
+                + "\nL - Move to a new location"
+                + "\nC - Manage the Crops"
+                + "\nY - Live the year"
+                + "\nR - Reports menu"
+                + "\nS - Save game"
+                + "\nQ - Return to main menu"
+                + "\n----------------------------------"                
+                + "\n\nPlease enter an option: ";
         
         return menu;
     }
@@ -42,33 +47,39 @@ public class GameMenuView extends ViewBase{
         menuOption = menuOption.toUpperCase(); //converts to upper case
                           
         switch (menuOption){
-            case "1": // view the map
+            case "M": // view the map
                 this.displayMap();
                 break;
                
-            case "2": //Move to a new location
+            case "L": //Move to a new location
                 this.moveNewLocation();
                 break;
                
-            case "3": // Manage the crops
+            case "C": // Manage the crops
                 ManageCropsMenuView manageCropsMenuView = new ManageCropsMenuView();
                 manageCropsMenuView.displayView();
                 break;
             
-            case "4": //Live the year
-                this.liveTheYear();
+            case "Y": { //Live the year
+                try {
+                    this.liveTheYear();
+                } catch (GameControlException gce) {
+                    ErrorView.display(this.getClass().getName(),gce.getMessage()); 
+                    //gce.printStackTrace();
+                }
+            }
                 break;
                        
-            case "5": //Reports menu
+            case "R": //Reports menu
                 ReportsMenuView reportsMenuView = new ReportsMenuView();
                 reportsMenuView.displayView();
                 break;
                
-            case "6": //Save game
+            case "S": //Save game
                 this.saveGame();
                 break;
                
-            case "7": //Return to the main menu
+            case "Q": //Return to the main menu
                 this.console.println("Return to the main menu."); 
                 return true;   
               
@@ -140,8 +151,85 @@ public class GameMenuView extends ViewBase{
         this.console.println("*** The new location is..."); 
     }
 
-    private void liveTheYear() {
-        this.console.println("Chose this option to live the year."); 
+    private void liveTheYear() throws GameControlException {
+        
+        Game game = TheCityOfAaron.getCurrentGame();
+        
+        //Increment current year
+        int currentYear = game.getCurrentYear();
+        game.setCurrentYear(currentYear + 1);
+        
+        //calculate the number of bushels of wheat that are harvested
+        int randomInt = (int) ((int)12*Math.random());
+        int offeringsPercentage = Game.getOfferingsPercentage();
+        int cropYield = GameControl.calculateCropYield(offeringsPercentage, randomInt);
+        int acresPlanted = Game.getCropsPlanted();
+        int bushelsHarvested = GameControl.calculateHarvest(cropYield, acresPlanted);
+        
+        //calculate the number of bushels of wheat paid in offerings
+        int offerings = GameControl.calculateOfferings (bushelsHarvested, offeringsPercentage);
+        
+        //calculate the number of bushels of wheat in store
+        int currentBushels = game.getWheatInStorage();
+        currentBushels = GameControl.calculateBushelsInStore (currentBushels, bushelsHarvested
+                , offerings, 0);
+        
+        //calculate the number of bushels of wheat in store eaten by rats
+        int randomEat = (int) ((int)99*Math.random());
+        int randomPercentage = (int) ((int)12*Math.random());
+        int eatenByRats = GameControl.calculateBushelsEatenByRats (currentBushels, offeringsPercentage, 
+            randomEat, randomPercentage);
+        
+        //recalculate the number of bushels of wheat in store
+        currentBushels = GameControl.calculateBushelsInStore (currentBushels, 0, 0, eatenByRats);
+        game.setWheatInStorage(currentBushels);
+        
+        //calculate the number of people starved
+        int people = game.getCurrentPopulation();
+        int bushelsFeed = Game.getBushelsFeedPeople();
+        int peopleStarved = GameControl.calculatePeopleStarved (people, bushelsFeed);
+        
+        //validate if too many people have starved to end the game
+        boolean endGame = false;
+        if (peopleStarved*2 >= people)
+            endGame = true;
+        
+        //calculate the number of people that move into the city
+        int randomPeople = (int) ((int)5*Math.random());
+        int peopleMoved = GameControl.calculatePeopleMovedToCity (people, randomPeople);
+        
+        //calculate current population
+        people = GameControl.calculatePopulation(people, peopleStarved, peopleMoved);
+        game.setCurrentPopulation(people);
+        
+        //display the current annual report
+        this.console.println("\nCurrent Annual Report\n"
+                + "\nThe year number (" + game.getCurrentYear() + ")"
+                + "\nHow many people startved (" + peopleStarved + ")"
+                + "\nHow many people came to the city (" + peopleMoved + ")"
+                + "\nThe current population (" + people + ")"
+                + "\nThe number of acres of crop land owned by the city ("
+                    + game.getAcresOwned() + ")"
+                + "\nThe number of bushels per acre in this year harvest ("
+                    + cropYield + ")"
+                + "\nThe total number of bushels of wheat harvested ("
+                    + bushelsHarvested + ")"
+                + "\nThe number of bushels paid in tithes and offerings (" + offerings + ")"
+                + "\nThe number of bushels of wheat eaten by rats (" + eatenByRats + ")"
+                + "\nThe number of bushels of wheat in store (" + currentBushels + ")");
+        
+        //validate if too many people have starved to end the game
+        if (endGame) {
+            this.console.println("\nThe game is over. Many people starved.");
+            this.console.close(); //Need to finish the program
+        }
+         
+        if (currentYear > 10) {
+            double rating = game.getAcresOwned()/people;
+            this.console.println("\nYour ruler time is over. You have done a great job."
+                    + "\n\nYour performance is: " + rating + " acres per people.");
+            this.console.close(); //Need to finish the program
+        }
     }
 
     private void saveGame() {

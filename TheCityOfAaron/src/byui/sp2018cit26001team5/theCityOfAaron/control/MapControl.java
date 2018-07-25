@@ -10,7 +10,6 @@ import byui.sp2018cit26001team5.theCityOfAaron.model.Map;
 import byui.sp2018cit26001team5.theCityOfAaron.model.Point;
 
 /**
- *
  * @author Salvador Rubio
  */
 public class MapControl {
@@ -58,8 +57,7 @@ public class MapControl {
         locations[4][4] = new Location("The Temple", "The sanctuary where people go to pray", "TT", gameTips);
         
         map.setLocations(locations);
-        map.setCurrentLocation(new Point(2,2));
-        
+        map.setCurrentLocation(new Point(2,2));        
         
         return map;
     }

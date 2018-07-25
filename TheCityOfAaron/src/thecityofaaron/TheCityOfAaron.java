@@ -14,13 +14,11 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 
 /**
- *
  * @author Lehi Lopez
  */
 public class TheCityOfAaron {
     
     private static Game currentGame = null;
-    
     private static PrintWriter outFile = null;
     private static BufferedReader inFile = null;
     private static PrintWriter logFile = null;
@@ -34,9 +32,8 @@ public class TheCityOfAaron {
         //Catch all unexpected errors
         try {            
             //open character stream files for end user input and output
-            TheCityOfAaron.inFile = 
-                    new BufferedReader(new InputStreamReader(System.in));
-            TheCityOfAaron.outFile = new PrintWriter(System.out, true);
+            inFile =  new BufferedReader(new InputStreamReader(System.in));
+            outFile = new PrintWriter(System.out, true);
             logFile = new PrintWriter("logFile.txt");
             
             StartProgramView startProgramView = new StartProgramView ();

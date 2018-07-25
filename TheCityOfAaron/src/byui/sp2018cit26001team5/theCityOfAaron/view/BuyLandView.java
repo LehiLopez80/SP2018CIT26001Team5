@@ -5,6 +5,7 @@
  */
 package byui.sp2018cit26001team5.theCityOfAaron.view;
 
+import byui.sp2018cit26001team5.theCityOfAaron.control.GameControl;
 import byui.sp2018cit26001team5.theCityOfAaron.model.Game;
 import thecityofaaron.TheCityOfAaron;
 
@@ -17,12 +18,10 @@ public class BuyLandView extends ViewBase {
     }
     
     @Override
-    protected String getMessage() {
-        
-        Game game = TheCityOfAaron.getCurrentGame();
+    protected String getMessage() {              
                 
         String message = "\nBuy Land view"
-                + "\n\nThe price of the land is: " + game.getAcresPrice()
+                + "\n\nThe price of the land is: " + Game.getAcresPrice()
                 + "\nHow many acres do you whish to buy?";        
         
         return message;        
@@ -36,27 +35,34 @@ public class BuyLandView extends ViewBase {
         int intInput;
         try {
             intInput = Integer.parseInt(input);
-        } catch (NumberFormatException nf) {
-            //System.out.println("\nYou must enter a valid number");
+        } catch (NumberFormatException nf) {            
             ErrorView.display(this.getClass().getName(), "\nYou must enter a valid number");
             return false;
         }
                 
-        if(intInput < 0){
-            //this.console.println("You must not enter a negative value");
+        if(intInput < 0){            
             ErrorView.display(this.getClass().getName(), "\nYou must not enter a negative value");
             return false;
         }
             
-        if(intInput > game.getWheatInStorage()/game.getAcresPrice()){
-            //this.console.println("You don't have enough bushels to buy");
+        if(intInput > game.getWheatInStorage()/Game.getAcresPrice()){           
             ErrorView.display(this.getClass().getName(), "\nYou don't have enough bushels to buy");
             return false;
         }
         
-        this.console.println("Update Acres owned and bushels in store");
-        //ErrorView.display(this.getClass().getName(), "\nUpdate Acres owned and bushels in store");
+        int acres = game.getAcresOwned();
+        int bushels = game.getWheatInStorage();
         
+        acres = acres + intInput;
+        game.setAcresOwned(acres);
+        
+        bushels = bushels - intInput * Game.getAcresPrice();
+        game.setWheatInStorage(bushels);
+        
+        TheCityOfAaron.setCurrentGame(game);
+        
+        this.console.println("Acres owned and bushels in store updated");
+                
         return true;
     }       
 }

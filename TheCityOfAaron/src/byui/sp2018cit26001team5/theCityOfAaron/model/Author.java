@@ -15,8 +15,8 @@ public enum Author implements Serializable{
     Lehi("Ingeniero", "Lehi Lopez"),
     Salvador("Mister", "Salvador Rubio");
     
-    private String title;
-    private String name;
+    private final String title;
+    private final String name;
 
     private Author(String title, String name) {
         this.title = title;

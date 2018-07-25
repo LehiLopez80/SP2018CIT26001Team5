@@ -35,25 +35,25 @@ public class PlantCropsView extends ViewBase {
             intInput = Integer.parseInt(input);
         } catch (NumberFormatException nf) {
             ErrorView.display(this.getClass().getName(),
-                    "\nYou must enter a valid number");
+                    "You must enter a valid number");
             return false;
         }
                 
         if(intInput < 0){
             ErrorView.display(this.getClass().getName(),
-                    "\nYou must not enter a negative value");
+                    "You must not enter a negative value");
             return false;
         }
             
         if(intInput > (game.getAcresOwned()- Game.getCropsPlanted())){
             ErrorView.display(this.getClass().getName(),
-                    "\nYou don't have that many acres to plant");
+                    "You don't have that many acres to plant");
             return false;
         }
         
         if(intInput > game.getWheatInStorage()*2) {
             ErrorView.display(this.getClass().getName(),
-                    "\nYou don't have enough bushels to plant that many acres");
+                    "You don't have enough bushels to plant that many acres");
             return false;
         }
         

@@ -36,17 +36,17 @@ public class BuyLandView extends ViewBase {
         try {
             intInput = Integer.parseInt(input);
         } catch (NumberFormatException nf) {            
-            ErrorView.display(this.getClass().getName(), "\nYou must enter a valid number");
+            ErrorView.display(this.getClass().getName(), "You must enter a valid number");
             return false;
         }
                 
         if(intInput < 0){            
-            ErrorView.display(this.getClass().getName(), "\nYou must not enter a negative value");
+            ErrorView.display(this.getClass().getName(), "You must not enter a negative value");
             return false;
         }
             
         if(intInput > game.getWheatInStorage()/Game.getAcresPrice()){           
-            ErrorView.display(this.getClass().getName(), "\nYou don't have enough bushels to buy");
+            ErrorView.display(this.getClass().getName(), "You don't have enough bushels to buy");
             return false;
         }
         
@@ -61,7 +61,7 @@ public class BuyLandView extends ViewBase {
         
         TheCityOfAaron.setCurrentGame(game);
         
-        this.console.println("Acres owned and bushels in store updated");
+        this.console.println("\nAcres owned and bushels in store updated");
                 
         return true;
     }       

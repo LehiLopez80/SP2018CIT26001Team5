@@ -76,7 +76,7 @@ public class ReportsMenuView extends ViewBase{
                     this.printAnimalsReport();
                 } catch (FileNotFoundException ex) {                
                     ErrorView.display(this.getClass().getName(),
-                        "\nFileNotFoundException on Print Animal Report");
+                        "FileNotFoundException on Print Animal Report");
                 }
             }
                 break;
@@ -87,7 +87,7 @@ public class ReportsMenuView extends ViewBase{
                     this.printToolsReport();
                 } catch (FileNotFoundException ex) {                
                     ErrorView.display(this.getClass().getName(),
-                        "\nFileNotFoundException on Print Tool Report");
+                        "FileNotFoundException on Print Tool Report");
                 }
             }
                 break;    
@@ -96,10 +96,9 @@ public class ReportsMenuView extends ViewBase{
             {
                 try {
                     this.printProvisionsReport();
-                } catch (FileNotFoundException ex) {
-                    //this.console.println("\nFileNotFoundException on Print Provision Report");
+                } catch (FileNotFoundException ex) {                    
                     ErrorView.display(this.getClass().getName(),
-                        "\nFileNotFoundException on Print Provision Report");
+                        "FileNotFoundException on Print Provision Report");
                 }
             }
                 break;
@@ -110,7 +109,7 @@ public class ReportsMenuView extends ViewBase{
              
             default:
                 ErrorView.display(this.getClass().getName(),
-                        "\nInvalid selection *** Try again");
+                        "Invalid selection *** Try again");
                 break;     
         }
         return false;
@@ -200,7 +199,7 @@ public class ReportsMenuView extends ViewBase{
                 filePath = filePath.trim(); //trim off leading and trailing blanks
 
                 if (filePath.length() < 1 ){ //if value is blank
-                    ErrorView.display(this.getClass().getName(), "\nInvalid value: value cannot be blank");
+                    ErrorView.display(this.getClass().getName(), "Invalid value: value cannot be blank");
                     continue;
                 }
                 
@@ -219,7 +218,7 @@ public class ReportsMenuView extends ViewBase{
             ErrorView.display(this.getClass().getName(), "Error reading input: " + e.getMessage());
         }       
         
-        this.console.println("\nThe report was successfully printed on the following location: "
+        this.console.println("The report was successfully printed on the following location: "
                 + filePath);               
     }
     
@@ -240,8 +239,7 @@ public class ReportsMenuView extends ViewBase{
                                            , provision.getCondition());
             }        
         } catch (FileNotFoundException fex) {
-            //this.console.println("\nFileNotFoundException on Print Provision Report");
-            throw new FileNotFoundException("\nInvalid file path or name provided. Please try again.");
+            throw new FileNotFoundException("Invalid file path or name provided. Please try again.");
             //ErrorView.display(this.getClass().getName(),
             //        "\nInvalid file path or name provided. Please try again.");
         }       
@@ -264,7 +262,7 @@ public class ReportsMenuView extends ViewBase{
                 filePath = filePath.trim(); //trim off leading and trailing blanks
 
                 if (filePath.length() < 1 ){ //if value is blank
-                    ErrorView.display(this.getClass().getName(), "\nInvalid value: value cannot be blank");
+                    ErrorView.display(this.getClass().getName(), "Invalid value: value cannot be blank");
                     continue;
                 }
                 
@@ -303,7 +301,7 @@ public class ReportsMenuView extends ViewBase{
             }        
         } catch (FileNotFoundException fex) {
             //this.console.println("\nFileNotFoundException on Print Animal Report");
-            throw new FileNotFoundException("\nInvalid file path or name provided. Please try again.");
+            throw new FileNotFoundException("Invalid file path or name provided. Please try again.");
             //ErrorView.display(this.getClass().getName(),
             //        "\nInvalid file path or name provided. Please try again.");
         }       
@@ -326,7 +324,7 @@ public class ReportsMenuView extends ViewBase{
                 filePath = filePath.trim(); //trim off leading and trailing blanks
 
                 if (filePath.length() < 1 ){ //if value is blank
-                    ErrorView.display(this.getClass().getName(), "\nInvalid value: value cannot be blank");
+                    ErrorView.display(this.getClass().getName(), "Invalid value: value cannot be blank");
                     continue;
                 }
                 
@@ -364,15 +362,15 @@ public class ReportsMenuView extends ViewBase{
                                            , tool.getCondition());
             }        
         } catch (FileNotFoundException fex) {
-            throw new FileNotFoundException("\nInvalid file path or name provided. Please try again.");
+            throw new FileNotFoundException("Invalid file path or name provided. Please try again.");
         }       
     }
     
     private void viewAuthorsOfThisGame() {
-        this.console.println("Here you can check the authors of the game"); 
+        this.console.println("\nHere you can check the authors of the game"); 
     }
         
     private void returnMainMenu() {
-        this.console.println("Return to the game menu."); 
+        this.console.println("\nReturn to the game menu."); 
     }   
 }

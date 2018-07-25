@@ -8,10 +8,8 @@ package byui.sp2018cit26001team5.theCityOfAaron.view;
 import byui.sp2018cit26001team5.theCityOfAaron.control.GameControl;
 import byui.sp2018cit26001team5.theCityOfAaron.exceptions.GameControlException;
 import java.io.IOException;
-import java.util.Scanner;
 
 /**
- *
  * @author Lehi Lopez
  */
 public class RestartGameView extends ViewBase {
@@ -35,21 +33,21 @@ public class RestartGameView extends ViewBase {
         } catch (ClassNotFoundException ex) {
             this.console.println(ex.getMessage());
             ErrorView.display(this.getClass().getName(),
-                    "\nNot able to load the game. Class Exeption. Please try again.");
+                    "Not able to load the game. Class Exeption. Please try again.");
             return false;
         } catch (GameControlException gce) {
             this.console.println(gce.getMessage());
             ErrorView.display(this.getClass().getName(),
-                    "\nNot able to load the game. Game Exeption. Please try again.");
+                    "Not able to load the game. Game Exeption. Please try again.");
             return false;
         } catch (IOException ex) {
             this.console.println(ex.getMessage());
             ErrorView.display(this.getClass().getName(),
-                    "\nNot able to load the game. IO Exeption. Please try again.");
+                    "Not able to load the game. IO Exeption. Please try again.");
             return false;
         }
         
-        this.console.println("Game loaded successfully.");
+        this.console.println("\nGame loaded successfully.");
         
         GameMenuView gameMenuView = new GameMenuView ();        
         gameMenuView.displayView();

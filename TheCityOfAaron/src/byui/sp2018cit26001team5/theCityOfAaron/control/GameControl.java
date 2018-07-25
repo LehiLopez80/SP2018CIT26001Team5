@@ -211,6 +211,10 @@ public class GameControl {
      * Output:
      *   - int tithesAndOfferings: The amount of bushels to be paid in tithes and offerings.
      * Author: Lehi Lopez
+     * @param bushelsHarvested
+     * @param offeringsPercentage
+     * @return 
+     * @throws byui.sp2018cit26001team5.theCityOfAaron.exceptions.GameControlException 
      */
     public static int calculateOfferings (int bushelsHarvested, int offeringsPercentage) 
                 throws GameControlException {

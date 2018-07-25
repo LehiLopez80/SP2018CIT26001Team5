@@ -9,7 +9,6 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /**
- *
  * @author Lehi Lopez
  */
 public class Player implements Serializable{
@@ -56,8 +55,5 @@ public class Player implements Serializable{
             return false;
         }
         return true;
-    }
-
-        
-    
+    }    
 }

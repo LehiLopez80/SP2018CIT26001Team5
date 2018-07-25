@@ -10,7 +10,6 @@ import java.util.Arrays;
 import java.util.Objects;
 
 /**
- *
  * @author Lehi Lopez
  */
 public class Map implements Serializable{
@@ -19,7 +18,6 @@ public class Map implements Serializable{
     private Location[][] locations;
     private Point currentLocation;
     
-
     public Map() {
     }
 
@@ -71,9 +69,5 @@ public class Map implements Serializable{
             return false;
         }
         return true;
-    }
-
-    
-    
-    
+    }    
 }

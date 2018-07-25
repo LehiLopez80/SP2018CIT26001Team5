@@ -9,11 +9,11 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /**
- *
  * @author Alonso Bernaldo
  */
 public class InventoryItem implements Serializable{
-    //class instance variables  
+    
+//class instance variables  
     protected ItemType itemType;
     protected int quantity;
     protected Condition condition; 

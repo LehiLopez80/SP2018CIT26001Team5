@@ -45,7 +45,7 @@ public class MainMenuView extends ViewBase{
             case "E": this.console.println("You have exit the program.");
                 return true;
             default: ErrorView.display(this.getClass().getName(),
-                    "invalid menu item. Please enter a valid value");
+                    "Invalid menu item. Please enter a valid value");
                 break;
         }     
         

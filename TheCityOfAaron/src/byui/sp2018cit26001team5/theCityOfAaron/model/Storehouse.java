@@ -9,7 +9,6 @@ import java.io.Serializable;
 import java.util.Arrays;
 
 /**
- *
  * @author Lehi Lopez
  */
 public class Storehouse implements Serializable{

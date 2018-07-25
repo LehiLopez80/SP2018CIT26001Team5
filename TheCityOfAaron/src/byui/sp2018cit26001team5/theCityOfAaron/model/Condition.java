@@ -8,12 +8,10 @@ package byui.sp2018cit26001team5.theCityOfAaron.model;
 import java.io.Serializable;
 
 /**
- *
  * @author Alonso Bernaldo
  */
 public enum Condition implements Serializable{
     Good, 
     Fair,
-    Poor
-    
+    Poor    
 }

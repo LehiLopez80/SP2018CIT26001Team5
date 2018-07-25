@@ -4,7 +4,6 @@
 package byui.sp2018cit26001team5.theCityOfAaron.view;
 
 /**
- * 
  * @author Lehi Lopez
  */
 public interface View {
@@ -13,6 +12,5 @@ public interface View {
     
     public String getInput();
     
-    public boolean doAction(String input);
-    
+    public boolean doAction(String input);    
 }

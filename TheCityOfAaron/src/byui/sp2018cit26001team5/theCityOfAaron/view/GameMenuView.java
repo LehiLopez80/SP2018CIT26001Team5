@@ -10,8 +10,6 @@ import byui.sp2018cit26001team5.theCityOfAaron.exceptions.GameControlException;
 import byui.sp2018cit26001team5.theCityOfAaron.model.Game;
 import byui.sp2018cit26001team5.theCityOfAaron.model.Location;
 import byui.sp2018cit26001team5.theCityOfAaron.model.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import thecityofaaron.TheCityOfAaron;
 
 /**
@@ -64,8 +62,7 @@ public class GameMenuView extends ViewBase{
                 try {
                     this.liveTheYear();
                 } catch (GameControlException gce) {
-                    ErrorView.display(this.getClass().getName(),gce.getMessage()); 
-                    //gce.printStackTrace();
+                    ErrorView.display(this.getClass().getName(),gce.getMessage());                     
                 }
             }
                 break;
@@ -85,7 +82,7 @@ public class GameMenuView extends ViewBase{
               
             default:
                 ErrorView.display(this.getClass().getName(),
-                        "\nInvalid selection *** Try again");
+                        "Invalid selection *** Try again");
                 break;     
         }
         return false;

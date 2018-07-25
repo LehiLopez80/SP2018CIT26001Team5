@@ -34,19 +34,19 @@ public class PayOfferingsView extends ViewBase {
         try {
             intInput = Integer.parseInt(input);
         } catch (NumberFormatException nf) {
-            ErrorView.display(this.getClass().getName(), "\nYou must enter a valid number.");
+            ErrorView.display(this.getClass().getName(), "You must enter a valid number.");
             return false;
         }
         
         if(intInput < 0){
             ErrorView.display(this.getClass().getName(), 
-                    "\nPercentage of tithes and offerings must not be a negative value.");
+                    "Percentage of tithes and offerings must not be a negative value.");
             return false;
         }
             
         if(intInput > 100){
             ErrorView.display(this.getClass().getName(),
-                    "\nPercentage of tithes and offerings must not be greater than 100.");
+                    "Percentage of tithes and offerings must not be greater than 100.");
             return false;
         }
         

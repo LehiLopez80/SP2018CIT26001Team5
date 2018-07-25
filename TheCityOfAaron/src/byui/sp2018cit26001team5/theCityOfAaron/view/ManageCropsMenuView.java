@@ -55,7 +55,7 @@ public class ManageCropsMenuView extends ViewBase {
             case "R": this.console.println("Return to the Game Menu");
                 return true;
             default: ErrorView.display(this.getClass().getName(),
-                    "invalid menu item. Please enter a valid value");
+                    "Invalid menu item. Please enter a valid value");
                 break;
         }       
         

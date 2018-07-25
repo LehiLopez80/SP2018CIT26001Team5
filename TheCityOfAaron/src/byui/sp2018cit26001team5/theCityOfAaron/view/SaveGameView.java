@@ -50,6 +50,5 @@ public class SaveGameView extends ViewBase{
         this.console.println("\nThe game was successfully saved on the following location: "
                 + filePath);
         return true;
-    }
-    
+    }    
 }

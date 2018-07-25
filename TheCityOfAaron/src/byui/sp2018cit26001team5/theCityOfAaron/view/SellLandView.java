@@ -5,7 +5,6 @@
  */
 package byui.sp2018cit26001team5.theCityOfAaron.view;
 
-import byui.sp2018cit26001team5.theCityOfAaron.control.GameControl;
 import byui.sp2018cit26001team5.theCityOfAaron.model.Game;
 import thecityofaaron.TheCityOfAaron;
 

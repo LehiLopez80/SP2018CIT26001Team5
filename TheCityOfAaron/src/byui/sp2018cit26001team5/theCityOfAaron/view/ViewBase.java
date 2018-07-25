@@ -22,6 +22,7 @@ public abstract class ViewBase implements View {
     
     protected abstract String getMessage(); //
     
+    @Override
     public abstract boolean doAction (String input);
     
     @Override

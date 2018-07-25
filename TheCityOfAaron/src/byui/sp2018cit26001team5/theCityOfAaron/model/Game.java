@@ -34,8 +34,7 @@ public class Game implements Serializable{
 
     public static void setBushelsFeedPeople(int bushelsFeedPeople) {
         Game.bushelsFeedPeople = bushelsFeedPeople;
-    }
-    
+    }    
     
     public Game() {
     }

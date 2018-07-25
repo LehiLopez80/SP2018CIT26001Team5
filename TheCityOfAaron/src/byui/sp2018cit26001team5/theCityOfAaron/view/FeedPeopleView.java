@@ -34,7 +34,7 @@ public class FeedPeopleView extends ViewBase{
             intInput = Integer.parseInt(input);
         } catch (NumberFormatException nf) {
             ErrorView.display(this.getClass().getName(), 
-                    "\nYou must enter a valid number");
+                    "You must enter a valid number");
             return false;
         }
                 
@@ -61,7 +61,7 @@ public class FeedPeopleView extends ViewBase{
         
         TheCityOfAaron.setCurrentGame(game);
         
-        this.console.println("Bushels in store updated");        
+        this.console.println("\nBushels in store updated");        
         return true;
     }         
 }
